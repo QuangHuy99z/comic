@@ -92,7 +92,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="content">Content</label>
-                                <input type="text" class="form-control" id="content" name="content" placeholder="Enter Comic Content">
+                                <textarea class="form-control" id="content" name="content" placeholder="Enter Comic Content" rows="6"></textarea>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>
