@@ -17,7 +17,6 @@
                 <div class="app-main__inner">
                     @yield('content')
                 </div>
-                @include('admin.blocks.footer')
             </div>
         </div>
     </div>

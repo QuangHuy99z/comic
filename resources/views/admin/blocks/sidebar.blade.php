@@ -42,41 +42,8 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="metismenu-icon pe-7s-browser"></i>Pages
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    <i class="metismenu-icon pe-7s-browser"></i>Products
                                 </a>
-                                <ul>
-                                    <li>
-                                        <a href="pages-login.html">
-                                            <i class="metismenu-icon"></i> Login
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-login-boxed.html">
-                                            <i class="metismenu-icon"></i>Login Boxed
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-register.html">
-                                            <i class="metismenu-icon"></i>Register
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-register-boxed.html">
-                                            <i class="metismenu-icon"></i>Register Boxed
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-forgot-password.html">
-                                            <i class="metismenu-icon"></i>Forgot Password
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-forgot-password-boxed.html">
-                                            <i class="metismenu-icon"></i>Forgot Password Boxed
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                             <li>
                                 <a href="#">
