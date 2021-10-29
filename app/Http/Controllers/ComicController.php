@@ -16,7 +16,7 @@ class ComicController extends Controller
     {
         $comics = Comic::latest()->paginate(5);
   
-        return view('admin.products.index',compact('comics'))
+        return view('admin.comics.index',compact('comics'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -25,9 +25,19 @@ class ComicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin.products.create');
+        if ($request->isMethod('get')){
+            return view('admin.comics.create');
+        }
+        $add_comic = [
+            "title" => $request->title,
+            "name" => $request->name,
+            "image" => $request->image,
+            "content" => $request->content,
+        ];
+        Comic::create($add_comic);
+        return redirect()->route('admin.comics.index')->with('message', 'Add comic successfully');
     }
 
     /**
@@ -38,13 +48,7 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $add_comic = [
-            "title" => $request->title,
-            "name" => $request->name,
-            "image" => $request->image,
-            "content" => $request->content,
-        ];
-        Comic::create($add_comic);
+      
     }
 
     /**
@@ -56,7 +60,7 @@ class ComicController extends Controller
     public function show($id)
     {
         $comic = Comic::findOrFail($id);
-        return view('admin.products.detail', compact('comic'));
+        return view('admin.comics.detail', compact('comic'));
     }
 
     /**
