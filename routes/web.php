@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\ComicController;
+use App\Http\Controllers\DashboardController;
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('dashboard', [ComicController::class, 'index'])->name("admin.comics.index");
+    Route::get('dashboard', [DashboardController::class, 'index'])->name("admin.dasboard");
     // Comic
     Route::prefix('comics')->group(function () {
         Route::get('/', [ComicController::class, 'index'])->name("admin.comics.index");
