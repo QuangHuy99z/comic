@@ -41,17 +41,6 @@ class ComicController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-      
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -69,21 +58,16 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        if ($request->isMethod('get')){
+            $comic = Comic::findOrFail($id);
+            return view('admin.comics.detail', compact('comic'));
+        }
+        $comic = Comic::findOrFail($id);
+        $data = $request->all();
+        $comic->update($data);
+        return redirect()->route('admin.comics.edit', $id)->with('message', 'Update comic successfully');
     }
 
     /**
@@ -94,6 +78,8 @@ class ComicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comic = Comic::findOrFail($id);
+        $comic->delete();
+        return redirect()->route('admin.comics.index')->with('message', 'Delete comic successfully');
     }
 }

@@ -21,9 +21,9 @@ Route::prefix('admin')->group(function () {
     // Comic
     Route::prefix('comics')->group(function () {
         Route::get('/', [ComicController::class, 'index'])->name("admin.comics.index");
-        Route::match(['get', 'post'], 'create',[ComicController::class, 'create'])->name('admin.comics.create');
-        // Route::post('create', [ComicController::class, 'create'])->name('admin.comics.create');
-        Route::get('edit', [ComicController::class, 'edit'])->name('admin.comics.edit');
+        Route::match(['get', 'post'], 'create', [ComicController::class, 'create'])->name('admin.comics.create');
+        Route::match(['get', 'post'], 'edit/{id}', [ComicController::class, 'edit'])->name('admin.comics.edit');
+        Route::post('delete/{id}', [ComicController::class, 'destroy'])->name("admin.comics.delete");
     });
     // Genres
     Route::prefix('genres')->group(function () {
