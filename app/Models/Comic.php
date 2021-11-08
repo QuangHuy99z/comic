@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comic extends Model
 {
     use HasFactory;
-    protected $table = 'commics';
+    protected $table = 'comics';
     protected $guarded = [];
 
     public function genres()

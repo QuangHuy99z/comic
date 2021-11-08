@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateModelProductsTable extends Migration
+class CreateComicsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateModelProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('commics', function (Blueprint $table) {
+        Schema::create('comics', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('name');

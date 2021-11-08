@@ -17,7 +17,8 @@ class CreateChapterImagesTable extends Migration
             $table->increments('id');
             $table->integer('number');
             $table->string('name');
-            $table->foreign('chapter_id')->references('id')->on('chapters')->onDelete('cascade');
+            $table->integer('chapter_id')->unsigned()->nullable();
+            $table->foreign('chapter_id')->references('id')->on('chapters')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
