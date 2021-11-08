@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateModelProductsTable extends Migration
+class CreateChaptersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateModelProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('commics', function (Blueprint $table) {
+        Schema::create('chapters', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('name');
-            $table->string('image');
-            $table->text('content');
-            $table->string('status')->default('Ongoing');
+            $table->integer('number');
+            $table->foreign('comic_id')->references('id')->on('comics')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateModelProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('commics');
+        Schema::dropIfExists('chapters');
     }
 }

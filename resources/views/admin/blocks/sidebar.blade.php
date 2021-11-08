@@ -42,54 +42,13 @@
                             </li>
                             <li>
                                 <a href="{{route('admin.comics.index')}}">
-                                    <i class="metismenu-icon pe-7s-browser"></i>Products
+                                    <i class="metismenu-icon pe-7s-browser"></i>Comics
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-plugin"></i>Applications
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                <a href="{{route('admin.genres.index')}}">
+                                    <i class="metismenu-icon pe-7s-plugin"></i>Genres
                                 </a>
-                                <ul>
-                                    <li>
-                                        <a href="apps-mailbox.html">
-                                            <i class="metismenu-icon"></i>Mailbox
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="apps-chat.html">
-                                            <i class="metismenu-icon"></i>Chat
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="apps-faq-section.html">
-                                            <i class="metismenu-icon"></i>FAQ Section
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="metismenu-icon"></i>Forums
-                                            <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                        </a>
-                                        <ul>
-                                            <li>
-                                                <a href="apps-forum-list.html">
-                                                    <i class="metismenu-icon"></i>Forum Listing
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="apps-forum-threads.html">
-                                                    <i class="metismenu-icon"></i>Forum Threads
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="apps-forum-discussion.html">
-                                                    <i class="metismenu-icon"></i>Forum Discussion
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="app-sidebar__heading">UI Components</li>
                             <li>

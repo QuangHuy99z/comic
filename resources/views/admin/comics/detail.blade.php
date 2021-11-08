@@ -92,7 +92,23 @@
                                         </dl>
                                         <dl class="param param-feature">
                                             <dt>Genres</dt>
-                                            <dd><input type="text" value="{{$comic->status}}"></dd>
+                                            <dd>
+                                                <select class="form-control" name="category[]" id="genres" multiple>
+                                                        @foreach($comic->genres as $genre)
+                                                            <option value="{{$genre->id}}" selected>{{ $genre->name }}</option>
+                                                        @endforeach                              
+                                                </select>
+                                            </dd>
+                                        </dl>
+                                        <dl class="param param-feature">
+                                            <dt>Change Genres</dt>
+                                            <dd>
+                                                <select class="form-control" name="genres[]" id="genres" multiple>
+                                                    @foreach($genres as $genre)
+                                                        <option value="{{$genre->id}}">{{ $genre->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </dd>
                                         </dl>
                                         <dl class="param param-feature">
                                             <dt>Chapters</dt>

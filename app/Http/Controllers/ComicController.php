@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comic;
+use App\Models\Genres;
+use App\Models\Author;
 
 class ComicController extends Controller
 {
@@ -28,15 +30,25 @@ class ComicController extends Controller
     public function create(Request $request)
     {
         if ($request->isMethod('get')){
-            return view('admin.comics.create');
+            $genres = Genres::all();
+            return view('admin.comics.create', compact('genres'));
         }
+        dd($request->all());
         $add_comic = [
             "title" => $request->title,
             "name" => $request->name,
             "image" => $request->image,
-            "content" => $request->content,
+            "content" => strip_tags($request->content),
         ];
-        Comic::create($add_comic);
+        $comic = Comic::create($add_comic);
+        foreach ($request->authors as $author):
+            $authors = Author::create([
+                'name' => $author
+            ]);
+            $comic->authors()->attach($authors->id);
+        endforeach;
+
+        $comic->genres()->attach($request->genres);
         return redirect()->route('admin.comics.index')->with('message', 'Add comic successfully');
     }
 
@@ -62,11 +74,11 @@ class ComicController extends Controller
     {
         if ($request->isMethod('get')){
             $comic = Comic::findOrFail($id);
-            return view('admin.comics.detail', compact('comic'));
+            $genres = Genres::all();
+            return view('admin.comics.detail', compact('comic', 'genres'));
         }
         $comic = Comic::findOrFail($id);
-        $data = $request->all();
-        $comic->update($data);
+        $comic->genres()->sync($request->genres);
         return redirect()->route('admin.comics.edit', $id)->with('message', 'Update comic successfully');
     }
 

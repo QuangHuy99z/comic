@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\ComicController;
+use App\Http\Controllers\GenresController;
 use App\Http\Controllers\DashboardController;
 
 
@@ -27,8 +28,8 @@ Route::prefix('admin')->group(function () {
     });
     // Genres
     Route::prefix('genres')->group(function () {
-        Route::get('/', [ComicController::class, 'index'])->name("admin.genres.index");
-        Route::get('create', [ComicController::class, 'create'])->name('admin.genres.create');
-        Route::get('edit', [ComicController::class, 'edit'])->name('admin.genres.edit');
+        Route::get('/', [GenresController::class, 'index'])->name("admin.genres.index");
+        Route::match(['get', 'post'], 'create', [GenresController::class, 'create'])->name('admin.genres.create');
+        Route::get('edit', [GenresController::class, 'edit'])->name('admin.genres.edit');
     });
 });

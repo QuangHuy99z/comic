@@ -7,79 +7,23 @@ use Illuminate\Http\Request;
 
 class GenresController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $genres = Genres::latest()->paginate(5);
+  
+        return view('admin.genres.index',compact('genres'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Request $request)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Genres  $genres
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Genres $genres)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Genres  $genres
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Genres $genres)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Genres  $genres
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Genres $genres)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Genres  $genres
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Genres $genres)
-    {
-        //
+        if ($request->getMethod() == 'GET') {
+            return view('admin.genres.create'); 
+        }
+        Genres::create([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+        return redirect()->route('admin.genres.index')->with('message', 'Add genres successfully');
     }
 }

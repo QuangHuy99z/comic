@@ -8,7 +8,7 @@
                     <div class="page-title-heading">
                         <div class="page-title-icon"><i class="pe-7s-umbrella icon-gradient bg-sunny-morning"></i></div>
                         <div>
-                            Thêm sản phẩm
+                            Sửa thể loại
                             <div class="page-title-subheading">Example of a Dashboard page built
                                 with Architect.</div>
                         </div>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="card-body">
                     <table style="width: 100%;" class="table table-hover table-striped table-bordered">
-                        <form action="{{route('admin.comics.create')}}" method="post" autocomplete="off">
+                        <form action="{{route('admin.comics.create')}}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
@@ -88,55 +88,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="image">Image</label>
-                                <input type="text" class="form-control" value="{{old('image')}}" id="image" name="image" placeholder="Enter Image">
-                            </div>
-                            <div class="form-group">
-                                <label for="authors">Authors</label>
-                                <select class="form-control authors_select2" name="authors[]" id="authors" multiple="multiple"></select>
+                                <input type="text" class="form-control" id="image" name="image" placeholder="Enter Image">
                             </div>
                             <div class="form-group">
                                 <label for="genres">Genres</label>
-                                <select class="form-control js-example-basic-single" name="genres[]" id="genres" multiple="multiple">
-                                    <option value="" disabled hidden>Input Genres</option>
+                                <select class="form-control" name="genres[]" id="genres" multiple>
                                     @foreach($genres as $genre)
                                         <option value="{{$genre->id}}">{{$genre->name}}</option>
                                     @endforeach
                                 </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $('.js-example-basic-single').select2(
-                                            {
-                                                placeholder: 'Input genres',
-                                            }
-                                        );
-                                        $('.authors_select2').select2(
-                                            {
-                                                placeholder: 'Input author',
-                                                tags: true,
-                                            },
-                                        );
-                                    });
-                                </script>
-                            </div>
-                            <div class="form-group">
-                                <label for="chapters">Chapter</label>
-                                <select class="form-control authors_select2" name="chapters[]" id="chapters" multiple="multiple"></select>
                             </div>
                             <div class="form-group">
                                 <label for="content">Content</label>
                                 <textarea class="form-control" id="content" name="content" placeholder="Enter Comic Content" rows="6"></textarea>
-                                <script>
-                                    CKEDITOR.replace('content',{
-                                        height: "200px",
-                                    })
-                                    CKEDITOR.config.autoParagraph = false;
-                                    CKEDITOR.on('instanceReady', function(e) {
-                                    // First time
-                                    e.editor.document.getBody().setStyle('color', 'red');
-                                    e.editor.document.getBody().setStyle('background-color', '#fff');
-                                });
-                                </script>
-                                
                             </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>

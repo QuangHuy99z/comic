@@ -42,7 +42,7 @@
                     </div>
                     <div class="btn-actions-pane-right actions-icon-btn">
                         <div class="btn-group dropdown">
-                            <a href="{{route('admin.comics.create')}}">
+                            <a href="{{route('admin.genres.create')}}">
                                 <div type="button" class="btn-icon btn-icon-only btn btn-link">
                                     Add <i class="pe-7s-plus btn-icon-wrapper"></i>
                                 </div>
@@ -52,22 +52,20 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table style="width: 100%;"  class="table table-hover table-striped table-bordered">
+                    <table style="width: 100%;" class="table table-hover table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Title</th>
-                                <th>Image</th>
-                                <th>Publish date</th>
+                                <th>Description</th>
+                                <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($comics as $comic)
+                            @foreach($genres as $genre)
                                     <tr>
-                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057;; text-decoration: none;">{{$comic->name}}</a></td>
-                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057;; text-decoration: none;">{{$comic->title}}</a></td>
-                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057;; text-decoration: none;"><img style="width: 100%; height: 80px" src="{{$comic->image}}" alt="{{$comic->image}}" srcset="{{$comic->image}}"></a></td>
-                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057;; text-decoration: none;">{{$comic->created_at}}</a></td>
+                                        <td><a href="" style="color: #495057; text-decoration: none;">{{$genre->name}}</a></td>
+                                        <td><a href="" style="color: #495057; text-decoration: none;">{{$genre->description}}</a></td>
+                                        <td><a href="" style="color: #495057; text-decoration: none;">{{$genre->created_at}}</a></td>
                                     </tr>
                                 </a>
                             @endforeach    
@@ -75,10 +73,8 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Name</th>
-                                <th>Title</th>
-                                <th>Image</th>
-                                <th>Publish date</th>
+                            <th>Name</th>
+                            <th>Description</th>
                             </tr>
                         </tfoot>
                     </table>
