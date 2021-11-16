@@ -33,7 +33,6 @@ class ComicController extends Controller
             $genres = Genres::all();
             return view('admin.comics.create', compact('genres'));
         }
-        dd($request->all());
         $add_comic = [
             "title" => $request->title,
             "name" => $request->name,
@@ -41,9 +40,11 @@ class ComicController extends Controller
             "content" => strip_tags($request->content),
         ];
         $comic = Comic::create($add_comic);
+        //
         foreach ($request->authors as $author):
             $authors = Author::create([
-                'name' => $author
+                'name' => $author,
+                dd($author),
             ]);
             $comic->authors()->attach($authors->id);
         endforeach;

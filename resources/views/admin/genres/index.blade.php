@@ -38,7 +38,7 @@
                 <div class="card-header-tab card-header">
                     <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
                         <i class="header-icon lnr-dice mr-3 text-muted opacity-6"> </i>
-                        List of Comics
+                        List of Genres
                     </div>
                     <div class="btn-actions-pane-right actions-icon-btn">
                         <div class="btn-group dropdown">
@@ -75,6 +75,7 @@
                             <tr>
                             <th>Name</th>
                             <th>Description</th>
+                            <th>Date</th>
                             </tr>
                         </tfoot>
                     </table>

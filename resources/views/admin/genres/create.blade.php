@@ -80,11 +80,11 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Comic Name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Genres Name">
                             </div>
                             <div class="form-group">
                                 <label for="content">Description</label>
-                                <textarea class="form-control" id="content" name="description" placeholder="Enter Comic Content" rows="6"></textarea>
+                                <textarea class="form-control" id="content" name="description" placeholder="Enter Genres Content" rows="6"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

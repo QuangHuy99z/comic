@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\ComicController;
 use App\Http\Controllers\GenresController;
+use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\DashboardController;
 
 
@@ -32,4 +33,11 @@ Route::prefix('admin')->group(function () {
         Route::match(['get', 'post'], 'create', [GenresController::class, 'create'])->name('admin.genres.create');
         Route::get('edit', [GenresController::class, 'edit'])->name('admin.genres.edit');
     });
+    // Chapter
+    Route::prefix('chapters')->group(function () {
+        Route::get('/', [ChapterController::class, 'index'])->name("admin.chapters.index");
+        Route::match(['get', 'post'], 'create', [ChapterController::class, 'create'])->name('admin.chapters.create');
+        Route::post('delete/{id}', [ChapterController::class, 'destroy'])->name("admin.chapters.delete");
+    });
+    // Account
 });

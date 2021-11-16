@@ -132,7 +132,7 @@
                                     CKEDITOR.config.autoParagraph = false;
                                     CKEDITOR.on('instanceReady', function(e) {
                                     // First time
-                                    e.editor.document.getBody().setStyle('color', 'red');
+                                    e.editor.document.getBody().setStyle('color', 'black');
                                     e.editor.document.getBody().setStyle('background-color', '#fff');
                                 });
                                 </script>
@@ -146,62 +146,6 @@
             </div>
         </div>
 
-    </div>
-    <div class="main-card mb-3 card">
-        <div class="no-gutters row">
-            <div class="col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-success">1896</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Total Orders</div>
-                            <div class="widget-subheading">Last year expenses</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-warning">$ 14M</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Products Sold</div>
-                            <div class="widget-subheading">Total revenue streams</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-danger">45.9%</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Followers</div>
-                            <div class="widget-subheading">People Interested</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="d-xl-none d-md-block col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-danger">45.9%</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Followers</div>
-                            <div class="widget-subheading">People Interested</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 @endsection

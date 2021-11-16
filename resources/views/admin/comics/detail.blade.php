@@ -84,7 +84,7 @@
                                         </p>
                                         <dl class="param param-feature">
                                             <dt>Author</dt>
-                                            <dd><input type="text" value="12345611"></dd>
+                                            <dd><input type="text" value="{{$comic->author}}"></dd>
                                         </dl>
                                         <dl class="param param-feature">
                                             <dt>Status</dt>
@@ -115,7 +115,7 @@
                                             <dd><input type="text" value="{{$comic->status}}"></dd>
                                         </dl> <!-- item-property-hor .// -->
                                         <dl class="item-property">
-                                            <dt>Description</dt>
+                                            <dt>Content</dt>
                                             <dd class="text-content-comic">
                                                 <p>
                                                     <textarea name="content" id="" style="width:100%" rows="10">{{$comic->content}}</textarea>
