@@ -44,7 +44,6 @@ class ComicController extends Controller
         foreach ($request->authors as $author):
             $authors = Author::create([
                 'name' => $author,
-                dd($author),
             ]);
             $comic->authors()->attach($authors->id);
         endforeach;

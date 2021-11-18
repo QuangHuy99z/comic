@@ -16,6 +16,7 @@ use App\Http\Controllers\ComicController;
 use App\Http\Controllers\GenresController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 
 
 Route::prefix('admin')->group(function () {
@@ -40,4 +41,8 @@ Route::prefix('admin')->group(function () {
         Route::post('delete/{id}', [ChapterController::class, 'destroy'])->name("admin.chapters.delete");
     });
     // Account
+    Route::prefix('users')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name("admin.users.index");
+        Route::post('delete/{id}', [UserController::class, 'destroy'])->name("admin.users.delete");
+    }); 
 });

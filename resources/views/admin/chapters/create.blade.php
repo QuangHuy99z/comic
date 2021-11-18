@@ -30,11 +30,6 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <form action="{{route('admin.chapters.delete', $chapters->id)}}" method="post">
-        @csrf
-        <button type="submit" style="float: right; margin-top: -85px; margin-right: 47px;"
-            class="btn btn-lg btn-danger text-uppercase">Delete</button>
-    </form>
 </body>
 
 </html>

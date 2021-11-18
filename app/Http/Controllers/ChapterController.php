@@ -12,10 +12,7 @@ use App\Models\ChapterImage;
 class ChapterController extends Controller
 {
     public function index()
-    {
-        $chapters = Chapter::all();
-        
-       
+    { 
         $chapter = Chapter::latest()->paginate(5);
   
         return view('admin.chapters.index',compact('chapter'))

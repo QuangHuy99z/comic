@@ -9,12 +9,14 @@
 </head>
 
 <body>
-    <form action="{{route('admin.chapters.index')}}" method="post">
+    <form>
         @csrf
         <div class="form-group">
             <label for="content">Chapter Number</label>
-            <input type="text" class="form-control" id="number" name="number" placeholder="Enter Chapter Number">
         </div>
+        @foreach($chapter as $chapter)
+        {{$chapter->number}}
+        @endforeach
     </form>
 </body>
 
