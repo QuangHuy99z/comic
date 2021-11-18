@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Str;
 use App\Models\Genres;
 use Illuminate\Http\Request;
 
@@ -23,6 +23,7 @@ class GenresController extends Controller
         Genres::create([
             'name' => $request->name,
             'description' => $request->description,
+            'slug' => STR::slug($request->name),
         ]);
         return redirect()->route('admin.genres.index')->with('message', 'Add genres successfully');
     }

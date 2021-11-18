@@ -73,14 +73,6 @@
                             @endforeach    
         
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>STT</th>
-                                <th>Comic Name</th>
-                                <th>Total Chapter</th>
-                                <th>Publish date</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>

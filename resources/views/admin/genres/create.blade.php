@@ -1,5 +1,13 @@
 @extends('admin.layouts.master')
 @section('content')
+<style>
+    #content {
+        padding: 3.75px 7.5px;
+    }
+    input, textarea {
+        font-size: 16px !important;
+    }
+</style>
 <div class="app-inner-layout">
     <div class="app-inner-layout__header-boxed p-0">
         <div class="app-inner-layout__header page-title-icon-rounded text-white bg-premium-dark mb-4">

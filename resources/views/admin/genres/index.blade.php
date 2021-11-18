@@ -71,12 +71,6 @@
                             @endforeach    
         
                         </tbody>
-                        <tfoot>
-                            <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>
