@@ -383,7 +383,7 @@
                                                                         class="avatar-wrapper mt-2 avatar-wrapper-overlap">
                                                                         <div class="avatar-icon-wrapper avatar-icon-sm">
                                                                             <div class="avatar-icon">
-                                                                                <img src="https://demo.dashboardpack.com/architectui-html-pro/assets/images/avatars/1.jpg"
+                                                                                <img src="https://www.kindpng.com/picc/m/22-223863_no-avatar-png-circle-transparent-png.png"
                                                                                     alt="">
                                                                             </div>
                                                                         </div>
@@ -777,7 +777,7 @@
                             <div class="btn-group">
                                 <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
                                     <img width="42" class="rounded-circle"
-                                        src="https://demo.dashboardpack.com/architectui-html-pro/assets/images/avatars/1.jpg"
+                                        src="https://www.kindpng.com/picc/m/22-223863_no-avatar-png-circle-transparent-png.png"
                                         alt="">
                                     <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                 </a>
@@ -793,7 +793,7 @@
                                                     <div class="widget-content-wrapper">
                                                         <div class="widget-content-left mr-3">
                                                             <img width="42" class="rounded-circle"
-                                                                src="https://demo.dashboardpack.com/architectui-html-pro/assets/images/avatars/1.jpg"
+                                                                src="https://www.kindpng.com/picc/m/22-223863_no-avatar-png-circle-transparent-png.png"
                                                                 alt="">
                                                         </div>
                                                         <div class="widget-content-left">
@@ -868,8 +868,8 @@
                                         <li class="nav-item-divider nav-item">
                                         </li>
                                         <li class="nav-item-btn text-center nav-item">
-                                            <button class="btn-wide btn btn-primary btn-sm"> Open Messages
-                                            </button>
+                                            <a href="{{route('admin.logout')}}" class="btn-wide btn btn-primary btn-sm"> Đăng xuất
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>

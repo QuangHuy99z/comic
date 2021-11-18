@@ -13,7 +13,7 @@
                     <div class="page-title-heading">
                         <div class="page-title-icon"><i class="pe-7s-umbrella icon-gradient bg-sunny-morning"></i></div>
                         <div>
-                            Tất cả các sản phẩm
+                            Tất cả người dùng
                             <div class="page-title-subheading" style="visibility: hidden;">Example of a Dashboard page built
                                 with Architect.</div>
                         </div>
@@ -38,11 +38,11 @@
                 <div class="card-header-tab card-header">
                     <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
                         <i class="header-icon lnr-dice mr-3 text-muted opacity-6"> </i>
-                        List of Comics
+                        List of Users
                     </div>
                     <div class="btn-actions-pane-right actions-icon-btn">
                         <div class="btn-group dropdown">
-                            <a href="{{route('admin.comics.create')}}">
+                            <a href="#">
                                 <div type="button" class="btn-icon btn-icon-only btn btn-link">
                                     Add <i class="pe-7s-plus btn-icon-wrapper"></i>
                                 </div>
@@ -55,41 +55,21 @@
                     <table style="width: 100%;"  class="table table-hover table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th style="width: 60%!important">Name</th>
-                                <th style="width: 30%">Title</th>
-                                <th>Image</th>
-                                <th>Genres</th>
-                                <th>Authors</th>
+                                <th style="width: 40%!important">Name</th>
+                                <th style="width: 30%">Email</th>
+                                <th>Position</th>
+                                <th>Status</th>
+                                <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($comics as $comic)
+                            @foreach($users as $user)
                                     <tr>
-                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057;; text-decoration: none;">{{$comic->name}}</a></td>
-                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057;; text-decoration: none;">{{$comic->title}}</a></td>
-                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057;; text-decoration: none;"><img style="width: 100%; height: 80px" src="{{asset('/uploads/comics/'.$comic->image)}}" alt="{{$comic->image}}" srcset="{{asset('/uploads/comics/'.$comic->image)}}"></a></td>
-                                        <td>
-                                            @php 
-                                                $genres = array();
-                                                $authors = array();
-                                            @endphp
-                                            @foreach($comic->genres as $genre)
-                                                <a href="{{route('admin.genres.edit', $genre->id)}}" style="color: #495057;text-decoration: none;">
-                                                    @php
-                                                        array_push($genres, $genre->name);
-                                                    @endphp  
-                                                </a>
-                                            @endforeach
-                                            {{implode(",", $genres)}}
-                                        </td>
-                                        <td>
-                                            @foreach($comic->authors as $author)
-                                                @php
-                                                    array_push($authors, $author->name);
-                                                @endphp  
-                                            @endforeach
-                                            {{implode(",", $authors)}}
-                                        </td>
+                                        <td><a href="#" style="color: #495057; text-decoration: none;">{{$user->name}}</a></td>
+                                        <td><a href="#" style="color: #495057; text-decoration: none;">{{$user->email}}</a></td>
+                                        <td>{{$user->position}}</td>
+                                        <td>{{$user->status}}</td>
+                                        <td>{{$user->created_at}}</td>
                                     </tr>
                                 </a>
                             @endforeach    

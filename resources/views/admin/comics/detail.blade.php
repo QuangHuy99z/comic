@@ -1,14 +1,36 @@
 @extends('admin.layouts.master')
 @section('content')
 <style>
+    a {
+        text-decoration: none !important;
+    }
+
+    a:hover i {
+        color: red !important;
+    }
+
     .dataTables_scrollBody {
         max-height: none !important;
     }
+
     .border-right {
         border-right: none !important;
     }
-    input[type="text"]{
+
+    input[type="text"] {
         width: 100%;
+    }
+
+    a.disabled {
+        pointer-events: none;
+        cursor: default;
+    }
+    button.ui-button.btn-primary {
+        top: -20px;
+        left: -8px;
+    }
+    button.ui-button.btn-destroy {
+        top: 24px;
     }
 </style>
 <div class="app-inner-layout">
@@ -49,155 +71,297 @@
                     </div>
                     <div class="btn-actions-pane-right actions-icon-btn">
                         <div class="btn-group dropdown">
-                            <a href="{{route('admin.comics.create')}}">
-                                <div type="button" class="btn-icon btn-icon-only btn btn-link">
-                                    Add <i class="pe-7s-plus btn-icon-wrapper"></i>
-                                </div>
-                            </a>
-
+                            <a class="<?php if($prev->count() != 0){
+                                                        echo '';
+                                                    }else echo 'disabled';  
+                                                    ?>" href="<?php if($prev->count() != 0){
+                                                        echo $prev[0]->id;
+                                                    }else echo 'javascript:void(0)';  
+                                                    ?>"">
+                                <div type=" button" class="btn-icon btn-icon-only btn-link">
+                                <i class="pe-7s-angle-left btn-icon-wrapper" style="font-size: 40px; width: 30px"></i>
                         </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="card">
-                        <form action="{{route('admin.comics.edit', $comic->id)}}" method="post">
-                            <div class="row">
-                                @csrf 
-                                <aside class="col-sm-5 border-right">
-                                    <article class="gallery-wrap">
-                                        <div class="img-big-wrap">
-                                            <div> <a href="#"><img src="{{$comic->image}}" style="width: 100%; height: 100%"></a>
-                                            </div>
-                                            <input type="text" name="image" value="{{$comic->image}}">
-                                        </div>
+                        </a>
+                        <a style="color: #637381;" class="<?php if($next->count() != 0){
+                                                        echo '';
+                                                    }else echo 'disabled';  
+                                                    ?>" href="<?php if($next->count() != 0){
+                                                        echo $next[0]->id;
+                                                    }else echo 'javascript:void(0)';  
+                                                    ?>">
+                            <div type="button" class="btn-icon btn-icon-only btn-link">
+                                <i class="pe-7s-angle-right btn-icon-wrapper" style="font-size: 40px; width: 30px"></i>
 
-                                    </article>
-                                </aside>
-                                <aside class="col-sm-7">
-                                    <article class="card-body p-5">
-                                        <h3 class="title mb-3"><input type="text" name="name" placeholder=""value="{{$comic->name}}"></h3>
-
-                                        <p class="price-detail-wrap">
-                                            <span class="price h3 text-warning">
-                                                <span class="currency"></span><span class="num"><input type="text" name="title" value="{{$comic->title}}"></span>
-                                            </span>
-                                        </p>
-                                        <dl class="param param-feature">
-                                            <dt>Author</dt>
-                                            <dd><input type="text" value="12345611"></dd>
-                                        </dl>
-                                        <dl class="param param-feature">
-                                            <dt>Status</dt>
-                                            <dd><input type="text" value="{{$comic->status}}" name="status"></dd>
-                                        </dl>
-                                        <dl class="param param-feature">
-                                            <dt>Genres</dt>
-                                            <dd>
-                                                <select class="form-control" name="category[]" id="genres" multiple>
-                                                        @foreach($comic->genres as $genre)
-                                                            <option value="{{$genre->id}}" selected>{{ $genre->name }}</option>
-                                                        @endforeach                              
-                                                </select>
-                                            </dd>
-                                        </dl>
-                                        <dl class="param param-feature">
-                                            <dt>Change Genres</dt>
-                                            <dd>
-                                                <select class="form-control" name="genres[]" id="genres" multiple>
-                                                    @foreach($genres as $genre)
-                                                        <option value="{{$genre->id}}">{{ $genre->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </dd>
-                                        </dl>
-                                        <dl class="param param-feature">
-                                            <dt>Chapters</dt>
-                                            <dd><input type="text" value="{{$comic->status}}"></dd>
-                                        </dl> <!-- item-property-hor .// -->
-                                        <dl class="item-property">
-                                            <dt>Description</dt>
-                                            <dd class="text-content-comic">
-                                                <p>
-                                                    <textarea name="content" id="" style="width:100%" rows="10">{{$comic->content}}</textarea>
-                                                </p>
-                                            </dd>
-                                        </dl>
-                                    
-                                        <hr>
-                                    
-                                        <hr>
-                                        <button type="submit" class="btn btn-lg btn-primary text-uppercase">Update</button>
-                                    
-                                        </div>
-                                    </article> <!-- card-body.// -->
-                                </aside>
                             </div>
-                        </form>
-                        <form action="{{route('admin.comics.delete', $comic->id)}}" method="post">
-                            @csrf
-                            <button type="submit" style="float: right; margin-top: -85px; margin-right: 47px;" class="btn btn-lg btn-danger text-uppercase">Delete</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        </a>
 
-    </div>
-    <div class="main-card mb-3 card">
-        <div class="no-gutters row">
-            <div class="col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-success">1896</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Total Orders</div>
-                            <div class="widget-subheading">Last year expenses</div>
-                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-warning">$ 14M</div>
+            <div class="card-body">
+                <form action="{{route('admin.comics.edit', $comic->id)}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="ui-layout__sections">
+                        <div class="ui-layout__section ui-layout__section--primary">
+                            <div class="ui-layout__item">
+                                <section class="ui-card" id="product-form-container">
+                                    <div class="ui-card__section">
+                                        <div class="ui-type-container">
+                                            <div class="next-input-wrapper">
+                                                <label class="next-label" for="product-name">
+                                                    Tên truyện
+                                                </label>
+                                                <input required="" id="product-name" value="{{$comic->name}}"
+                                                    placeholder="Nhập tên sản phẩm" class="next-input" size="30"
+                                                    type="text" name="name">
+                                            </div>
+                                            <div class="next-input-wrapper">
+                                                <label class="next-label" for="product-name">
+                                                    Tiêu đề truyện
+                                                </label>
+                                                <input required="" id="title" value="{{$comic->title}}"
+                                                    placeholder="Nhập tên sản phẩm" class="next-input" size="30"
+                                                    type="text" name="title">
+                                            </div>
+                                            <div class="next-input-wrapper">
+                                                <label class="next-label" for="content">Nội dung</label>
+                                                <textarea name="content" id="content"
+                                                    rows="6">{{$comic->content}}</textarea>
+                                            </div>
+                                            <script>
+                                                CKEDITOR.replace('content', {
+                                                    height: "200px",
+                                                })
+                                                CKEDITOR.config.autoParagraph = false;
+                                                CKEDITOR.on('instanceReady', function (e) {
+                                                    // First time
+                                                    e.editor.document.getBody().setStyle('color', 'red');
+                                                    e.editor.document.getBody().setStyle('background-color', '#fff');
+                                                });
+                                            </script>
+
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="ui-card" id="product-images-container">
+                                    <div data-define="{ imageActions: new Bizweb.ProductCreateImageActions(this, $context) }"
+                                        data-context="imageActions" id="product-images-content"
+                                        data-tg-refresh="product-images-content">
+                                        <header class="next-card__header">
+                                            <div class="next-grid next-grid--no-padding next-grid--vertically-centered">
+                                                <div class="next-grid__cell">
+                                                    <h2 class="next-heading">Ảnh sản phẩm</h2>
+                                                </div>
+                                                <div class="next-grid__cell next-grid__cell--no-flex">
+                                                    <div
+                                                        class="next-grid next-grid--no-outside-padding next-grid--vertically-centered">
+                                                        <div class="next-grid__cell next-grid__cell--no-flex">
+                                                            <div class="styled-file-input">
+                                                                <div class="btn btn--link" style="display:flex;">
+                                                                    <a href="#"
+                                                                        class="ui-button btn--link change-avatar updateavatar"
+                                                                        style="padding:0 15px;"
+                                                                        id="ht-cre-product-add-image">Sửa
+                                                                        ảnh</a>
+                                                                        <input type="file" id="uploadAvatar" style="display:none;" accept="image/x-png,image/gif,image/jpeg" name="fimage" onchange="document.getElementById('img-avatar').src = window.URL.createObjectURL(this.files[0])">
+                                                                    <script>
+
+                                                                        $('.updateavatar').click(function (e) {
+                                                                            e.preventDefault();
+                                                                            $("#uploadAvatar").trigger('click');
+                                                                        })
+                                                                      
+                                                                    </script>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </header>
+                                        <div class="next-card__section">
+                                            <div class="next-upload-dropzone__wrapper">
+                                                <!-- Upload Image -->
+                                                <img src="{{asset('/uploads/comics/'.$comic->image)}}" onerror="this.src='https://www.vascara.com/uploads/avatar/2021/April/25/1111111111111-1571600-1619350255-medium.png'" alt="customer-image" class="img-avatar" id="img-avatar" style="width:100%;">
+                                                <!-- Process if image is null -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                            </div>
+
                         </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Products Sold</div>
-                            <div class="widget-subheading">Total revenue streams</div>
+                        <div class="ui-layout__section ui-layout__section--secondary">
+                            <div class="ui-layout__item">
+                                <div class="next-card">
+                                    <header class="next-card__header">
+                                        <h3 class="ui-heading">Trạng thái</h3>
+                                    </header>
+                                    <section class="next-card__section">
+                                        <div class="visibility" id="PublishingPanel" data-context="publishingPanel">
+                                            <div class="ui-form__section">
+                                                <div class="ui-form__element">
+                                                    <fieldset class="ui-choice-list">
+                                                        <ul>
+                                                            <li>
+                                                                <div class="next-input-wrapper">
+                                                                    <label class="next-label next-label--switch"
+                                                                        for="active-true">
+                                                                        Ongoing
+                                                                    </label>
+                                                                    <input type="radio" name="status" id="active-true"
+                                                                        value="Ongoing" class="next-radio"
+                                                                        {{($comic->status
+                                                                    == 'Ongoing' ?
+                                                                    'checked' : '')}}>
+                                                                    <span class="next-radio--styled"></span>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="next-input-wrapper">
+                                                                    <label class="next-label next-label--switch"
+                                                                        for="active-false">
+                                                                        Not Ongoing
+                                                                    </label>
+                                                                    <input type="radio" name="status"
+                                                                        id="active-false" value="Not Ongoing"
+                                                                        class="next-radio" {{($comic->status == 'Not Ongoing' ?
+                                                                    'checked' : '')}}>
+                                                                    <span class="next-radio--styled"></span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="ui-layout__item">
+                                <section class="ui-card ui-card--type-aside">
+                                    <header class="ui-card__header">
+                                        <h2 class="ui-heading">Phân loại</h2>
+                                    </header>
+                                    <div class="ui-card__section">
+                                        <div class="ui-type-container">
+                                            <div class="next-input-wrapper">
+                                                <label for="product_product_type">Tác giả</label>
+                                                <div
+                                                    class="ui-popover__container ui-popover__container--full-width-container">
+                                                    <div>
+                                                        <div class="next-field__connected-wrapper">
+                                                            <style>
+                                                                .select2-results__options {
+                                                                    font-size: 16px !important;
+                                                                }
+
+                                                                .select2-container .select2-selection--single {
+                                                                    height: 40px;
+                                                                }
+
+                                                                .select2-container--default .select2-selection--single .select2-selection__rendered {
+                                                                    color: #444;
+                                                                    line-height: 28px;
+                                                                }
+                                                            </style>
+                                                            <select
+                                                                class="next-input select2 select2-hidden-accessible authors_select2"
+                                                                name="authors[]" multiple required>
+                                                                <option value="">Nhập tác giả</option>
+                                                                @foreach($authors as $author)
+                                                                    @foreach($comic->authors as $au_thor)
+                                                                    <option value="{{$author->id}}" <?php if ($au_thor->id==$author->id) { echo 'selected';}?>>{{ $author->name}}</option>
+                                                                    @endforeach
+                                                                @endforeach
+                                                            </select>
+                                                            <script>
+                                                                $(document).ready(function () {
+                                                                    $('.authors_select2').select2(
+                                                                        {
+                                                                            placeholder: 'Input author',
+                                                                            tags: true,
+                                                                        },
+                                                                    );
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="next-input-wrapper">
+                                                <label for="product_vendor">Thể loại</label>
+                                                <div
+                                                    class="ui-popover__container ui-popover__container--full-width-container">
+                                                    <div>
+                                                        <div class="next-field__connected-wrapper">
+                                                            <select class="next-input select1 select2-hidden-accessible"
+                                                                name="genres[]" tabindex="-1" aria-hidden="true"
+                                                                multiple required>
+                                                                <option value="">Nhập thể loại</option>
+                                                                @foreach($genres as $genre)
+                                                                    @foreach($comic->genres as $gen_re)
+                                                                    <option value="{{$genre->id}}" <?php if ($gen_re->id ==$genre->id) { echo 'selected';}?>>{{ $genre->name }}</option>
+                                                                    @endforeach
+                                                                @endforeach
+                                                            </select>
+                                                            <script>
+                                                                $(document).ready(function () {
+                                                                    $(".select1").select2(
+                                                                        {
+                                                                            placeholder: "Nhập thể loại",
+                                                                            allowClear: true,
+                                                                            language: {
+                                                                                noResults: function () {
+                                                                                    return 'Thể loại không tồn tại';
+                                                                                },
+                                                                            },
+                                                                            escapeMarkup: function (markup) {
+                                                                                return markup;
+                                                                            },
+                                                                        }
+
+                                                                    );
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-danger">45.9%</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Followers</div>
-                            <div class="widget-subheading">People Interested</div>
+                    <div class="ui-page-actions__container">
+                        <div class="ui-page-actions__actions ui-page-actions__actions--secondary">
+                            <div class="ui-page-actions__button-group">
+                                    <button class="ui-button btn-destroy" type="submit" name="button">Lưu</button>
+                            </div>
+
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="d-xl-none d-md-block col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-danger">45.9%</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Followers</div>
-                            <div class="widget-subheading">People Interested</div>
+                </form>
+                <form action="{{route('admin.comics.delete', $comic->id)}}" method="post">
+                    @csrf
+                    <div class="ui-page-actions__actions ui-page-actions__actions--primary">
+                        <div class="ui-page-actions__button-group">
+                            <button name="button" type="submit"
+                                class="ui-button btn-primary">
+                                Xóa
+                            </button>
                         </div>
                     </div>
-                </div>
+                </form>            
             </div>
         </div>
     </div>
+</div>
+
+</div>
 </div>
 @endsection

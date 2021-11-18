@@ -26,4 +26,24 @@ class GenresController extends Controller
         ]);
         return redirect()->route('admin.genres.index')->with('message', 'Add genres successfully');
     }
+
+    public function edit(Request $request, $id)
+    {
+        if ($request->isMethod('get')){
+            $genre = Genres::findOrFail($id);
+            return view('admin.genres.detail', compact('genre'));
+        }
+        $genre  = Genres::findOrFail($id);
+        $genre->name = $request->name;
+        $genre->description = $request->description;
+        $genre->save();
+        return redirect()->route('admin.genres.edit', $id)->with('message', 'Update genre successfully');
+    }
+
+    public function destroy($id)
+    {
+        $genre  = Genres::findOrFail($id);
+        $genre->delete();
+        return redirect()->route('admin.genres.index')->with('message', 'Delete genre successfully');
+    }
 }

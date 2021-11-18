@@ -15,10 +15,9 @@ class CreateChapterImagesTable extends Migration
     {
         Schema::create('chapter_images', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('number');
-            $table->string('name');
             $table->integer('chapter_id')->unsigned()->nullable();
             $table->foreign('chapter_id')->references('id')->on('chapters')->onDelete('cascade')->onUpdate('cascade');
+            $table->text('image');
             $table->timestamps();
         });
     }

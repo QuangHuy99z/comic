@@ -46,8 +46,18 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="{{route('admin.chapters.index')}}">
+                                    <i class="metismenu-icon pe-7s-plugin"></i>Chapters
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{route('admin.genres.index')}}">
                                     <i class="metismenu-icon pe-7s-plugin"></i>Genres
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.users.index')}}">
+                                    <i class="metismenu-icon pe-7s-plugin"></i>Users
                                 </a>
                             </li>
                             <li class="app-sidebar__heading">UI Components</li>

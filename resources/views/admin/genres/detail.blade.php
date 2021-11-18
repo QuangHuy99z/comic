@@ -8,63 +8,26 @@
                     <div class="page-title-heading">
                         <div class="page-title-icon"><i class="pe-7s-umbrella icon-gradient bg-sunny-morning"></i></div>
                         <div>
-                            Sửa thể loại
-                            <div class="page-title-subheading">Example of a Dashboard page built
+                            {{$genre->name}}
+                            <div class="page-title-subheading" style="visibility: hidden;">Example of a Dashboard page
+                                built
                                 with Architect.</div>
                         </div>
+
+
                     </div>
-                    <div class="page-title-actions">
-                        <button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom"
-                            class="btn-shadow mr-3 btn btn-dark">
-                            <i class="fa fa-star"></i>
-                        </button>
-                        <div class="d-inline-block dropdown">
-                            <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                class="btn-shadow dropdown-toggle btn btn-info">
-                                <span class="btn-icon-wrapper pr-2 opacity-7">
-                                    <i class="fa fa-business-time fa-w-20"></i>
-                                </span>
-                                Buttons
-                            </button>
-                            <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link">
-                                            <i class="nav-link-icon lnr-inbox"></i>
-                                            <span> Inbox</span>
-                                            <div class="ml-auto badge badge-pill badge-secondary">86
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link">
-                                            <i class="nav-link-icon lnr-book"></i>
-                                            <span> Book</span>
-                                            <div class="ml-auto badge badge-pill badge-danger">5
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link">
-                                            <i class="nav-link-icon lnr-picture"></i>
-                                            <span> Picture</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a disabled class="nav-link disabled">
-                                            <i class="nav-link-icon lnr-file-empty"></i>
-                                            <span> File Disabled</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
+
             </div>
         </div>
+        @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+        @endif
     </div>
-  
+
     <div class="row">
         <div class="col-md-12 col-lg-12 col-xl-12">
             <div class="mb-3 card">
@@ -76,96 +39,30 @@
                 </div>
                 <div class="card-body">
                     <table style="width: 100%;" class="table table-hover table-striped table-bordered">
-                        <form action="{{route('admin.comics.create')}}" method="post">
+                        <form action="{{route('admin.genres.edit', $genre->id)}}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Comic Name">
+                                <input type="text" class="form-control" value="{{$genre->name}}" id="name" name="name"
+                                    placeholder="Enter Genre Name">
                             </div>
                             <div class="form-group">
-                                <label for="title">Title</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="Enter Comic Title">
-                            </div>
-                            <div class="form-group">
-                                <label for="image">Image</label>
-                                <input type="text" class="form-control" id="image" name="image" placeholder="Enter Image">
-                            </div>
-                            <div class="form-group">
-                                <label for="genres">Genres</label>
-                                <select class="form-control" name="genres[]" id="genres" multiple>
-                                    @foreach($genres as $genre)
-                                        <option value="{{$genre->id}}">{{$genre->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="content">Content</label>
-                                <textarea class="form-control" id="content" name="content" placeholder="Enter Comic Content" rows="6"></textarea>
+                                <label for="description">Description</label>
+                                <textarea class="form-control" id="description" name="description"
+                                    placeholder="Enter Genre Description" rows="6">{{$genre->description}}</textarea>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <form action="{{route('admin.genres.delete', $genre->id)}}" method="post">
+                            @csrf
+                            <button type="submit" style="float: right;" class="btn btn-lg btn-danger text-uppercase">Delete</button>
                         </form>
                     </table>
                 </div>
             </div>
         </div>
 
-    </div>
-    <div class="main-card mb-3 card">
-        <div class="no-gutters row">
-            <div class="col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-success">1896</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Total Orders</div>
-                            <div class="widget-subheading">Last year expenses</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-warning">$ 14M</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Products Sold</div>
-                            <div class="widget-subheading">Total revenue streams</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-danger">45.9%</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Followers</div>
-                            <div class="widget-subheading">People Interested</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="d-xl-none d-md-block col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-danger">45.9%</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Followers</div>
-                            <div class="widget-subheading">People Interested</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 @endsection

@@ -8,56 +8,9 @@
                     <div class="page-title-heading">
                         <div class="page-title-icon"><i class="pe-7s-umbrella icon-gradient bg-sunny-morning"></i></div>
                         <div>
-                            Thêm sản phẩm
-                            <div class="page-title-subheading">Example of a Dashboard page built
+                            Thêm truyện
+                            <div class="page-title-subheading" style="visibility: hidden;">Example of a Dashboard page built
                                 with Architect.</div>
-                        </div>
-                    </div>
-                    <div class="page-title-actions">
-                        <button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom"
-                            class="btn-shadow mr-3 btn btn-dark">
-                            <i class="fa fa-star"></i>
-                        </button>
-                        <div class="d-inline-block dropdown">
-                            <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                class="btn-shadow dropdown-toggle btn btn-info">
-                                <span class="btn-icon-wrapper pr-2 opacity-7">
-                                    <i class="fa fa-business-time fa-w-20"></i>
-                                </span>
-                                Buttons
-                            </button>
-                            <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link">
-                                            <i class="nav-link-icon lnr-inbox"></i>
-                                            <span> Inbox</span>
-                                            <div class="ml-auto badge badge-pill badge-secondary">86
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link">
-                                            <i class="nav-link-icon lnr-book"></i>
-                                            <span> Book</span>
-                                            <div class="ml-auto badge badge-pill badge-danger">5
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link">
-                                            <i class="nav-link-icon lnr-picture"></i>
-                                            <span> Picture</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a disabled class="nav-link disabled">
-                                            <i class="nav-link-icon lnr-file-empty"></i>
-                                            <span> File Disabled</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,133 +28,258 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table style="width: 100%;" class="table table-hover table-striped table-bordered">
-                        <form action="{{route('admin.comics.create')}}" method="post" autocomplete="off">
-                            @csrf
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Comic Name">
-                            </div>
-                            <div class="form-group">
-                                <label for="title">Title</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="Enter Comic Title">
-                            </div>
-                            <div class="form-group">
-                                <label for="image">Image</label>
-                                <input type="text" class="form-control" value="{{old('image')}}" id="image" name="image" placeholder="Enter Image">
-                            </div>
-                            <div class="form-group">
-                                <label for="authors">Authors</label>
-                                <select class="form-control authors_select2" name="authors[]" id="authors" multiple="multiple"></select>
-                            </div>
-                            <div class="form-group">
-                                <label for="genres">Genres</label>
-                                <select class="form-control js-example-basic-single" name="genres[]" id="genres" multiple="multiple">
-                                    <option value="" disabled hidden>Input Genres</option>
-                                    @foreach($genres as $genre)
-                                        <option value="{{$genre->id}}">{{$genre->name}}</option>
-                                    @endforeach
-                                </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $('.js-example-basic-single').select2(
-                                            {
-                                                placeholder: 'Input genres',
-                                            }
-                                        );
-                                        $('.authors_select2').select2(
-                                            {
-                                                placeholder: 'Input author',
-                                                tags: true,
-                                            },
-                                        );
-                                    });
-                                </script>
-                            </div>
-                            <div class="form-group">
-                                <label for="chapters">Chapter</label>
-                                <select class="form-control authors_select2" name="chapters[]" id="chapters" multiple="multiple"></select>
-                            </div>
-                            <div class="form-group">
-                                <label for="content">Content</label>
-                                <textarea class="form-control" id="content" name="content" placeholder="Enter Comic Content" rows="6"></textarea>
-                                <script>
-                                    CKEDITOR.replace('content',{
-                                        height: "200px",
-                                    })
-                                    CKEDITOR.config.autoParagraph = false;
-                                    CKEDITOR.on('instanceReady', function(e) {
-                                    // First time
-                                    e.editor.document.getBody().setStyle('color', 'red');
-                                    e.editor.document.getBody().setStyle('background-color', '#fff');
-                                });
-                                </script>
-                                
+                <form action="{{route('admin.comics.create')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="ui-layout__sections">
+                        <div class="ui-layout__section ui-layout__section--primary">
+                            <div class="ui-layout__item">
+                                <section class="ui-card" id="product-form-container">
+                                    <div class="ui-card__section">
+                                        <div class="ui-type-container">
+                                            <div class="next-input-wrapper">
+                                                <label class="next-label" for="product-name">
+                                                    Tên truyện
+                                                </label>
+                                                <input required="" id="product-name""
+                                                    placeholder="Nhập tên truyện" class="next-input" size="30"
+                                                    type="text" name="name">
+                                            </div>
+                                            <div class="next-input-wrapper">
+                                                <label class="next-label" for="product-name">
+                                                    Tiêu đề truyện
+                                                </label>
+                                                <input required="" id="title""
+                                                    placeholder="Nhập tiêu đề truyện" class="next-input" size="30"
+                                                    type="text" name="title">
+                                            </div>
+                                            <div class="next-input-wrapper">
+                                                <label class="next-label" for="content">Nội dung</label>
+                                                <textarea name="content" id="content"
+                                                    rows="6"></textarea>
+                                            </div>
+                                            <script>
+                                                CKEDITOR.replace('content', {
+                                                    height: "200px",
+                                                })
+                                                CKEDITOR.config.autoParagraph = false;
+                                                CKEDITOR.on('instanceReady', function (e) {
+                                                    // First time
+                                                    e.editor.document.getBody().setStyle('color', 'red');
+                                                    e.editor.document.getBody().setStyle('background-color', '#fff');
+                                                });
+                                            </script>
+
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="ui-card" id="product-images-container">
+                                    <div data-define="{ imageActions: new Bizweb.ProductCreateImageActions(this, $context) }"
+                                        data-context="imageActions" id="product-images-content"
+                                        data-tg-refresh="product-images-content">
+                                        <header class="next-card__header">
+                                            <div class="next-grid next-grid--no-padding next-grid--vertically-centered">
+                                                <div class="next-grid__cell">
+                                                    <h2 class="next-heading">Ảnh sản phẩm</h2>
+                                                </div>
+                                                <div class="next-grid__cell next-grid__cell--no-flex">
+                                                    <div
+                                                        class="next-grid next-grid--no-outside-padding next-grid--vertically-centered">
+                                                        <div class="next-grid__cell next-grid__cell--no-flex">
+                                                            <div class="styled-file-input">
+                                                                <div class="btn btn--link" style="display:flex;">
+                                                                    <a href="#"
+                                                                        class="ui-button btn--link change-avatar updateavatar"
+                                                                        style="padding:0 15px;"
+                                                                        id="ht-cre-product-add-image">Sửa
+                                                                        ảnh</a>
+                                                                        <input type="file" id="uploadAvatar" style="display:none;" accept="image/x-png,image/gif,image/jpeg" name="fimage" onchange="document.getElementById('img-avatar').src = window.URL.createObjectURL(this.files[0])">
+                                                                    <script>
+
+                                                                        $('.updateavatar').click(function (e) {
+                                                                            e.preventDefault();
+                                                                            $("#uploadAvatar").trigger('click');
+                                                                        })
+                                                                      
+                                                                    </script>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </header>
+                                        <div class="next-card__section">
+                                            <div class="next-upload-dropzone__wrapper">
+                                                <!-- Upload Image -->
+                                                <img src="" onerror="this.src='https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'" alt="customer-image" class="img-avatar" id="img-avatar" style="width:100%;">
+                                                <!-- Process if image is null -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </table>
-                </div>
+                        </div>
+                        <div class="ui-layout__section ui-layout__section--secondary">
+                            <div class="ui-layout__item">
+                                <div class="next-card">
+                                    <header class="next-card__header">
+                                        <h3 class="ui-heading">Trạng thái</h3>
+                                    </header>
+                                    <section class="next-card__section">
+                                        <div class="visibility" id="PublishingPanel" data-context="publishingPanel">
+                                            <div class="ui-form__section">
+                                                <div class="ui-form__element">
+                                                    <fieldset class="ui-choice-list">
+                                                        <ul>
+                                                            <li>
+                                                                <div class="next-input-wrapper">
+                                                                    <label class="next-label next-label--switch"
+                                                                        for="active-true">
+                                                                        Ongoing
+                                                                    </label>
+                                                                    <input type="radio" name="status" id="active-true" checked
+                                                                        value="Ongoing" class="next-radio">
+                                                                    <span class="next-radio--styled"></span>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="next-input-wrapper">
+                                                                    <label class="next-label next-label--switch"
+                                                                        for="active-false">
+                                                                        Not Ongoing
+                                                                    </label>
+                                                                    <input type="radio" name="status"
+                                                                        id="active-false" value="Not Ongoing"
+                                                                        class="next-radio">
+                                                                    <span class="next-radio--styled"></span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="ui-layout__item">
+                                <section class="ui-card ui-card--type-aside">
+                                    <header class="ui-card__header">
+                                        <h2 class="ui-heading">Phân loại</h2>
+                                    </header>
+                                    <div class="ui-card__section">
+                                        <div class="ui-type-container">
+                                            <div class="next-input-wrapper">
+                                                <label for="product_product_type">Tác giả</label>
+                                                <div
+                                                    class="ui-popover__container ui-popover__container--full-width-container">
+                                                    <div>
+                                                        <div class="next-field__connected-wrapper">
+                                                            <style>
+                                                                .select2-results__options {
+                                                                    font-size: 16px !important;
+                                                                }
+
+                                                                .select2-container .select2-selection--single {
+                                                                    height: 40px;
+                                                                }
+
+                                                                .select2-container--default .select2-selection--single .select2-selection__rendered {
+                                                                    color: #444;
+                                                                    line-height: 28px;
+                                                                }
+                                                            </style>
+                                                            <select
+                                                                class="next-input select2 select2-hidden-accessible authors_select2"
+                                                                name="authors[]" multiple required>
+                                                            </select>
+                                                            <script>
+                                                                $(document).ready(function () {
+                                                                    $('.authors_select2').select2(
+                                                                        {
+                                                                            placeholder: 'Input author',
+                                                                            tags: true,
+                                                                        },
+                                                                    );
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="next-input-wrapper">
+                                                <label for="product_vendor">Thể loại</label>
+                                                <div
+                                                    class="ui-popover__container ui-popover__container--full-width-container">
+                                                    <div>
+                                                        <div class="next-field__connected-wrapper">
+                                                            <select class="next-input select1 select2-hidden-accessible"
+                                                                name="genres[]" tabindex="-1" aria-hidden="true"
+                                                                multiple required>
+                                                                <option value="">Nhập thể loại</option>
+                                                                @foreach($genres as $genre)
+                                                                    <option value="{{$genre->id}}">{{ $genre->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <script>
+                                                                $(document).ready(function () {
+                                                                    $(".select1").select2(
+                                                                        {
+                                                                            placeholder: "Nhập thể loại",
+                                                                            allowClear: true,
+                                                                            language: {
+                                                                                noResults: function () {
+                                                                                    return 'Thể loại không tồn tại';
+                                                                                },
+                                                                            },
+                                                                            escapeMarkup: function (markup) {
+                                                                                return markup;
+                                                                            },
+                                                                        }
+
+                                                                    );
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-page-actions">
+                        <style>
+                            a.btn {
+                                font-size: 16px !important;
+                            }
+                            button.btn.btn-primary {
+                                font-size: 16px !important;
+                            }
+                        </style>
+                        <div class="ui-page-actions__container">
+                            <div class="ui-page-actions__actions ui-page-actions__actions--primary">
+                                <div class="ui-page-actions__button-group">
+                                    <a class="btn" data-allow-default="1" href="{{route('admin.comics.index')}}">Hủy</a>
+                                    <button name="button" type="submit" value="Lưu" class="btn btn-primary">
+                                    Lưu
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
             </div>
         </div>
 
     </div>
-    <div class="main-card mb-3 card">
-        <div class="no-gutters row">
-            <div class="col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-success">1896</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Total Orders</div>
-                            <div class="widget-subheading">Last year expenses</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-warning">$ 14M</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Products Sold</div>
-                            <div class="widget-subheading">Total revenue streams</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-danger">45.9%</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Followers</div>
-                            <div class="widget-subheading">People Interested</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="d-xl-none d-md-block col-md-6 col-xl-4">
-                <div class="widget-content">
-                    <div class="widget-content-wrapper">
-                        <div class="widget-content-right ml-0 mr-3">
-                            <div class="widget-numbers text-danger">45.9%</div>
-                        </div>
-                        <div class="widget-content-left">
-                            <div class="widget-heading">Followers</div>
-                            <div class="widget-subheading">People Interested</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div>
 @endsection
