@@ -51,3 +51,12 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::post('delete/{id}', [ChapterController::class, 'destroy'])->name("admin.chapters.delete");
     });
 });
+// Customer
+Route::group(['prefix'=>'/'],function(){
+    Route::get('/login', function (){{
+        return redirect()->route('login');
+    }});
+    Route::get('/register', function (){{
+        return redirect()->route('login');
+    }});
+});
