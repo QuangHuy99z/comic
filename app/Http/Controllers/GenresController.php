@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use App\Models\Genres;
+use App\Models\Comic;
 use Illuminate\Http\Request;
 
 class GenresController extends Controller
@@ -41,6 +42,17 @@ class GenresController extends Controller
         return redirect()->route('admin.genres.edit', $id)->with('message', 'Update genre successfully');
     }
 
+    public function show($slug="")
+    {
+        $genre = Genres::Where('slug', '=', $slug)->first();
+        if ($genre){
+            $comics = $genre->products()->paginate(5);
+    
+            return view('website.genre.detail', compact('genre', 'comics'));
+        }
+        return abort(404);
+    }
+    
     public function destroy($id)
     {
         $genre  = Genres::findOrFail($id);

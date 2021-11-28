@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::latest()->paginate(5);
+        $users = User::paginate(5);
         return view('admin.users.index', compact('users'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -31,9 +31,12 @@ class UserController extends Controller
         ];
        
         if (Auth::guard('admin')->attempt($account)) {
-            return redirect()->route('admin.comics.index');
+            if (Auth::guard('admin')->user()->position == 'admin'){
+                return redirect()->route('admin.comics.index');
+            }
+            return redirect()->back()->with('message', 'Incorrect account or password');    
         } else {
-            return redirect()->back()->with('message', 'Tài khoản hoặc mật khẩu không đúng');
+            return redirect()->back()->with('message', 'Incorrect account or password');
         }
     }
     public function logout(Request $request) {

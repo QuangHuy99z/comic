@@ -25,4 +25,19 @@ class Comic extends Model
     {
         return $this->hasMany(Chapter::class);
     }
+
+    public function chapter()
+    {
+        return $this->hasOne(Chapter::class)->latest();
+    }
+
+    public function first_chapter()
+    {
+        return $this->hasOne(Chapter::class);
+    }
+
+    public function last_chapter()
+    {
+        return $this->hasOne(Chapter::class)->latest();
+    }
 }

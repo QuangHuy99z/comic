@@ -67,10 +67,13 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug="")
     {
-        $comic = Comic::findOrFail($id);
-        return view('admin.comics.detail', compact('comic'));
+        $comic = Comic::where('slug', $slug)->first();
+        if ($comic) {
+            return view('website.comic.index', compact('comic'));
+        }
+        return abort(404);
     }
 
     /**

@@ -52,11 +52,11 @@
                                     placeholder="Enter Genre Description" rows="6">{{$genre->description}}</textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" style="font-size: 14px" class="btn btn-primary">Submit</button>
                         </form>
                         <form action="{{route('admin.genres.delete', $genre->id)}}" method="post">
                             @csrf
-                            <button type="submit" style="float: right;" class="btn btn-lg btn-danger text-uppercase">Delete</button>
+                            <button type="submit" style="float: right; color:red; font-size: 14px" class="btn btn-lg btn-danger text-uppercase">Delete</button>
                         </form>
                     </table>
                 </div>

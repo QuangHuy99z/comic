@@ -5,6 +5,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Chapter;
 use App\Models\Comic;
+use App\Models\Author;
 
 class ChapterController extends Controller
 {
@@ -49,5 +50,18 @@ class ChapterController extends Controller
         }
         $comic = Comic::findOrFail($id);
         return redirect()->route('admin.chapters.edit', $id)->with('message', 'Update chapter successfully');
+    }
+
+    public function show($slug="",$number="")
+    {
+        $comic = Comic::Where('slug', '=', $slug)->first();
+        $chapter = Chapter::Where('comic_id', $comic->id)->Where('number', $number)->first();
+        if ($chapter){
+            $id = $chapter->id;
+            $next = Chapter::Where('comic_id', '=', $chapter->comic->id)->Where('id', '>', $id)->orderBy('id', 'ASC')->limit(1)->get();
+            $prev = Chapter::Where('comic_id', '=', $chapter->comic->id)->Where('id', '<', $id)->orderBy('id', 'DESC')->limit(1)->get();
+            return view('website.chapter.index', compact('chapter', 'next', 'prev'));
+        }
+        return abort(404);
     }
 }

@@ -80,7 +80,7 @@
                                                     @endphp  
                                                 </a>
                                             @endforeach
-                                            {{implode(",", $genres)}}
+                                            {{implode(", ", $genres)}}
                                         </td>
                                         <td>
                                             @foreach($comic->authors as $author)

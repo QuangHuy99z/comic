@@ -65,11 +65,11 @@
                         <tbody>
                             @foreach($users as $user)
                                     <tr>
-                                        <td><a href="#" style="color: #495057; text-decoration: none;">{{$user->name}}</a></td>
-                                        <td><a href="#" style="color: #495057; text-decoration: none;">{{$user->email}}</a></td>
-                                        <td>{{$user->position}}</td>
-                                        <td>{{$user->status}}</td>
-                                        <td>{{$user->created_at}}</td>
+                                        <td><a href="#" style="<?php echo $user->position == 'admin' ? 'color: red; text-decoration: none;' : 'color: #495057; text-decoration: none;' ?>">{{$user->name}}</a></td>
+                                        <td><a href="#" style="<?php echo $user->position == 'admin' ? 'color: red; text-decoration: none;' : 'color: #495057; text-decoration: none;' ?>">{{$user->email}}</a></td>
+                                        <td style="<?php echo $user->position == 'admin' ? 'color: red; text-decoration: none;' : 'color: #495057; text-decoration: none;' ?>">{{$user->position}}</td>
+                                        <td style="<?php echo $user->position == 'admin' ? 'color: red; text-decoration: none;' : 'color: #495057; text-decoration: none;' ?>">{{$user->status}}</td>
+                                        <td style="<?php echo $user->position == 'admin' ? 'color: red; text-decoration: none;' : 'color: #495057; text-decoration: none;' ?>">{{$user->created_at}}</td>
                                     </tr>
                                 </a>
                             @endforeach    

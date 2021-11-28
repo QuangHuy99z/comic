@@ -199,13 +199,13 @@
                                     <div class="file-uploader__message-area">
                                         <p>Select a file to upload</p>
                                     </div>
-                                    <div class="file-chooser">
-                                    <input class="file-chooser__input" type="file" name="chapter_image[]" multiple>
-                                </div>
+                                    <div class="file-chooser" style="margin-bottom: 20px">
+                                        <input class="file-chooser__input" type="file" name="chapter_image[]" multiple>
+                                    </div>
                                 </div>
                                
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" style="font-size: 16px" class="btn btn-primary">Submit</button>
                         </form>
                     </table>
                 </div>
