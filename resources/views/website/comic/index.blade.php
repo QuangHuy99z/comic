@@ -133,211 +133,69 @@
                     </div>
                 </article>
             </div>
-            <div id="ctl00_divRight" class="right-side col-md-4">
-                <div class="comic-wrap Module Module-168">
-                    <div class="ModuleContent">
-                        <div class="box-tab box darkBox">
-                            <ul class="tab-nav clearfix">
-                                <li>
-                                    <a rel="nofollow" title="BXH truyện tranh theo tháng" class="active"
-                                        href="/tim-truyen?status=-1&amp;sort=11">Top Tháng</a>
-                                </li>
-                                <li>
-                                    <a rel="nofollow" title="BXH truyện tranh theo tuần"
-                                        href="/tim-truyen?status=-1&amp;sort=12">Top Tuần</a>
-                                </li>
-                                <li>
-                                    <a rel="nofollow" title="BXH truyện tranh theo ngày"
-                                        href="/tim-truyen?status=-1&amp;sort=13">Top Ngày</a>
-                                </li>
-                            </ul>
-                            <div class="tab-pane">
-                                <div id="topMonth">
-                                    <ul class="list-unstyled">
-                                        <li class="clearfix">
-                                            <span class="txt-rank fn-order pos1">01</span>
-                                            <div class="t-item">
-                                                <a class="thumb" title="Truyện tranh Võ Luyện Đỉnh Phong"
-                                                    href="http://www.nettruyenpro.com/truyen-tranh/vo-luyen-dinh-phong-17696">
-                                                    <img class="lazy"
-                                                        src="//st.imageinstant.net/data/comics/32/vo-luyen-dinh-phong.jpg"
-                                                        data-original="//st.imageinstant.net/data/comics/32/vo-luyen-dinh-phong.jpg"
-                                                        alt="Võ Luyện Đỉnh Phong" style="display: inline;">
-                                                </a>
-                                                <h3 class="title">
-                                                    <a
-                                                        href="http://www.nettruyenpro.com/truyen-tranh/vo-luyen-dinh-phong-17696">Võ
-                                                        Luyện Đỉnh Phong</a>
-                                                </h3>
-                                                <p class="chapter top">
-                                                    <a href="http://www.nettruyenpro.com/truyen-tranh/vo-luyen-dinh-phong/chap-1709/793419"
-                                                        title="Chapter 1709">Chapter 1709</a>
-                                                    <span class="view pull-right">
-                                                        <i class="fa fa-eye">
-                                                        </i> 21.541.637</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li class="clearfix">
-                                            <span class="txt-rank fn-order pos2">02</span>
-                                            <div class="t-item">
-                                                <a class="thumb" title="Truyện tranh Chiến Hồn Tuyệt Thế"
-                                                    href="http://www.nettruyenpro.com/truyen-tranh/chien-hon-tuyet-the-30951">
-                                                    <img class="lazy"
-                                                        src="//st.imageinstant.net/data/comics/231/chien-hon-tuyet-the.jpg"
-                                                        data-original="//st.imageinstant.net/data/comics/231/chien-hon-tuyet-the.jpg"
-                                                        alt="Chiến Hồn Tuyệt Thế" style="display: inline;">
-                                                </a>
-                                                <h3 class="title">
-                                                    <a
-                                                        href="http://www.nettruyenpro.com/truyen-tranh/chien-hon-tuyet-the-30951">Chiến
-                                                        Hồn Tuyệt Thế</a>
-                                                </h3>
-                                                <p class="chapter top">
-                                                    <a href="http://www.nettruyenpro.com/truyen-tranh/chien-hon-tuyet-the/chap-287/793377"
-                                                        title="Chapter 287">Chapter 287</a>
-                                                    <span class="view pull-right">
-                                                        <i class="fa fa-eye">
-                                                        </i> 8.345.471</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li class="clearfix">
-                                            <span class="txt-rank fn-order pos3">03</span>
-                                            <div class="t-item">
-                                                <a class="thumb" title="Truyện tranh Tu Tiên Trở Về Tại Vườn Trường"
-                                                    href="http://www.nettruyenpro.com/truyen-tranh/tu-tien-tro-ve-tai-vuon-truong-25383">
-                                                    <img class="lazy"
-                                                        src="//st.imageinstant.net/data/comics/39/tu-tien-tro-ve-tai-vuon-truong.jpg"
-                                                        data-original="//st.imageinstant.net/data/comics/39/tu-tien-tro-ve-tai-vuon-truong.jpg"
-                                                        alt="Tu Tiên Trở Về Tại Vườn Trường" style="display: inline;">
-                                                </a>
-                                                <h3 class="title">
-                                                    <a
-                                                        href="http://www.nettruyenpro.com/truyen-tranh/tu-tien-tro-ve-tai-vuon-truong-25383">Tu
-                                                        Tiên Trở Về Tại Vườn Trường</a>
-                                                </h3>
-                                                <p class="chapter top">
-                                                    <a href="http://www.nettruyenpro.com/truyen-tranh/tu-tien-tro-ve-tai-vuon-truong/chap-283/792343"
-                                                        title="Chapter 283">Chapter 283</a>
-                                                    <span class="view pull-right">
-                                                        <i class="fa fa-eye">
-                                                        </i> 6.678.859</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li class="clearfix">
-                                            <span class="txt-rank fn-order pos4">04</span>
-                                            <div class="t-item">
-                                                <a class="thumb" title="Truyện tranh Hệt Như Hàn Quang Gặp Nắng Gắt"
-                                                    href="http://www.nettruyenpro.com/truyen-tranh/het-nhu-han-quang-gap-nang-gat-28247">
-                                                    <img class="lazy"
-                                                        src="//st.imageinstant.net/data/comics/87/het-nhu-han-quang-gap-nang-gat.jpg"
-                                                        data-original="//st.imageinstant.net/data/comics/87/het-nhu-han-quang-gap-nang-gat.jpg"
-                                                        alt="Hệt Như Hàn Quang Gặp Nắng Gắt" style="display: inline;">
-                                                </a>
-                                                <h3 class="title">
-                                                    <a
-                                                        href="http://www.nettruyenpro.com/truyen-tranh/het-nhu-han-quang-gap-nang-gat-28247">Hệt
-                                                        Như Hàn Quang Gặp Nắng Gắt</a>
-                                                </h3>
-                                                <p class="chapter top">
-                                                    <a href="http://www.nettruyenpro.com/truyen-tranh/het-nhu-han-quang-gap-nang-gat/chap-231/792558"
-                                                        title="Chapter 231">Chapter 231</a>
-                                                    <span class="view pull-right">
-                                                        <i class="fa fa-eye">
-                                                        </i> 5.915.330</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li class="clearfix">
-                                            <span class="txt-rank fn-order pos5">05</span>
-                                            <div class="t-item">
-                                                <a class="thumb" title="Truyện tranh Trọng Sinh Đô Thị Tu Tiên"
-                                                    href="http://www.nettruyenpro.com/truyen-tranh/trong-sinh-do-thi-tu-tien-194169">
-                                                    <img class="lazy"
-                                                        src="//st.imageinstant.net/data/comics/213/trong-sinh-do-thi-tu-tien.jpg"
-                                                        data-original="//st.imageinstant.net/data/comics/213/trong-sinh-do-thi-tu-tien.jpg"
-                                                        alt="Trọng Sinh Đô Thị Tu Tiên" style="display: inline;">
-                                                </a>
-                                                <h3 class="title">
-                                                    <a
-                                                        href="http://www.nettruyenpro.com/truyen-tranh/trong-sinh-do-thi-tu-tien-194169">Trọng
-                                                        Sinh Đô Thị Tu Tiên</a>
-                                                </h3>
-                                                <p class="chapter top">
-                                                    <a href="http://www.nettruyenpro.com/truyen-tranh/trong-sinh-do-thi-tu-tien/chap-676/793420"
-                                                        title="Chapter 676">Chapter 676</a>
-                                                    <span class="view pull-right">
-                                                        <i class="fa fa-eye">
-                                                        </i> 5.875.762</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li class="clearfix">
-                                            <span class="txt-rank fn-order pos6">06</span>
-                                            <div class="t-item">
-                                                <a class="thumb"
-                                                    title="Truyện tranh Ông Xã Kết Hôn Thử, Mạnh Thêm Chút Nữa Đi"
-                                                    href="http://www.nettruyenpro.com/truyen-tranh/ong-xa-ket-hon-thu-manh-them-chut-nua-di-28887">
-                                                    <img class="lazy"
-                                                        src="//st.imageinstant.net/data/comics/215/ong-xa-ket-hon-thu-manh-them-chut-nua-di-3384.jpg"
-                                                        data-original="//st.imageinstant.net/data/comics/215/ong-xa-ket-hon-thu-manh-them-chut-nua-di-3384.jpg"
-                                                        alt="Ông Xã Kết Hôn Thử, Mạnh Thêm Chút Nữa Đi"
-                                                        style="display: inline;">
-                                                </a>
-                                                <h3 class="title">
-                                                    <a
-                                                        href="http://www.nettruyenpro.com/truyen-tranh/ong-xa-ket-hon-thu-manh-them-chut-nua-di-28887">Ông
-                                                        Xã Kết Hôn Thử, Mạnh Thêm Chút Nữa Đi</a>
-                                                </h3>
-                                                <p class="chapter top">
-                                                    <a href="http://www.nettruyenpro.com/truyen-tranh/ong-xa-ket-hon-thu-manh-them-chut-nua-di/chap-444/792914"
-                                                        title="Chapter 444">Chapter 444</a>
-                                                    <span class="view pull-right">
-                                                        <i class="fa fa-eye">
-                                                        </i> 5.376.179</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li class="clearfix">
-                                            <span class="txt-rank fn-order pos7">07</span>
-                                            <div class="t-item">
-                                                <a class="thumb"
-                                                    title="Truyện tranh Cô Vợ Nhỏ Nuông Chiều Quá Lại Thành Ác!!"
-                                                    href="http://www.nettruyenpro.com/truyen-tranh/co-vo-nho-nuong-chieu-qua-lai-thanh-ac-21447">
-                                                    <img class="lazy"
-                                                        src="//st.imageinstant.net/data/comics/199/co-vo-nho-nuong-chieu-qua-lai-thanh-ac.jpg"
-                                                        data-original="//st.imageinstant.net/data/comics/199/co-vo-nho-nuong-chieu-qua-lai-thanh-ac.jpg"
-                                                        alt="Cô Vợ Nhỏ Nuông Chiều Quá Lại Thành Ác!!"
-                                                        style="display: inline;">
-                                                </a>
-                                                <h3 class="title">
-                                                    <a
-                                                        href="http://www.nettruyenpro.com/truyen-tranh/co-vo-nho-nuong-chieu-qua-lai-thanh-ac-21447">Cô
-                                                        Vợ Nhỏ Nuông Chiều Quá Lại Thành Ác!!</a>
-                                                </h3>
-                                                <p class="chapter top">
-                                                    <a href="http://www.nettruyenpro.com/truyen-tranh/co-vo-nho-nuong-chieu-qua-lai-thanh-ac/chap-224.5/782089"
-                                                        title="Chapter 224.5">Chapter 224.5</a>
-                                                    <span class="view pull-right">
-                                                        <i class="fa fa-eye">
-                                                        </i> 5.361.692</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div id="topWeek">
-                                </div>
-                                <div id="topDay">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+           <div id="ctl00_divRight" class="right-side col-md-4 cmszone">
+				<div class='comics-followed-block Module Module-172'>
+					<div class='ModuleContent'></div>
+				</div>
+				<div class="visited-comics"></div>
+				<div class='comic-wrap Module Module-168'>
+					<div class='ModuleContent'>
+						<div class="box-tab box darkBox">
+							<ul class="tab-nav clearfix">
+								<li>
+									<a rel="nofollow" title="BXH truyện tranh theo tháng" class="active"
+										href="/tim-truyen?status=-1&amp;sort=11">Top Tháng</a>
+								</li>
+								<li>
+									<a rel="nofollow" title="BXH truyện tranh theo tuần"
+										href="/tim-truyen?status=-1&amp;sort=12">Top Tuần</a>
+								</li>
+								<li>
+									<a rel="nofollow" title="BXH truyện tranh theo ngày"
+										href="/tim-truyen?status=-1&amp;sort=13">Top Ngày</a>
+								</li>
+							</ul>
+							<div class="tab-pane">
+								<div id="topMonth">
+									<ul class="list-unstyled">
+										@php
+											$i = 1;
+										@endphp
+										@foreach ($top_comics as $top_comic)
+											<li class="clearfix">
+												<span class="txt-rank fn-order pos1">{{'0'. $i ++}}</span>
+												<div class="t-item">
+													<a class="thumb" title="{{$top_comic->name}}"
+														href="{{route('comic', $top_comic->slug)}}">
+														<img class="lazy"
+															src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+															data-original="{{asset('/uploads/comics/'.$top_comic->image)}}"
+															alt="{{$top_comic->name}}">
+													</a>
+													<h3 class="title">
+														<a
+															href="{{route('comic', $top_comic->slug)}}">{{$top_comic->name}}</a>
+													</h3>
+													<p class="chapter top">
+														<a href="{{$top_comic->chapters->count() != 0 ? route('chapter', [$top_comic->slug, $top_comic->last_chapter->number]) : ''}}"
+															title="{{isset($top_comic->chapter) ? 'Chapter ' . $top_comic->chapter->number : ''}}">{{isset($top_comic->chapter) ? 'Chapter ' . $top_comic->last_chapter->number : ''}}</a>
+														<span class="view pull-right"></span>
+													</p>
+												</div>
+											</li>
+										@endforeach
+									</ul>
+								</div>
+								<div id="topWeek">
+								</div>
+								<div id="topDay">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+           </div>
     </div>
 </main>
 @endsection

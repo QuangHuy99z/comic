@@ -29,8 +29,9 @@ class HomeController extends Controller
     }
 
     public function follow()
-    {
-        return view('website.follow.index')
+    {   
+        $top_comics = Comic::limit(10)->get();
+        return view('website.follow.index', compact('top_comics'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

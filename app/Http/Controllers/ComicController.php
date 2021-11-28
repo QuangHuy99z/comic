@@ -71,7 +71,8 @@ class ComicController extends Controller
     {
         $comic = Comic::where('slug', $slug)->first();
         if ($comic) {
-            return view('website.comic.index', compact('comic'));
+            $top_comics = Comic::limit(10)->get();
+            return view('website.comic.index', compact('comic', 'top_comics'));
         }
         return abort(404);
     }
