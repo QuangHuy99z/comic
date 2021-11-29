@@ -42,9 +42,6 @@
                         <div class="page-title-icon"><i class="pe-7s-umbrella icon-gradient bg-sunny-morning"></i></div>
                         <div>
                             {{$comic->name}}
-                            <div class="page-title-subheading" style="visibility: hidden;">Example of a Dashboard page
-                                built
-                                with Architect.</div>
                         </div>
 
 
@@ -109,7 +106,7 @@
                                         <div class="ui-type-container">
                                             <div class="next-input-wrapper">
                                                 <label class="next-label" for="product-name">
-                                                    Tên truyện
+                                                    Comic Name
                                                 </label>
                                                 <input required="" id="product-name" value="{{$comic->name}}"
                                                     placeholder="Nhập tên sản phẩm" class="next-input" size="30"
@@ -117,14 +114,14 @@
                                             </div>
                                             <div class="next-input-wrapper">
                                                 <label class="next-label" for="product-name">
-                                                    Tiêu đề truyện
+                                                    Comic <Title></Title>
                                                 </label>
                                                 <input required="" id="title" value="{{$comic->title}}"
                                                     placeholder="Nhập tên sản phẩm" class="next-input" size="30"
                                                     type="text" name="title">
                                             </div>
                                             <div class="next-input-wrapper">
-                                                <label class="next-label" for="content">Nội dung</label>
+                                                <label class="next-label" for="content">Content</label>
                                                 <textarea name="content" id="content"
                                                     rows="6">{{$comic->content}}</textarea>
                                             </div>
@@ -151,7 +148,7 @@
                                         <header class="next-card__header">
                                             <div class="next-grid next-grid--no-padding next-grid--vertically-centered">
                                                 <div class="next-grid__cell">
-                                                    <h2 class="next-heading">Ảnh sản phẩm</h2>
+                                                    <h2 class="next-heading">Comic Image</h2>
                                                 </div>
                                                 <div class="next-grid__cell next-grid__cell--no-flex">
                                                     <div
@@ -162,8 +159,8 @@
                                                                     <a href="#"
                                                                         class="ui-button btn--link change-avatar updateavatar"
                                                                         style="padding:0 15px;"
-                                                                        id="ht-cre-product-add-image">Sửa
-                                                                        ảnh</a>
+                                                                        id="ht-cre-product-add-image">Edit Image
+                                                                        </a>
                                                                         <input type="file" id="uploadAvatar" style="display:none;" accept="image/x-png,image/gif,image/jpeg" name="fimage" onchange="document.getElementById('img-avatar').src = window.URL.createObjectURL(this.files[0])">
                                                                     <script>
 
@@ -198,7 +195,7 @@
                             <div class="ui-layout__item">
                                 <div class="next-card">
                                     <header class="next-card__header">
-                                        <h3 class="ui-heading">Trạng thái</h3>
+                                        <h3 class="ui-heading">Status</h3>
                                     </header>
                                     <section class="next-card__section">
                                         <div class="visibility" id="PublishingPanel" data-context="publishingPanel">
@@ -244,12 +241,12 @@
                             <div class="ui-layout__item">
                                 <section class="ui-card ui-card--type-aside">
                                     <header class="ui-card__header">
-                                        <h2 class="ui-heading">Phân loại</h2>
+                                        <h2 class="ui-heading">Comic Category</h2>
                                     </header>
                                     <div class="ui-card__section">
                                         <div class="ui-type-container">
                                             <div class="next-input-wrapper">
-                                                <label for="product_product_type">Tác giả</label>
+                                                <label for="product_product_type">Authors</label>
                                                 <div
                                                     class="ui-popover__container ui-popover__container--full-width-container">
                                                     <div>
@@ -293,7 +290,7 @@
                                                 </div>
                                             </div>
                                             <div class="next-input-wrapper">
-                                                <label for="product_vendor">Thể loại</label>
+                                                <label for="product_vendor">Genres</label>
                                                 <div
                                                     class="ui-popover__container ui-popover__container--full-width-container">
                                                     <div>
@@ -301,7 +298,7 @@
                                                             <select class="next-input select1 select2-hidden-accessible"
                                                                 name="genres[]" tabindex="-1" aria-hidden="true"
                                                                 multiple required>
-                                                                <option value="">Nhập thể loại</option>
+                                                                <option value="">Input Genres</option>
                                                                 @foreach($genres as $genre)
                                                                     @foreach($comic->genres as $gen_re)
                                                                     <option value="{{$genre->id}}" <?php if ($gen_re->id ==$genre->id) { echo 'selected';}?>>{{ $genre->name }}</option>
@@ -312,11 +309,11 @@
                                                                 $(document).ready(function () {
                                                                     $(".select1").select2(
                                                                         {
-                                                                            placeholder: "Nhập thể loại",
+                                                                            placeholder: "Input Genres",
                                                                             allowClear: true,
                                                                             language: {
                                                                                 noResults: function () {
-                                                                                    return 'Thể loại không tồn tại';
+                                                                                    return 'Error Genres';
                                                                                 },
                                                                             },
                                                                             escapeMarkup: function (markup) {
@@ -340,7 +337,7 @@
                     <div class="ui-page-actions__container">
                         <div class="ui-page-actions__actions ui-page-actions__actions--secondary">
                             <div class="ui-page-actions__button-group">
-                                    <button class="ui-button btn-destroy" type="submit" name="button">Lưu</button>
+                                    <button class="ui-button btn-destroy" type="submit" name="button">Save</button>
                             </div>
 
                         </div>
@@ -352,7 +349,7 @@
                         <div class="ui-page-actions__button-group">
                             <button name="button" type="submit"
                                 class="ui-button btn-primary">
-                                Xóa
+                                Delete
                             </button>
                         </div>
                     </div>

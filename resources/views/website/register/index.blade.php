@@ -1,7 +1,7 @@
 @extends('website.layouts.master')
 @section('content')
 @section('title')
-	Đăng ký - NetTruyen
+	Register - NetTruyen
 @endsection
 <main class="main" style="margin-bottom: 240px !important">
     <div class="container">
@@ -9,11 +9,11 @@
             <ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
                         href="{{route('home')}}" class="itemcrumb active" itemprop="item"
-                        itemtype="http://schema.org/Thing"><span itemprop="name">Trang chủ</span></a>
+                        itemtype="http://schema.org/Thing"><span itemprop="name">Home</span></a>
                     <meta itemprop="position" content="2">
                 </li>
                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
-                        href="{{route('register')}}" class="selectedcrumb">Đăng ký</a></li>
+                        href="{{route('register')}}" class="selectedcrumb">Register</a></li>
             </ul>
         </div>
         <div class="row">
@@ -54,19 +54,18 @@
                                                 </label>
                                                 <input name="password" type="password" required
                                                     id="ctl00_mainContent_login1_LoginCtrl_Password" tabindex="10"
-                                                    class="form-control" placeholder="Mật khẩu">
+                                                    class="form-control">
                                                 <span class="remember-me hidden"><input
                                                         id="ctl00_mainContent_login1_LoginCtrl_RememberMe" type="checkbox"
                                                         name="ctl00$mainContent$login1$LoginCtrl$RememberMe"
-                                                        checked="checked" tabindex="10"><label
-                                                        for="ctl00_mainContent_login1_LoginCtrl_RememberMe">Ghi
-                                                        nhớ</label></span>
+                                                        checked="checked" tabindex="10">
+                                                    </span>
                                             </div>
                                         </div>
                                         <div class="login-action">
                                             <div class="form-group">
                                                 <input type="submit" name="ctl00$mainContent$login1$LoginCtrl$Login"
-                                                    value="Đăng ký" id="ctl00_mainContent_login1_LoginCtrl_Login"
+                                                    value="Register" id="ctl00_mainContent_login1_LoginCtrl_Login"
                                                     tabindex="10" class="btn btn-primary">
                                             </div>
                                         </div>

@@ -10,9 +10,6 @@
                         <div class="page-title-icon"><i class="pe-7s-umbrella icon-gradient bg-sunny-morning"></i></div>
                         <div>
                             {{$comic->name}}
-                            <div class="page-title-subheading" style="visibility: hidden;">Example of a Dashboard page
-                                built
-                                with Architect.</div>
                         </div>
 
 

@@ -13,9 +13,7 @@
                     <div class="page-title-heading">
                         <div class="page-title-icon"><i class="pe-7s-umbrella icon-gradient bg-sunny-morning"></i></div>
                         <div>
-                            Tất cả người dùng
-                            <div class="page-title-subheading" style="visibility: hidden;">Example of a Dashboard page built
-                                with Architect.</div>
+                          User Dashboard
                         </div>
 
                         
@@ -47,7 +45,6 @@
                                     Add <i class="pe-7s-plus btn-icon-wrapper"></i>
                                 </div>
                             </a>  
-                         
                         </div>
                     </div>
                 </div>

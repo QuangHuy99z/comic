@@ -1,7 +1,7 @@
 @extends('website.layouts.master')
 @section('content')
 @section('title')
-	Đổi mật khẩu - NetTruyen
+	Change password - NetTruyen
 @endsection
 <main class="main">
     <div class="container">
@@ -9,12 +9,11 @@
             <ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
                         href="/" class="itemcrumb active" itemprop="item"
-                        itemtype="http://schema.org/Thing"><span itemprop="name">Trang chủ</span></a>
+                        itemtype="http://schema.org/Thing"><span itemprop="name">Home</span></a>
                     <meta itemprop="position" content="2">
                 </li>
                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
-                        href="{{route('change-password')}}" class="selectedcrumb">Đổi mật
-                        khẩu</a></li>
+                        href="{{route('change-password')}}" class="selectedcrumb">Change password</a></li>
             </ul>
         </div>
         <div class="row">
@@ -52,8 +51,8 @@
                                                                 class="form-control">
                                                             <span
                                                                 id="ctl00_mainContent_ChangePassword1_ChangePasswordContainerID_CurrentPasswordRequired"
-                                                                title="Vui lòng nhập Mật khẩu cũ." class="error"
-                                                                style="display:none;">Vui lòng nhập Mật khẩu cũ.</span>
+                                                                title="Input old password." class="error"
+                                                                style="display:none;">Input old password.</span>
                                                         </div>
                                                         <div class="form-group">
                                                             <label
@@ -66,8 +65,8 @@
                                                                 class="form-control">
                                                             <span
                                                                 id="ctl00_mainContent_ChangePassword1_ChangePasswordContainerID_NewPasswordRequired"
-                                                                title="Vui lòng nhập Mật khẩu mới." class="error"
-                                                                style="display:none;">Vui lòng nhập Mật khẩu mới.</span>
+                                                                title="Input new password." class="error"
+                                                                style="display:none;">Input new password.</span>
                                                             <span
                                                                 id="ctl00_mainContent_ChangePassword1_ChangePasswordContainerID_NewPasswordRulesValidator"
                                                                 class="error" style="display:none;"></span>
@@ -83,18 +82,17 @@
                                                                 class="form-control">
                                                             <span
                                                                 id="ctl00_mainContent_ChangePassword1_ChangePasswordContainerID_ConfirmNewPasswordRequired"
-                                                                title="Vui lòng nhập Xác nhận mật khẩu." class="error"
-                                                                style="display:none;">Vui lòng nhập Xác nhận mật
-                                                                khẩu.</span>
+                                                                title="Please reconfirm password." class="error"
+                                                                style="display:none;">Please confirm password.</span>
                                                             <span
                                                                 id="ctl00_mainContent_ChangePassword1_ChangePasswordContainerID_NewPasswordCompare"
-                                                                title="Mật khẩu không khớp." class="error"
-                                                                style="display:none;">Mật khẩu không khớp.</span>
+                                                                title="Password don't match." class="error"
+                                                                style="display:none;">Password don't match.</span>
                                                         </div>
                                                         <div class="form-group">
                                                             <input type="submit"
                                                                 name="change_password"
-                                                                value="Đổi mật khẩu"
+                                                                value="Change password"
                                                                 id="ctl00_mainContent_ChangePassword1_ChangePasswordContainerID_ChangePasswordPushButton"
                                                                 class="btn btn-primary">
                                                         </div>

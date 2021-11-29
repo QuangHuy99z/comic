@@ -17,7 +17,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comics = Comic::latest()->paginate(5);
+        $comics = Comic::latest()->paginate(10);
         return view('admin.comics.index', compact('comics'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

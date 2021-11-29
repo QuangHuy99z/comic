@@ -1,7 +1,7 @@
 @extends('website.layouts.master')
 @section('content')
 @section('title')
-	Truyện đang theo dõi - NetTruyen
+	Follow Manga - CommicBuddy
 @endsection
 <main class="main">
     <div class="container">
@@ -9,12 +9,12 @@
             <ul class="breadcrumb">
                 <li itemprop="itemListElement"><a
                         href="/" class="itemcrumb" itemprop="item"
-                        itemtype="http://schema.org/Thing"><span itemprop="name">Trang chủ</span></a>
+                        itemtype="http://schema.org/Thing"><span itemprop="name">Home</span></a>
                     <meta itemprop="position" content="1">
                 </li>
                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
                         href="{{route('follow')}}" class="itemcrumb active" itemprop="item"
-                        itemtype="http://schema.org/Thing"><span itemprop="name">Theo dõi</span></a>
+                        itemtype="http://schema.org/Thing"><span itemprop="name">Follow</span></a>
                     <meta itemprop="position" content="2">
                 </li>
             </ul>
@@ -22,9 +22,7 @@
         <div class="row">
             <div id="ctl00_divCenter" class="center-side col-md-8">
                 <div class="Module Module-178">
-                    <p>Bạn chưa theo dõi truyện nào cả. Để theo dõi truyện, nhấn vào <u>Theo dõi</u> như hình bên
-                        dưới:<br>Bạn nên <a href="{{route('login')}}">Đăng nhập</a> để truy cập truyện đã theo dõi của bạn ở bất cứ đâu
-                    </p>
+                    <p>You haven't follow any manga<br>You need to <a href="{{route('login')}}">Login</a> to follow manga </p>
                     <p class="text-center"><img src="http://www.nettruyenpro.com/Data/Sites/1/media/huong-dan-theo-doi-truyen.jpg"
                             alt="Hướng dẫn theo dõi truyện"></p>
                 </div>
@@ -38,18 +36,12 @@
 					<div class='ModuleContent'>
 						<div class="box-tab box darkBox">
 							<ul class="tab-nav clearfix">
+								
 								<li>
-									<a rel="nofollow" title="BXH truyện tranh theo tháng" class="active"
-										href="/tim-truyen?status=-1&amp;sort=11">Top Tháng</a>
+									<a rel="nofollow"
+										href="/tim-truyen?status=-1&amp;sort=12">Top Manga</a>
 								</li>
-								<li>
-									<a rel="nofollow" title="BXH truyện tranh theo tuần"
-										href="/tim-truyen?status=-1&amp;sort=12">Top Tuần</a>
-								</li>
-								<li>
-									<a rel="nofollow" title="BXH truyện tranh theo ngày"
-										href="/tim-truyen?status=-1&amp;sort=13">Top Ngày</a>
-								</li>
+						
 							</ul>
 							<div class="tab-pane">
 								<div id="topMonth">

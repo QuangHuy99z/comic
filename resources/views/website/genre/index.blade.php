@@ -1,20 +1,20 @@
 @extends('website.layouts.master')
 @section('content')
 @section('title')
-Tìm truyện tranh online - NetTruyen
+  CommicBuddy
 @endsection
 <main class="main">
     <div class="container">
         <div id="ctl00_Breadcrumbs_pnlWrapper">
             <ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a href="/"
-                        class="itemcrumb" itemprop="item" itemtype="http://schema.org/Thing"><span itemprop="name">Trang
-                            chủ</span></a>
+                        class="itemcrumb" itemprop="item" itemtype="http://schema.org/Thing"><span itemprop="name">
+                            Home</span></a>
                     <meta itemprop="position" content="1">
                 </li>
                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
                         href="{{route('genre')}}" class="itemcrumb active" itemprop="item"
-                        itemtype="http://schema.org/Thing"><span itemprop="name">Thể loại</span></a>
+                        itemtype="http://schema.org/Thing"><span itemprop="name">Genres</span></a>
                     <meta itemprop="position" content="2">
                 </li>
             </ul>
@@ -25,11 +25,11 @@ Tìm truyện tranh online - NetTruyen
                     <div class="ModuleContent">
                         <div id="ctl00_mainContent_ctl00_divBasicFilter" class="comic-filter">
                             <h1 class="text-center">
-                                Tìm truyện tranh
+                                All Genres
                             </h1>
                             @include('website.genre.blocks.sidebar-xs')
                             <div id="ctl00_mainContent_ctl00_divDescription" class="description">
-                                <div class="info">Tất cả thể loại truyện tranh</div>
+                                <div class="info">All genres</div>
                             </div>
                             <div id="ctl00_mainContent_ctl00_divSort" class="sort-by row">
                                 <div class="col-sm-3 mrt5 mrb5">
@@ -51,7 +51,7 @@ Tìm truyện tranh online - NetTruyen
                                                         data-original="{{asset('/uploads/comics/'.$comic->image)}}"
                                                         alt="{{$comic->name}}">
                                                 </a>
-                                                <span class="icon icon-hot">
+                                               
                                                 </span>
                                                 <div class="view clearfix">
                                                 </div>
@@ -98,10 +98,10 @@ Tìm truyện tranh online - NetTruyen
                                                         $authors = array();
                                                         @endphp
                                                         <p>
-                                                            <label>Tên khác:</label>{{$comic->name}}
+                                                            <label>Title:</label>{{$comic->name}}
                                                         </p>
                                                         <p>
-                                                            <label>Thể loại:</label>
+                                                            <label>Genres:</label>
                                                             @foreach($comic->genres as $genre)
                                                             @php
                                                             array_push($genres, $genre->name);
@@ -110,7 +110,7 @@ Tìm truyện tranh online - NetTruyen
                                                             {{implode(", ", $genres)}}
                                                         </p>
                                                         <p>
-                                                            <label>Tác giả:</label>
+                                                            <label>Author:</label>
                                                             @foreach($comic->authors as $author)
                                                             @php
                                                             array_push($authors, $author->name);
@@ -119,11 +119,10 @@ Tìm truyện tranh online - NetTruyen
                                                             {{implode(", ", $authors)}}
                                                         </p>
                                                         <p>
-                                                            <label>Tình trạng:</label>{{$comic->status}}
+                                                            <label>Status:</label>{{$comic->status}}
                                                         </p>
                                                         <p>
-                                                            <label>Ngày cập
-                                                                nhật:</label>{{$comic->created_at->format('d-m-Y')}}
+                                                            <label>Updated at:</label>{{$comic->created_at->format('d-m-Y')}}
                                                         </p>
                                                     </div>
                                                 </div>

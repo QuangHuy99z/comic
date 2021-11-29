@@ -1,9 +1,9 @@
 @extends('admin.layouts.master')
 @section('content')
 <style>
-    .dataTables_scrollBody{
-        max-height: none !important;
-    }
+.dataTables_scrollBody {
+    max-height: none !important;
+}
 </style>
 <div class="app-inner-layout">
     <div class="app-inner-layout__header-boxed p-0">
@@ -13,25 +13,24 @@
                     <div class="page-title-heading">
                         <div class="page-title-icon"><i class="pe-7s-umbrella icon-gradient bg-sunny-morning"></i></div>
                         <div>
-                            Tất cả các sản phẩm
-                            <div class="page-title-subheading" style="visibility: hidden;">Example of a Dashboard page built
-                                with Architect.</div>
+                           Comic Dashboard
+
                         </div>
 
-                        
+
                     </div>
-                   
+
                 </div>
-                
+
             </div>
         </div>
         @if(session()->has('message'))
-            <div class="alert alert-success">
-                {{ session()->get('message') }}
-            </div>
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
         @endif
     </div>
-   
+
     <div class="row">
         <div class="col-md-12 col-lg-12 col-xl-12">
             <div class="mb-3 card">
@@ -46,13 +45,13 @@
                                 <div type="button" class="btn-icon btn-icon-only btn btn-link">
                                     Add <i class="pe-7s-plus btn-icon-wrapper"></i>
                                 </div>
-                            </a>  
-                         
+                            </a>
+
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <table style="width: 100%;"  class="table table-hover table-striped table-bordered">
+                    <table style="width: 100%;" class="table table-hover table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th style="width: 60%!important">Name</th>
@@ -64,42 +63,49 @@
                         </thead>
                         <tbody>
                             @foreach($comics as $comic)
-                                    <tr>
-                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057;; text-decoration: none;">{{$comic->name}}</a></td>
-                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057;; text-decoration: none;">{{$comic->title}}</a></td>
-                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057;; text-decoration: none;"><img style="width: 100%; height: 80px" src="{{asset('/uploads/comics/'.$comic->image)}}" alt="{{$comic->image}}" srcset="{{asset('/uploads/comics/'.$comic->image)}}"></a></td>
-                                        <td>
-                                            @php 
-                                                $genres = array();
-                                                $authors = array();
-                                            @endphp
-                                            @foreach($comic->genres as $genre)
-                                                <a href="{{route('admin.genres.edit', $genre->id)}}" style="color: #495057;text-decoration: none;">
-                                                    @php
-                                                        array_push($genres, $genre->name);
-                                                    @endphp  
-                                                </a>
-                                            @endforeach
-                                            {{implode(", ", $genres)}}
-                                        </td>
-                                        <td>
-                                            @foreach($comic->authors as $author)
-                                                @php
-                                                    array_push($authors, $author->name);
-                                                @endphp  
-                                            @endforeach
-                                            {{implode(",", $authors)}}
-                                        </td>
-                                    </tr>
-                                </a>
-                            @endforeach    
-        
+                            <tr>
+                                <td><a href="{{route('admin.comics.edit', $comic->id)}}"
+                                        style="color: #495057;; text-decoration: none;">{{$comic->name}}</a></td>
+                                <td><a href="{{route('admin.comics.edit', $comic->id)}}"
+                                        style="color: #495057;; text-decoration: none;">{{$comic->title}}</a></td>
+                                <td><a href="{{route('admin.comics.edit', $comic->id)}}"
+                                        style="color: #495057;; text-decoration: none;"><img
+                                            style="width: 100%; height: 80px"
+                                            src="{{asset('/uploads/comics/'.$comic->image)}}" alt="{{$comic->image}}"
+                                            srcset="{{asset('/uploads/comics/'.$comic->image)}}"></a></td>
+                                <td>
+                                    @php
+                                    $genres = array();
+                                    $authors = array();
+                                    @endphp
+                                    @foreach($comic->genres as $genre)
+                                    <a href="{{route('admin.genres.edit', $genre->id)}}"
+                                        style="color: #495057;text-decoration: none;">
+                                        @php
+                                        array_push($genres, $genre->name);
+                                        @endphp
+                                    </a>
+                                    @endforeach
+                                    {{implode(", ", $genres)}}
+                                </td>
+                                <td>
+                                    @foreach($comic->authors as $author)
+                                    @php
+                                    array_push($authors, $author->name);
+                                    @endphp
+                                    @endforeach
+                                    {{implode(",", $authors)}}
+                                </td>
+                            </tr>
+                            </a>
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-      
+
     </div>
 </div>
 @endsection

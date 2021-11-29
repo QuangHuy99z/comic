@@ -1,7 +1,7 @@
 @extends('website.layouts.master')
 @section('content')
 @section('title')
-	Thông tin tài khoản - NetTruyen
+	Account Information - NetTruyen
 @endsection
 <main class="main">
     <div class="container">
@@ -9,12 +9,11 @@
             <ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
                         href="/" class="itemcrumb active" itemprop="item"
-                        itemtype="http://schema.org/Thing"><span itemprop="name">Trang chủ</span></a>
+                        itemtype="http://schema.org/Thing"><span itemprop="name">Home</span></a>
                     <meta itemprop="position" content="2">
                 </li>
                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
-                        href="{{route('profile')}}" class="selectedcrumb">Thông tin tài
-                        khoản</a></li>
+                        href="{{route('profile')}}" class="selectedcrumb">Your account</a></li>
             </ul>
         </div>
         <div class="row">
@@ -26,10 +25,10 @@
                         <div class="col-md-9 col-sm-8">
                             <div id="ctl00_mainContent_pnlUser" class="user-page clearfix">
                                 <h1 class="postname">
-                                    Thông tin tài khoản
+                                    Your account
                                 </h1>
                                 <div class="account-info clearfix">
-                                    <h2 class="posttitle">Cập nhật thông tin tài khoản</h2>
+                                    <h2 class="posttitle">Update your account</h2>
                                     <div class="account-form clearfix">
                                         <div class="row">
                                             <div class="col-sm-9">
@@ -39,8 +38,8 @@
                                                     </div>
                                                 @endif
                                                 <div class="form-group">
-                                                    <label for="ctl00_mainContent_txtEmail" class="control-label">Địa chỉ
-                                                        email</label>
+                                                    <label for="ctl00_mainContent_txtEmail" class="control-label">
+                                                        Email</label>
                                                     <input name="email" type="text"
                                                         value="{{Auth::guard('web')->user()->email}}" id="ctl00_mainContent_txtEmail"
                                                         disabled="disabled" tabindex="10"
@@ -50,12 +49,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="ctl00_mainContent_txtFirstName"
-                                                        class="control-label">Họ và tên</label>
+                                                        class="control-label">Name</label>
                                                     <input name="name" type="text"
                                                         value="{{Auth::guard('web')->user()->name}}" maxlength="100"
                                                         id="ctl00_mainContent_txtFirstName" class="form-control">
                                                     <span id="ctl00_mainContent_FirstNameRequired" class="error"
-                                                        style="display:none;">Vui lòng nhập họ và tên</span>
+                                                        style="display:none;">Input your name</span>
                                                 </div>
                                             </div>
                                             <div class="col-sm-3">
@@ -68,14 +67,12 @@
                                                         <input type="file" name="avatar"
                                                             id="ctl00_mainContent_fileUploader">
                                                         <span class="avatar-note">jpg,jpeg,gif,png &lt;2MB</span>
-                                                        <div class="avatar-note error">Nếu upload avatar tục tĩu sẽ bị khóa
-                                                            tài khoản vĩnh viễn</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="button-wrap">
-                                            <input type="submit" name="ctl00$mainContent$btnUpdate" value="Cập nhật" id="ctl00_mainContent_btnUpdate" class="btn btn-primary">
+                                            <input type="submit" name="ctl00$mainContent$btnUpdate" value="Update" id="ctl00_mainContent_btnUpdate" class="btn btn-primary">
                                         </div>
                                     </div>
                                 </div>

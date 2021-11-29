@@ -12,15 +12,15 @@
 							<a target="_self" href="/">
 								<i class="fa fa-home hidden-xs">
 								</i>
-								<span class="visible-xs">Trang chủ</span>
+								<span class="visible-xs">Home</span>
 							</a>
 						</li>
 						<li class="{{ Request::path() == 'theo-doi' ? 'active' : '' }}">
-							<a target="_self"  href="{{route('follow')}}">Theo dõi</a>
+							<a target="_self"  href="{{route('follow')}}">Follow</a>
 						</li>
 						<li class="dropdown {{ Request::path() == 'tim-truyen' ? 'active' : '' }}">
 							<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
-								target="_self" href="{{route('genre')}}">Thể loại <i
+								target="_self" href="{{route('genre')}}">Genres <i
 									class="fa fa-caret-down"></i></a>
 							<style>
 								.main-menu > li a strong {
@@ -33,9 +33,9 @@
 										<div class="col-sm-4">
 												<ul class="nav">
 													<li>
-														<a  data-title="Tất cả thể loại truyện tranh"
+														<a  data-title="All genres"
 															href="{{route('genre')}}" target="_self">
-															<strong style="color: #e74c3c !important;">Tất cả</strong>
+															<strong style="color: #e74c3c !important;">All Genres</strong>
 														</a>
 													</li>
 													
@@ -69,7 +69,7 @@
 						</li>
 						<li>
 							<a target="_blank" rel="noopener noreferrer"
-								href="https://www.facebook.com/groups/nettruyenonline/">Group</a>
+								href="https://www.facebook.com/do.quanghuy.5205/">Contact</a>
 						</li>
 					</ul>
 				</div>

@@ -147,10 +147,7 @@
                     <div class="page-title-heading">
                         <div class="page-title-icon"><i class="pe-7s-umbrella icon-gradient bg-sunny-morning"></i></div>
                         <div>
-                            Thêm chapter
-                            <div class="page-title-subheading" style="visibility: hidden;">Example of a Dashboard page
-                                built
-                                with Architect.</div>
+                           Add Chapter
                         </div>
                     </div>
                 </div>

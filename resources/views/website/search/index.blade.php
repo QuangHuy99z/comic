@@ -1,7 +1,7 @@
 @extends('website.layouts.master')
 @section('content')
 @section('title')
-Đăng ký - NetTruyen
+CommicBuddy
 @endsection
 <main class="main">
 	<div class="container">
@@ -9,12 +9,12 @@
 			<ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
 				<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
 						href="/" class="itemcrumb" itemprop="item"
-						itemtype="http://schema.org/Thing"><span itemprop="name">Trang chủ</span></a>
+						itemtype="http://schema.org/Thing"><span itemprop="name">Home</span></a>
 					<meta itemprop="position" content="1">
 				</li>
 				<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
 						href="{{route('genre')}}" class="itemcrumb active" itemprop="item"
-						itemtype="http://schema.org/Thing"><span itemprop="name">Thể loại</span></a>
+						itemtype="http://schema.org/Thing"><span itemprop="name">Genres</span></a>
 					<meta itemprop="position" content="2">
 				</li>
 			</ul>
@@ -25,7 +25,7 @@
 					<div class="ModuleContent">
 						<div id="ctl00_mainContent_ctl00_divBasicFilter" class="comic-filter">
 							<h1 class="text-center">
-								Tìm truyện tranh
+								Search comic
 							</h1>
 							@if ($comics->count() > 0)
 								@include('website.genre.blocks.sidebar-xs')
@@ -40,7 +40,7 @@
 								}
 							</style>
 							<div class="col-xs-12">
-								<h1 class="title-head title_no_search" style="color: red">Không tìm thấy bất kỳ kết quả nào với từ khóa trên.</h1>				
+								<h1 class="title-head title_no_search" style="color: red">No result.</h1>				
 							</div>
 							@endif
 						</div>
@@ -105,10 +105,10 @@
 													$authors = array();
 													@endphp
 													<p>
-														<label>Tên khác:</label>{{$comic->name}}
+														<label>title:</label>{{$comic->name}}
 													</p>
 													<p>
-														<label>Thể loại:</label>
+														<label>Genres:</label>
 														@foreach($comic->genres as $genre)
 														@php
 														array_push($genres, $genre->name);
@@ -117,7 +117,7 @@
 														{{implode(", ", $genres)}}
 													</p>
 													<p>
-														<label>Tác giả:</label>
+														<label>Author:</label>
 														@foreach($comic->authors as $author)
 														@php
 														array_push($authors, $author->name);
@@ -126,11 +126,10 @@
 														{{implode(", ", $authors)}}
 													</p>
 													<p>
-														<label>Tình trạng:</label>{{$comic->status}}
+														<label>Status:</label>{{$comic->status}}
 													</p>
 													<p>
-														<label>Ngày cập
-															nhật:</label>{{$comic->created_at->format('d-m-Y')}}
+														<label>Updated at:</label>{{$comic->created_at->format('d-m-Y')}}
 													</p>
 												</div>
 											</div>

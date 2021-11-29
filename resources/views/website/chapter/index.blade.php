@@ -1,7 +1,7 @@
 @extends('website.layouts.chapter')
 @section('content')
 @section('title')
-	{{$chapter->comic->name}} - Chap {{$chapter->number}} - NetTruyen
+	{{$chapter->comic->name}} - Chap {{$chapter->number}} - CommicBuddy
 @endsection
 <main class="main">
     <div class="container">
@@ -13,14 +13,14 @@
                             <ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
                                         href="/" class="itemcrumb" itemprop="item"
-                                        itemtype="http://schema.org/Thing"><span itemprop="name">Trang
-                                            chủ</span></a>
+                                        itemtype="http://schema.org/Thing"><span itemprop="name">Home
+                                            </span></a>
                                     <meta itemprop="position" content="1">
                                 </li>
                                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
                                         href="{{route('genre')}}" class="itemcrumb" itemprop="item"
-                                        itemtype="http://schema.org/Thing"><span itemprop="name">Thể
-                                            loại</span></a>
+                                        itemtype="http://schema.org/Thing"><span itemprop="name">Genres
+                                            </span></a>
                                     <meta itemprop="position" content="2">
                                 </li>
                                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
@@ -41,30 +41,8 @@
                                     href="{{route('comic', $chapter->comic->slug)}}">{{$chapter->comic->name}}</a> <span>- Chapter {{$chapter->number}}</span></h1><i>[Cập nhật lúc: {{$chapter->created_at->format('H:m:s d/m/Y')}}]</i>
                         </div>
                         <div class="reading-control">
-                            <div class="mrb5">
-                                Nếu không xem được truyện vui lòng đổi "SERVER ẢNH" bên dưới
-                                <div class="mrt10">
-                                    <a rel="nofollow" href="javascript:void(0)" data-server="1"
-                                        class="loadchapter btn btn-primary btn-success mrb5">Server 1</a>
-                                    <a rel="nofollow" href="javascript:void(0)" data-server="2"
-                                        class="loadchapter btn btn-primary mrb5 hidden">Server 2</a>
-                                    <a rel="nofollow" href="javascript:void(0)" data-server="3"
-                                        class="loadchapter btn btn-primary mrb5 hidden">Server 3</a>
-                                    <a rel="nofollow" href="javascript:void(0)" data-server="5"
-                                        class="loadchapter btn btn-primary mrb5"><i class="fa fa-diamond"></i>
-                                        Server VIP</a>
-                                    <a rel="nofollow" href="javascript:void(0)" data-server="4"
-                                        class="loadchapter btn btn-primary mrb5"><i class="fa fa-diamond"></i>
-                                        Server VIP 2</a>
-                                </div>
-                            </div>
-                            <div class="mrb10">
-                                <a rel="nofollow" href="javascript:void(0)" class="btn btn-warning"><i
-                                        class="fa fa-exclamation-triangle"></i> Báo lỗi</a>
-                            </div>
                             <div class="alert alert-info mrb10 hidden-xs hidden-sm">
-                                <i class="fa fa-info-circle"></i> <em>Sử dụng mũi tên trái (←) hoặc phải (→) để
-                                    chuyển chapter</em>
+                                <i class="fa fa-info-circle"></i> <em>Use > to foward chapter, use < for previous chapter</em>
                             </div>
                             <div class="chapter-nav">
                                 <a class="home" href="/" title="Trang chủ"><i class="fa fa-home"></i></a>

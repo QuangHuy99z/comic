@@ -485,8 +485,6 @@
     </div>
     @yield('content')
     <script>
-        //Nhớ thêm Jquery do nghen
-        //https://code.jquery.com/jquery-1.11.2.js
 
         $("#password").focusin(function () {
             $("form").addClass("up");

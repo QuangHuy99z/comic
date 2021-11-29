@@ -4,40 +4,10 @@
 <head id="ctl00_Head1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>@yield('title')</title>
-    <meta name="description"
-        content="Web đọc truyện tranh online lớn nhất được cập nhật liên tục mỗi ngày - Cùng tham gia đọc truyện và thảo luận với hơn 💚10 triệu thành viên tại NetTruyen" />
-    <meta property="og:image" content="http://st.imageinstant.net/data/sites/1/share.jpg" />
     <script
         type="application/ld+json">{"@context": "http://schema.org","@type": "ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"http://www.nettruyenpro.com/truyen-tranh/chien-hon-tuyet-the-30951"},{"@type":"ListItem","position":2,"url":"http://www.nettruyenpro.com/truyen-tranh/trong-sinh-tro-lai-sung-nich-doc-nhat-vo-nhi-33624"},{"@type":"ListItem","position":3,"url":"http://www.nettruyenpro.com/truyen-tranh/nguyen-ton-17554"},{"@type":"ListItem","position":4,"url":"http://www.nettruyenpro.com/truyen-tranh/thang-cap-vo-han-trong-murim-39104"},{"@type":"ListItem","position":5,"url":"http://www.nettruyenpro.com/truyen-tranh/toan-cau-cao-vo-28636"},{"@type":"ListItem","position":6,"url":"http://www.nettruyenpro.com/truyen-tranh/tu-hom-nay-bat-dau-lam-thanh-chu-22461"},{"@type":"ListItem","position":7,"url":"http://www.nettruyenpro.com/truyen-tranh/duong-dich-vi-hoan-30047"},{"@type":"ListItem","position":8,"url":"http://www.nettruyenpro.com/truyen-tranh/ong-xa-ket-hon-thu-manh-them-chut-nua-di-28887"},{"@type":"ListItem","position":9,"url":"http://www.nettruyenpro.com/truyen-tranh/het-nhu-han-quang-gap-nang-gat-28247"},{"@type":"ListItem","position":10,"url":"http://www.nettruyenpro.com/truyen-tranh/toi-cuong-phan-sao-lo-he-thong-18237"},{"@type":"ListItem","position":11,"url":"http://www.nettruyenpro.com/truyen-tranh/ngay-nao-thieu-soai-cung-ghen-23284"}]}</script>
-    <meta property="og:title" content="Đọc truyện tranh online - Truyện gì cũng có - NetTruyen" />
-    <meta property="og:site_name" content="NetTruyen" />
-    <meta property="og:url" content="http://www.nettruyenpro.com/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description"
-        content="Web đọc truyện tranh online lớn nhất được cập nhật liên tục mỗi ngày - Cùng tham gia đọc truyện và thảo luận với hơn 💚10 triệu thành viên tại NetTruyen" />
-    <meta itemprop="name" content="Đọc truyện tranh online - Truyện gì cũng có - NetTruyen" />
-    <meta itemprop="description"
-        content="Web đọc truyện tranh online lớn nhất được cập nhật liên tục mỗi ngày - Cùng tham gia đọc truyện và thảo luận với hơn 💚10 triệu thành viên tại NetTruyen" />
-    <link rel="next" href="http://www.nettruyenpro.com/?page=2" />
-    <link rel="canonical" href="http://www.nettruyenpro.com/" />
-    <link rel="amphtml" href="http://www.nettruyenpro.com/amp" />
-    <meta name="referrer" content="no-referrer" />
-    <meta property="fb:app_id" content="745819368841087" />
-    <link rel="icon" type="image/png" href="//st.nettruyenpro.com/data/logos/favicon.png?v=1" />
-    <meta name="copyright" content="Copyright © 2015 Truyện tranh NetTruyen" />
-    <meta name="Author" content="Truyện tranh NetTruyen" />
-    <meta property="fb:pages" content="1083441428356869" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="x-dns-prefetch-control" content="on" />
-    <link rel="preload" as="font" href="//s.nettruyenpro.com/Data/Sites/1/skins/comic/fonts/icomanga.ttf?fa7dup"
-        crossorigin="anonymous" />
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" >
-    <link rel="apple-touch-icon" href="/app/icons/icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="96x96" href="/app/icons/icon-96x96.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="/app/icons/icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="192x192" href="/app/icons/icon-192x192.png" />
-    <script
+     <script
         type="application/ld+json">{"@context": "http://schema.org","@type": "WebSite","url": "https://www.nettruyenpro.com","potentialAction": {"@type": "SearchAction","target": "https://www.nettruyenpro.com/tim-truyen?keyword={search_term_string}","query-input": "required name=search_term_string"}}</script>
     <script
         type="application/ld+json">{"@context": "http://schema.org","@type": "Person","name": "NetTruyen","url": "https://www.nettruyenpro.com","sameAs": ["https://www.facebook.com/nettruyen"]}</script>
@@ -58,51 +28,12 @@
     @include("website.blocks.header")
     @include("website.blocks.navigation")
     @yield('content')
-    <div id="ctl00_divAltContent2" class="altcontent2 cmszone">
-        <div class='quick-link Module Module-184'>
-            <div class='ModuleContent'>
-                <div class="container">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="/" title="Truyen tranh">
-                                <strong>Truyen tranh</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/" title="Truyện tranh">
-                                <strong>Truyện tranh</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/" title="Truyen tranh online">
-                                <strong>Truyen tranh online</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/" title="Truyện tranh online">
-                                <strong>Truyện tranh online</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/" title="Doc truyen tranh">
-                                <strong>Doc truyen tranh</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/" title="Đọc truyện tranh">
-                                <strong>Đọc truyện tranh</strong>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     @include("website.blocks.footer")
     <div class="navbar-collapse">
         <div class="search-box comicsearchbox">
             <div class="input-group">
-                <input type="text" class="searchinput form-control" placeholder="Tìm truyện..." autocomplete="off" />
+                <input type="text" class="searchinput form-control" placeholder="Search manga..." autocomplete="off" />
                 <div class="input-group-btn">
                     <input type="submit" value="" class="searchbutton btn btn-default" />
                 </div>
@@ -115,15 +46,15 @@
                         <a target="_self" href="/">
                             <i class="fa fa-home hidden-xs">
                             </i>
-                            <span class="visible-xs">Trang chủ</span>
+                            <span class="visible-xs">Home</span>
                         </a>
                     </li>
                     <li>
-                        <a target="_self" href="{{route('follow')}}">Theo dõi</a>
+                        <a target="_self" href="{{route('follow')}}">Follow</a>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
-                            target="_self" href="{{route('genre')}}">Thể loại <i
+                            target="_self" href="{{route('genre')}}">Genres <i
                                 class="fa fa-caret-down"></i></a>
                         <ul class="dropdown-menu megamenu">
                             <li>
@@ -150,7 +81,7 @@
                     </li>
                     <li>
                         <a target="_blank" rel="noopener noreferrer"
-                            href="https://www.facebook.com/groups/nettruyenonline/">Group</a>
+                            href="https://www.facebook.com/do.quanghuy.5205/">Contact</a>
                     </li>
                 </ul>
             </div>

@@ -16,9 +16,7 @@
                     <div class="page-title-heading">
                         <div class="page-title-icon"><i class="pe-7s-umbrella icon-gradient bg-sunny-morning"></i></div>
                         <div>
-                            Thêm thể loại
-                            <div class="page-title-subheading" style="visibility: hidden;">Example of a Dashboard page built
-                                with Architect.</div>
+                            Add Genres
                         </div>
                     </div>
                 </div>
@@ -32,7 +30,7 @@
                 <div class="card-header-tab card-header">
                     <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
                         <i class="header-icon lnr-dice mr-3 text-muted opacity-6"> </i>
-                        Add Comic
+                        Add Genres
                     </div>
                 </div>
                 <div class="card-body">
@@ -41,11 +39,11 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Comic Name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Genres Name">
                             </div>
                             <div class="form-group">
                                 <label for="content">Description</label>
-                                <textarea class="form-control" id="content" name="description" placeholder="Enter Comic Content" rows="6"></textarea>
+                                <textarea class="form-control" id="content" name="description" placeholder="Enter Genres Content" rows="6"></textarea>
                             </div>
                             <button type="submit" style="font-size: 16px" class="btn btn-primary">Submit</button>
                         </form>

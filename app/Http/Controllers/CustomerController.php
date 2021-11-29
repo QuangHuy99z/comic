@@ -44,7 +44,7 @@ class CustomerController extends Controller
             'password' => bcrypt($request->password)
         ]);
         
-        return redirect()->route('login');
+        return redirect()->route('login')->with('message', 'Register successful, please login');
     }
 
     public function logout(Request $request) {
@@ -100,7 +100,7 @@ class CustomerController extends Controller
                 ];
                 User::where('id', Auth::guard('web')->user()->id)->update($update_password);
                 Auth::guard('web')->logout();
-                return redirect()->route('login');
+                return redirect()->route('login')->with('message', 'Your password had been changed, please re-login');
             }
         }
         else{
@@ -108,3 +108,5 @@ class CustomerController extends Controller
         }
     }
 }
+
+

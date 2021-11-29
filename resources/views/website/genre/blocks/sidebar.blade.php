@@ -5,10 +5,10 @@
 <div id="ctl00_divRight" class="right-side col-md-4 cmszone">
     <div class="box darkBox genres hidden-sm hidden-xs Module Module-179">
         <div class="ModuleContent">
-            <h2 class="module-title"><b>Thể loại</b></h2>
+            <h2 class="module-title"><b>Genres</b></h2>
             <ul class="nav">
                 <li class="{{ Request::path() == 'tim-truyen' ? 'active' : '' }}">
-                    <a target="_self" href="{{route('genre')}}">Tất cả thể loại</a>
+                    <a target="_self" href="{{route('genre')}}">All Genres</a>
                 </li>
                 @foreach($genres as $genre)
                     <li>

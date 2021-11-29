@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin Panel</title>
     <link rel="stylesheet" href="http://cute0pets.tk/asset/backend/css/style.css">
     <link href="https://demo.dashboardpack.com/architectui-html-pro/main.d810cf0ae7f39f28f336.css" rel="stylesheet">
     <style>
@@ -98,7 +98,6 @@
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
         @include('admin.blocks.header')
-        @include('admin.blocks.setting')
         <div class="app-main">
             @include('admin.blocks.sidebar')
             <div class="app-main__outer">

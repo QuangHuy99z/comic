@@ -22,12 +22,11 @@
         <div class="navbar">
             <div class="container">
                 <div class="navbar-header">
-                    <div class="navbar-brand Module"><a class="logo" title="Truyện tranh online" href="/"><img
-                                alt="Logo NetTruyen" src="//st.imageinstant.net/data/logos/logo-nettruyen.png"></a>
+                    <div class="navbar-brand Module"><a class="logo" title="Truyện tranh online" href="/">CommicBuddy</a>
                     </div>
                     <div class="navbar-form navbar-left hidden-xs search-box comicsearchbox">
                         <div class="input-group">
-                            <input type="text" class="searchinput form-control" placeholder="Tìm truyện..."
+                            <input type="text" class="searchinput form-control" placeholder="Search manga..."
                                 autocomplete="off">
                             <div class="input-group-btn">
                                 <input type="submit" value="" class="searchbutton btn btn-default">
@@ -43,11 +42,11 @@
                 </div>
                 <ul class="nav-account list-inline hidden-xs pull-right">
                     <li class="login-link"><a rel="nofollow"
-                            href="{{route('login')}}">Đăng
-                            nhập</a></li>
+                            href="{{route('login')}}">Login
+                            </a></li>
                     <li class="register-link"><a rel="nofollow"
-                            href="{{route('register')}}">Đăng
-                            ký</a>
+                            href="{{route('register')}}">Register
+                            </a>
                         <script>var globalOpts = {};</script>
                     </li>
                 </ul>
@@ -64,15 +63,15 @@
                                 <a target="_self" href="/">
                                     <i class="fa fa-home hidden-xs">
                                     </i>
-                                    <span class="visible-xs">Trang chủ</span>
+                                    <span class="visible-xs">Home</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a target="_self" href="{{route('follow')}}">Theo dõi</a>
+                                <a target="_self" href="{{route('follow')}}">Follow</a>
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
-                                    target="_self" href="{{route('genre')}}">Thể loại <i
+                                    target="_self" href="{{route('genre')}}">Genres <i
                                         class="fa fa-caret-down"></i></a>
                                 <ul class="dropdown-menu megamenu">
                                     <li>
@@ -100,7 +99,7 @@
                             </li>
                             <li>
                                 <a target="_blank" rel="noopener noreferrer"
-                                    href="https://www.facebook.com/groups/nettruyenonline/">Group</a>
+                                    href="https://www.facebook.com/do.quanghuy.5205/">Group</a>
                             </li>
                         </ul>
                     </div>

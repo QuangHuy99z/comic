@@ -1,7 +1,7 @@
 @extends('website.layouts.master')
 @section('content')
 @section('title')
-	Thông tin chung - NetTruyen
+	General Information - CommicBuddy
 @endsection
 <main class="main">
   <div class="container">
@@ -9,11 +9,11 @@
       <ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
             href="/" class="itemcrumb active" itemprop="item"
-            itemtype="http://schema.org/Thing"><span itemprop="name">Trang chủ</span></a>
+            itemtype="http://schema.org/Thing"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="2">
         </li>
         <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
-            href="{{route('general')}}" class="selectedcrumb">Thông tin chung</a></li>
+            href="{{route('general')}}" class="selectedcrumb">General Information</a></li>
       </ul>
     </div>
     <div class="row">
@@ -24,18 +24,18 @@
           <div class="col-md-9 col-sm-8">
             <div class="user-page clearfix">
               <h1 class="postname">
-                Thông tin chung
+                General Information
               </h1>
               <div class="row">
                 <div class="col-xs-12 col-md-6">
                   <div class="account-info clearfix">
                     <h2 class="posttitle">
-                      Thông tin tài khoản
+                      Account information
                     </h2>
-                    <a class="link" href="{{route('profile')}}">Chỉnh sửa</a>
+                    <a class="link" href="{{route('profile')}}">Edit</a>
                     <div class="info-detail">
                       <div class="group">
-                        <div class="label">Họ và tên</div>
+                        <div class="label">Full name</div>
                         <div class="detail">
                           {{Auth::guard('web')->user()->name}}
                         </div>

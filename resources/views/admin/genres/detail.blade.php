@@ -9,9 +9,6 @@
                         <div class="page-title-icon"><i class="pe-7s-umbrella icon-gradient bg-sunny-morning"></i></div>
                         <div>
                             {{$genre->name}}
-                            <div class="page-title-subheading" style="visibility: hidden;">Example of a Dashboard page
-                                built
-                                with Architect.</div>
                         </div>
 
 
@@ -34,7 +31,7 @@
                 <div class="card-header-tab card-header">
                     <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
                         <i class="header-icon lnr-dice mr-3 text-muted opacity-6"> </i>
-                        Add Comic
+                        Genres Details
                     </div>
                 </div>
                 <div class="card-body">
@@ -44,11 +41,11 @@
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" value="{{$genre->name}}" id="name" name="name"
-                                    placeholder="Enter Genre Name">
+                                    placeholder="Enter Genre Name" style="font-size: 15px" >
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea class="form-control" id="description" name="description"
+                                <textarea class="form-control" id="description" name="description" style="font-size: 15px"
                                     placeholder="Enter Genre Description" rows="6">{{$genre->description}}</textarea>
                             </div>
 

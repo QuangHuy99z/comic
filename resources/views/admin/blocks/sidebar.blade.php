@@ -34,11 +34,6 @@
         <div class="app-sidebar__inner">
             <ul class="vertical-nav-menu">
                 <li class="app-sidebar__heading" style="font-size:18px">Menu</li>
-                <li class="mm-active">
-                    <a href="#" style="font-size: 18px;">
-                        <i class="metismenu-icon pe-7s-rocket" style="font-size: 20px"></i>Dashboards
-                    </a>
-                </li>
                 <li>
                     <a href="{{route('admin.comics.index')}}" style="font-size: 18px;">
                         <i class="metismenu-icon pe-7s-browser" style="font-size: 20px"></i>Comics

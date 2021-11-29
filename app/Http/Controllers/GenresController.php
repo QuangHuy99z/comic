@@ -10,7 +10,7 @@ class GenresController extends Controller
 {
     public function index()
     {
-        $genres = Genres::latest()->paginate(5);
+        $genres = Genres::latest()->paginate(10);
   
         return view('admin.genres.index',compact('genres'))
             ->with('i', (request()->input('page', 1) - 1) * 5);

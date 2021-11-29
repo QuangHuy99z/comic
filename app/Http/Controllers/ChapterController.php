@@ -11,7 +11,7 @@ class ChapterController extends Controller
 {
     public function index()
     {
-        $comics = Comic::latest()->paginate(5);
+        $comics = Comic::latest()->paginate(10);
 
         return view('admin.chapters.index',compact('comics'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -36,7 +36,7 @@ class ChapterController extends Controller
                 ]);
             endforeach;
         }
-        return redirect()->route('admin.chapters.index')->with('message', 'Add chapter for comic ' . $chapter->comic->name .'successfully');
+        return redirect()->route('admin.chapters.index')->with('message', 'Add chapter for comic ' . $chapter->comic->name .' successfully');
     }
 
     public function edit(Request $request, $id)

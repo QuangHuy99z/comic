@@ -1,14 +1,14 @@
 @extends('website.layouts.master')
 @section('content')
 @section('title')
-	Đọc truyện tranh online - Truyện gì cũng có - NetTruyen
+	CommicBuddy
 @endsection
 <main class="main">
 	<div class="container">
 		<div id="ctl00_divAlt1" class="altcontent1 cmszone">
 			<div class='top-comics Module Module-183'>
 				<div class='ModuleContent'>
-					<h2 class="page-title">Truyện đề cử <i class="fa fa-angle-right"></i></h2>
+					<h2 class="page-title">Recommend Manga <i class="fa fa-angle-right"></i></h2>
 					<div class="items-slide">
 						<div class="owl-carousel clearfix">
 							@foreach ($sliders as $slider)
@@ -43,7 +43,7 @@
 				<div class='Module Module-163'>
 					<div class='ModuleContent'>
 						<div class="items">
-							<h1 class="page-title">Truyện mới cập nhật <i class="fa fa-angle-right"></i></h1>
+							<h1 class="page-title">Latest Updated <i class="fa fa-angle-right"></i></h1>
 							<div class="row">
 								@foreach ($comics as $comic)
 									<div class="item">
@@ -100,10 +100,10 @@
 															$authors = array();
 														@endphp
 														<p>
-															<label>Tên khác:</label>{{$comic->name}}
+															<label>Title:</label>{{$comic->name}}
 														</p>
 														<p>
-															<label>Thể loại:</label>
+															<label>Genres:</label>
 															@foreach($comic->genres as $genre)
 																@php
 																	array_push($genres, $genre->name);
@@ -112,7 +112,7 @@
 															{{implode(", ", $genres)}}
 														</p>
 														<p>
-															<label>Tác giả:</label>
+															<label>Author</label>
 															@foreach($comic->authors as $author)
 																@php
 																	array_push($authors, $author->name);
@@ -121,10 +121,10 @@
 															{{implode(", ", $authors)}}
 														</p>
 														<p>
-															<label>Tình trạng:</label>{{$comic->status}}
+															<label>Status:</label>{{$comic->status}}
 														</p>
 														<p>
-															<label>Ngày cập nhật:</label>{{$comic->created_at->format('d-m-Y')}}
+															<label>Updated at:</label>{{$comic->created_at->format('d-m-Y')}}
 														</p>
 													</div>
 												</div>
@@ -151,16 +151,8 @@
 						<div class="box-tab box darkBox">
 							<ul class="tab-nav clearfix">
 								<li>
-									<a rel="nofollow" title="BXH truyện tranh theo tháng" class="active"
-										href="/tim-truyen?status=-1&amp;sort=11">Top Tháng</a>
-								</li>
-								<li>
-									<a rel="nofollow" title="BXH truyện tranh theo tuần"
-										href="/tim-truyen?status=-1&amp;sort=12">Top Tuần</a>
-								</li>
-								<li>
 									<a rel="nofollow" title="BXH truyện tranh theo ngày"
-										href="/tim-truyen?status=-1&amp;sort=13">Top Ngày</a>
+										href="/tim-truyen?status=-1&amp;sort=13">Top Manga</a>
 								</li>
 							</ul>
 							<div class="tab-pane">
