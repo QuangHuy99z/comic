@@ -21,6 +21,7 @@ class CustomerController extends Controller
         ];
        
         if (Auth::guard('web')->attempt($account)) {
+            // check từ web(ng dùng)
             if (Auth::guard('web')->user()->position == 'user'){
                 return redirect()->route('home');
             }
@@ -36,6 +37,7 @@ class CustomerController extends Controller
             return view('website.register.index');
         }
         if(User::where('email', '=', $request->email)->first()){
+            // so sánh trong db để xem tk tồn tại hay chưa
             return redirect()->back()->with('message', 'The account already exists in the system');
         }
         User::create([
@@ -87,7 +89,9 @@ class CustomerController extends Controller
             return view('website.profile.change_password');
         }
         $customer = User::findOrFail(Auth::guard('web')->user()->id);
+        // check từ web để lấy ra id của ng dùng đó
         if (Hash::check($request->old_password, $customer->password)){
+            
             if($request->old_password == $request->new_password){
                 return redirect()->back()->with('message', 'New password must be different from old password');
             }

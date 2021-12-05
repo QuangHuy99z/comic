@@ -53,6 +53,7 @@
                                         class="fa fa-undo error"></i><span>1</span></a>
                                 <a href="<?php 
                                     if ($prev->count() != 0) {
+                                        // check xem khác = 0
                                         echo route('chapter', [$chapter->comic->slug, $prev[0]->number]);
                                     }  
                                     ?>" class="prev a_prev <?php 

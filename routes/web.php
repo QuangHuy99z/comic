@@ -56,23 +56,23 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
 // Customer
 Route::group(['prefix'=>'/'],function(){
     // Login
-    Route::match(['get', 'post'],'dang-nhap', [CustomerController::class, 'login'])->name("login");
+    Route::match(['get', 'post'],'login', [CustomerController::class, 'login'])->name("login");
     // Register
-    Route::match(['get', 'post'],'dang-ky', [CustomerController::class, 'register'])->name("register");
+    Route::match(['get', 'post'],'register', [CustomerController::class, 'register'])->name("register");
     // Logout
     Route::get('/logout', [CustomerController::class, 'logout'])->name('logout');
     // Profile
-    Route::get('/thong-tin-chung', [CustomerController::class, 'general'])->name('general')->middleware('auth:web');
-    Route::match(['get', 'post'], '/thong-tin-ca-nhan', [CustomerController::class, 'profile'])->name('profile')->middleware('auth:web');
-    Route::get('/truyen-theo-doi', [CustomerController::class, 'comic_follow'])->name('comic-follow');
-    Route::match(['get', 'post'], '/doi-mat-khau', [CustomerController::class, 'change_password'])->name('change-password')->middleware('auth:web');
+    Route::get('/general', [CustomerController::class, 'general'])->name('general')->middleware('auth:web');
+    Route::match(['get', 'post'], '/personal-information', [CustomerController::class, 'profile'])->name('profile')->middleware('auth:web');
+    Route::get('/follow-comic', [CustomerController::class, 'comic_follow'])->name('comic-follow');
+    Route::match(['get', 'post'], '/change-password', [CustomerController::class, 'change_password'])->name('change-password')->middleware('auth:web');
     // Home
     Route::get('/', [HomeController::class, 'index'])->name("home");
-    Route::get('tim-truyen', [HomeController::class, 'genre'])->name("genre");
-    Route::get('tim-truyen/{slug}', [GenresController::class, 'show'])->name("genre_detail");
+    Route::get('search-comic', [HomeController::class, 'genre'])->name("genre");
+    Route::get('search-comic/{slug}', [GenresController::class, 'show'])->name("genre_detail");
     // Theo dõi
     Route::get('/theo-doi', [HomeController::class, 'follow'])->name("follow");
     // Truyen comic detail
-    Route::get('/truyen-tranh/{slug}', [ComicController::class, 'show'])->name("comic");
-    Route::get('/truyen-tranh/{slug}/chap-{id}', [ChapterController::class, 'show'])->name("chapter");
+    Route::get('/comic/{slug}', [ComicController::class, 'show'])->name("comic");
+    Route::get('/comic/{slug}/chap-{id}', [ChapterController::class, 'show'])->name("chapter");
 });
