@@ -111,7 +111,7 @@
                                         <div class="next-card__section">
                                             <div class="next-upload-dropzone__wrapper">
                                                 <!-- Upload Image -->
-                                                <img src="" onerror="this.src='https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'" alt="customer-image" class="img-avatar" id="img-avatar" style="width:100%;">
+                                                <img src="" onerror="this.src='https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'" alt="customer-image" class="img-avatar" id="img-avatar" style="width: 400px; height: 400px; display: block; margin-left: auto; margin-right: auto;">
                                                 <!-- Process if image is null -->
                                             </div>
                                         </div>

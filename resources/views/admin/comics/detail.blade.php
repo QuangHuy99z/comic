@@ -181,7 +181,7 @@
                                         <div class="next-card__section">
                                             <div class="next-upload-dropzone__wrapper">
                                                 <!-- Upload Image -->
-                                                <img src="{{asset('/uploads/comics/'.$comic->image)}}" onerror="this.src='https://www.vascara.com/uploads/avatar/2021/April/25/1111111111111-1571600-1619350255-medium.png'" alt="customer-image" class="img-avatar" id="img-avatar" style="width:100%;">
+                                                <img src="{{asset('/uploads/comics/'.$comic->image)}}" onerror="this.src='https://www.vascara.com/uploads/avatar/2021/April/25/1111111111111-1571600-1619350255-medium.png'" alt="customer-image" class="img-avatar" id="img-avatar" style="width:;">
                                                 <!-- Process if image is null -->
                                             </div>
                                         </div>
