@@ -62,10 +62,10 @@
                         <tbody>
                             @foreach($comics as $comic)
                                     <tr>
-                                        <td><a href="{{route('admin.chapters.edit', $comic->id)}}" style="color: #495057; text-decoration: none;">{{$comic->id}}</a></td>
-                                        <td><a href="{{route('admin.chapters.edit', $comic->id)}}" style="color: #495057; text-decoration: none;">{{$comic->name}}</a></td>
-                                        <td><a href="{{route('admin.chapters.edit', $comic->id)}}" style="color: #495057; text-decoration: none;">{{$comic->chapters->count()}}</a></td>
-                                        <td><a href="{{route('admin.chapters.edit', $comic->id)}}" style="color: #495057; text-decoration: none;">{{$comic->created_at}}</a></td>
+                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057; text-decoration: none;">{{$comic->id}}</a></td>
+                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057; text-decoration: none;">{{$comic->name}}</a></td>
+                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057; text-decoration: none;">{{$comic->chapters->count()}}</a></td>
+                                        <td><a href="{{route('admin.comics.edit', $comic->id)}}" style="color: #495057; text-decoration: none;">{{$comic->created_at}}</a></td>
                                     </tr>
                                 </a>
                             @endforeach    

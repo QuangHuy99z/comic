@@ -99,10 +99,10 @@
         <i class="fa fa-angle-up"></i>
     </a>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
-    <script src="//s.nettruyenpro.com/Data/Sites/1/skins/comic/js/redirector.min.js?v=1.0.0.5"
+    <script src="//nettruyenvt.com/Data/Sites/1/skins/comic/js/redirector.min.js?v=1.0.0.5"
         type="text/javascript"></script>
-    <script type="text/javascript" src="//s.nettruyenpro.com/Data/Sites/1/skins/comic/js/owl.carousel.min.js"></script>
-    <script src="//s.nettruyenpro.com/Data/Sites/1/skins/comic/js/scripts.min.js?v=1.1.3.7"
+    <script type="text/javascript" src="//nettruyenvt.com/Data/Sites/1/skins/comic/js/owl.carousel.min.js"></script>
+    <script src="//nettruyenvt.com/Data/Sites/1/skins/comic/js/scripts.min.js?v=1.1.3.7"
         type="text/javascript"></script>
     <!--googleoff: all-->
     <script type="text/javascript"
