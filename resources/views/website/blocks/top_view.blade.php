@@ -38,7 +38,7 @@
                                     </h3>
                                     <p class="chapter top">
 
-                                        <a href="{{$top_comic->chapters->count() != 0 ? route('chapter', [$top_comic->slug, $top_comic->last_chapter->number, $top_comic->id]) : ''}}" class="visited-comics"
+                                        <a href="{{$top_comic->chapters->count() != 0 ? route('chapter', [$top_comic->slug, $top_comic->last_chapter->number, $top_comic->last_chapter->id]) : ''}}" class="visited-comics"
                                             <?php 
 
                                                 if (count($chapter_ids) == 0) {

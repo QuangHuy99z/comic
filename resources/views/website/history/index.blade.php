@@ -37,12 +37,13 @@ CommicBuddy
                 </div>
                 <div class="items visited-comics-page Module Module-273">
                     @if(session()->has('history') && session()->get('history') != null)
+                        @csrf
                         <div class="row visited-list">
                             @foreach(session()->get('history') as $id => $history)
                             <div class="item">
                                 <figure class="clearfix">
                                     <div class="image"><a title="{{$history['comic_name']}}" href="{{$history['comic_slug']}}"><img class="lazy center" src="{{asset('uploads/comics/'.$history['image'])}}" alt="{{$history['comic_name']}}"></a>
-                                        <div class="view"><a class="visited-remove" href="#"><i class="fa fa-times"></i> Xóa</a></div>
+                                        <div class="view"><a class="visited-remove" href="#" data-comic-id="{{$history['comic_id']}}"><i class="fa fa-times"></i> Remove</a></div>
                                     </div>
                                     <figcaption>
                                         <h3><a title="{{$history['comic_name']}}" href="{{$history['comic_slug']}}">{{$history['comic_name']}}</a></h3>

@@ -75,7 +75,8 @@ Route::group(['prefix'=>'/'],function(){
     // Theo dõi
     Route::get('/theo-doi', [HomeController::class, 'follow'])->name("follow");
     Route::get('/lich-su', [HistoryController::class, 'index'])->name("history");
-    Route::post('/create_history_by_session', [HistoryController::class, 'create_comic_history_by_session'])->name("create_history_by_session");
+    Route::post('/create_comic_history_by_session', [HistoryController::class, 'create_comic_history_by_session'])->name("create_comic_history_by_session");
+    Route::delete('/remove_comic_history_by_session', [HistoryController::class, 'remove_comic_history_by_session'])->name('remove_comic_history_by_session');
     // Truyen comic detail
     Route::get('/comic/{slug}', [ComicController::class, 'show'])->name("comic");
     Route::get('/comic/{slug}/chap-{number}/{id}', [ChapterController::class, 'show'])->name("chapter");

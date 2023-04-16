@@ -142,7 +142,7 @@
             let chapter_link = $(this).data('chapter-link');
             $(this).removeAttr('style');
             $.ajax({
-                url: "{{route('create_history_by_session')}}",
+                url: "{{route('create_comic_history_by_session')}}",
                 method: "POST",
                 dataType: 'json',
                 data: {
@@ -155,7 +155,27 @@
                     
                 }
             })
-        })
+        });
+
+        $('.visited-remove').click(function(e) {
+            e.preventDefault();
+            // alert($(this).data('comic-id'));
+            $(this).parent().parent().parent().parent().remove();
+            let comic_id = $(this).data('comic-id');
+            $.ajax({
+                url: "{{route('remove_comic_history_by_session')}}",
+                method: "DELETE",
+                dataType: 'json',
+                data: {
+                    _token: $("input[name=_token]").val(),
+                    comic_id: comic_id,
+                },
+                success: function(data) {
+                    
+                }
+            })
+        });
+
     </script>
 </body>
 
