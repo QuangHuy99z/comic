@@ -18,6 +18,9 @@
 						<li class="{{ Request::path() == 'theo-doi' ? 'active' : '' }}">
 							<a target="_self"  href="{{route('follow')}}">Follow</a>
 						</li>
+						<li class="{{ Request::path() == 'lich-su' ? 'active' : '' }}">
+							<a target="_self"  href="{{route('history')}}">History</a>
+						</li>
 						<li class="dropdown {{ Request::path() == 'tim-truyen' ? 'active' : '' }}">
 							<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
 								target="_self" href="{{route('genre')}}">Genres <i

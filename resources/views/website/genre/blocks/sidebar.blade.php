@@ -8,7 +8,11 @@
             <h2 class="module-title"><b>Genres</b></h2>
             <ul class="nav">
                 <li class="{{ Request::path() == 'tim-truyen' ? 'active' : '' }}">
-                    <a target="_self" href="{{route('genre')}}">All Genres</a>
+                    <a target="_self" <?php 
+                            if (url()->current() == route('genre')){
+                                echo "style='color: #ae4ad9 !important'";
+                            }
+                        ?> href="{{route('genre')}}">All Genres</a>
                 </li>
                 @foreach($genres as $genre)
                     <li>

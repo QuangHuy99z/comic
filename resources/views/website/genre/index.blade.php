@@ -69,7 +69,7 @@
                                                         @if($count++ < 3)
                                                             <li class="chapter clearfix">
                                                                 <a style="color: #000"
-                                                                    href="{{route('chapter', [$comic->slug, $chapter->number])}}"
+                                                                    href="{{route('chapter', [$comic->slug, $chapter->number, $chapter->id])}}"
                                                                     title="Chapter {{$chapter->number}}">
                                                                     Chapter {{$chapter->number}}
                                                                 </a>

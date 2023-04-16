@@ -18,6 +18,8 @@ use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WebsitePage\History\HistoryController;
+
 
 // Admin
 Route::get('admin', function (){{
@@ -72,7 +74,9 @@ Route::group(['prefix'=>'/'],function(){
     Route::get('search-comic/{slug}', [GenresController::class, 'show'])->name("genre_detail");
     // Theo dõi
     Route::get('/theo-doi', [HomeController::class, 'follow'])->name("follow");
+    Route::get('/lich-su', [HistoryController::class, 'index'])->name("history");
+    Route::post('/create_history_by_session', [HistoryController::class, 'create_comic_history_by_session'])->name("create_history_by_session");
     // Truyen comic detail
     Route::get('/comic/{slug}', [ComicController::class, 'show'])->name("comic");
-    Route::get('/comic/{slug}/chap-{id}', [ChapterController::class, 'show'])->name("chapter");
+    Route::get('/comic/{slug}/chap-{number}/{id}', [ChapterController::class, 'show'])->name("chapter");
 });

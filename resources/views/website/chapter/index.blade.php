@@ -30,7 +30,7 @@
                                     <meta itemprop="position" content="3">
                                 </li>
                                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
-                                        href="{{route('chapter', [$chapter->comic->slug, $chapter->number])}}"
+                                        href="{{route('chapter', [$chapter->comic->slug, $chapter->number, $chapter->id])}}"
                                         class="itemcrumb active" itemprop="item"
                                         itemtype="http://schema.org/Thing"><span itemprop="name">Chapter
                                             {{$chapter->number}}</span></a>
@@ -38,7 +38,7 @@
                                 </li>
                             </ul>
                             <h1 class="txt-primary"><a
-                                    href="{{route('comic', $chapter->comic->slug)}}">{{$chapter->comic->name}}</a> <span>- Chapter {{$chapter->number}}</span></h1><i>[Cập nhật lúc: {{$chapter->created_at->format('H:m:s d/m/Y')}}]</i>
+                                    href="{{route('comic', $chapter->comic->slug)}}">{{$chapter->comic->name}}</a> <span>- Chapter {{$chapter->number}}</span></h1><i>[Updated at: {{$chapter->created_at->format('H:m:s d/m/Y')}}]</i>
                         </div>
                         <div class="reading-control">
                             <div class="alert alert-info mrb10 hidden-xs hidden-sm">
@@ -54,7 +54,7 @@
                                 <a href="<?php 
                                     if ($prev->count() != 0) {
                                         // check xem khác = 0
-                                        echo route('chapter', [$chapter->comic->slug, $prev[0]->number]);
+                                        echo route('chapter', [$chapter->comic->slug, $prev[0]->number, $prev[0]->id]);
                                     }  
                                     ?>" class="prev a_prev <?php 
                                     if ($prev->count() == 0) {
@@ -67,7 +67,7 @@
                                     id="ctl00_mainContent_ddlSelectChapter" class="select-chapter">
                                     @foreach ($chapter->comic->chapters as $comic)
                                         <option {{ ($comic->number == $chapter->number) ? 'selected' : '' }} 
-                                        value="{{route('chapter', [$comic->comic->slug, $comic->number])}}">Chapter {{$comic->number}}</option>
+                                        value="{{route('chapter', [$comic->comic->slug, $comic->number, $comic->id])}}">Chapter {{$comic->number}}</option>
                                     @endforeach
                                 </select>
                                 <script>
@@ -78,7 +78,7 @@
                                 </script>
                                 <a href="<?php 
                                     if ($next->count() != 0) {
-                                        echo route('chapter', [$chapter->comic->slug, $next[0]->number]);
+                                        echo route('chapter', [$chapter->comic->slug, $next[0]->number, $next[0]->id]);
                                     }  
                                     ?>" class="next a_next <?php 
                                     if ($next->count() == 0) {
@@ -105,7 +105,7 @@
                             <div class="chapter-nav-bottom text-center mrt5 mrb5">
                                 <a href="<?php 
                                     if ($prev->count() != 0) {
-                                        echo route('chapter', [$chapter->comic->slug, $prev[0]->number]);
+                                        echo route('chapter', [$chapter->comic->slug, $prev[0]->number, $prev[0]->id]);
                                     }  
                                     ?>" class="btn btn-danger prev <?php 
                                     if ($prev->count() == 0) {
@@ -117,7 +117,7 @@
                                 </a>
                                 <a href="<?php 
                                     if ($next->count() != 0) {
-                                        echo route('chapter', [$chapter->comic->slug, $next[0]->number]);
+                                        echo route('chapter', [$chapter->comic->slug, $next[0]->number, $next[0]->id]);
                                     }  
                                     ?>"
                                     class="btn btn-danger next <?php 
@@ -146,7 +146,7 @@
                                     <meta itemprop="position" content="3">
                                 </li>
                                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
-                                        href="{{route('chapter', [$chapter->comic->slug, $chapter->number])}}"
+                                        href="{{route('chapter', [$chapter->comic->slug, $chapter->number, $chapter->id])}}"
                                         class="itemcrumb active" itemprop="item"
                                         itemtype="http://schema.org/Thing"><span itemprop="name">Chapter {{$chapter->number}}</span></a>
                                     <meta itemprop="position" content="4">

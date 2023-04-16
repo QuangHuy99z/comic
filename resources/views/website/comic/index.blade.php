@@ -1,27 +1,20 @@
 @extends('website.layouts.master')
 @section('content')
 @section('title')
-    {{$comic->name}}
+{{$comic->name}}
 @endsection
 <main class="main">
     <div class="container">
         <div class="row">
             <div id="ctl00_divCenter" class="center-side col-md-8">
                 <ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
-                            href="/" class="itemcrumb" itemprop="item"
-                            itemtype="http://schema.org/Thing"><span itemprop="name">Home</span></a>
+                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a href="/" class="itemcrumb" itemprop="item" itemtype="http://schema.org/Thing"><span itemprop="name">Home</span></a>
                         <meta itemprop="position" content="1">
                     </li>
-                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
-                            href="{{route('genre')}}" class="itemcrumb" itemprop="item"
-                            itemtype="http://schema.org/Thing"><span itemprop="name">Genres</span></a>
+                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a href="{{route('genre')}}" class="itemcrumb" itemprop="item" itemtype="http://schema.org/Thing"><span itemprop="name">Genres</span></a>
                         <meta itemprop="position" content="2">
                     </li>
-                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a
-                            href="{{route('comic', $comic->slug)}}"
-                            class="itemcrumb active" itemprop="item" itemtype="http://schema.org/Thing"><span
-                                itemprop="name">{{$comic->name}}</span></a>
+                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a href="{{route('comic', $comic->slug)}}" class="itemcrumb active" itemprop="item" itemtype="http://schema.org/Thing"><span itemprop="name">{{$comic->name}}</span></a>
                         <meta itemprop="position" content="3">
                     </li>
                 </ul>
@@ -33,8 +26,7 @@
                     <div class="detail-info">
                         <div class="row">
                             <div class="col-xs-4 col-image">
-                                <img src="{{asset('/uploads/comics/'.$comic->image)}}"
-                                    alt="{{$comic->name}}">
+                                <img src="{{asset('/uploads/comics/'.$comic->image)}}" alt="{{$comic->name}}">
                             </div>
                             <div class="col-xs-8 col-info">
                                 <ul class="list-info">
@@ -52,7 +44,7 @@
                                         </p>
                                         <p class="col-xs-8">
                                             @foreach($comic->authors as $author)
-                                                <a href="#" style="display: block">{{$author->name}}</a>
+                                            <a href="#" style="display: block">{{$author->name}}</a>
                                             @endforeach
                                         </p>
                                     </li>
@@ -70,26 +62,26 @@
                                         </p>
                                         <p class="col-xs-8">
                                             @foreach($comic->genres as $genre)
-                                                <a style="display: block" href="#">{{$genre->name}}</a>
+                                            <a style="display: block" href="#">{{$genre->name}}</a>
                                             @endforeach
                                         </p>
                                     </li>
                                 </ul>
+                                @csrf
                                 <div class="mrt5 mrb10" itemscope="" itemtype="http://schema.org/Book">
                                     <a href="{{route('comic', $comic->slug)}}">
                                         <span itemprop="name">{{$comic->name}}</span>
                                     </a>
                                 </div>
-                                <div class="follow"><a class="btn btn-success" href="javascript:void(0)"
-                                        data-id="{{$comic->id}}"><i class="fa fa-heart"></i> <span>Follow</span></a>
+                                <div class="follow"><a class="btn btn-success" href="javascript:void(0)" data-id="{{$comic->id}}"><i class="fa fa-heart"></i> <span>Follow</span></a>
                                 </div>
                                 <div class="read-action mrt10">
-                                    <a class="btn btn-warning mrb5"
-                                        href="{{ $comic->chapters->count() != 0 ? route('chapter', [$comic->slug, $comic->first_chapter->number]) : ''}}">
-                                        Start reading</a>
-                                    <a class="btn btn-warning mrb5"
-                                        href="{{ $comic->chapters->count() != 0 ? route('chapter', [$comic->slug, $comic->last_chapter->number]) : ''}}">
-                                        Read latest</a>
+                                    <a class="btn btn-warning mrb5 visited-comics" data-comic-id="{{$comic->id}}" data-chapter-id="{{ $comic->chapters->count() != 0 ? $comic->first_chapter->id : ''}}" data-chapter-link="{{ $comic->chapters->count() != 0 ? route('chapter', [$comic->slug, $comic->first_chapter->number, $comic->first_chapter->id]) : ''}}" href="{{ $comic->chapters->count() != 0 ? route('chapter', [$comic->slug, $comic->first_chapter->number, $comic->first_chapter->id]) : ''}}">
+                                        Start reading
+                                    </a>
+                                    <a class="btn btn-warning mrb5 visited-comics" data-comic-id="{{$comic->id}}" data-chapter-id="{{ $comic->chapters->count() != 0 ? $comic->last_chapter->id : ''}}" data-chapter-link="{{ $comic->chapters->count() != 0 ? route('chapter', [$comic->slug, $comic->last_chapter->number, $comic->last_chapter->id]) : ''}}" href="{{ $comic->chapters->count() != 0 ? route('chapter', [$comic->slug, $comic->last_chapter->number, $comic->last_chapter->id]) : ''}}">
+                                        Read latest
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -112,84 +104,48 @@
                                     <div class="col-xs-6 no-wrap">Chapter Number</div>
                                     <div class="col-xs-6 no-wrap text-center">Updated at</div>
                                 </li>
-                                @if($comic->chapters->count() != 0)
-                                    @foreach ($comic->chapters as $chapter)
-                                        <li class="row">
-                                            <div class="col-xs-6 chapter">
-                                                <a href="{{route('chapter', [$comic->slug, $chapter->number])}}" data-id="{{$chapter->id}}" style="color: #000">Chapter {{$chapter->number}}</a>
-                                            </div>
-                                            <div class="col-xs-6 text-center small" style="color: #000">{{$chapter->created_at->format('H:m:s d/m/Y')}}</div>
-                                        </li>
+                                @php
+                                $chapter_ids = [];
+                                @endphp
+                                @if(session()->has('history') && session()->get('history') != null)
+                                    @foreach(session()->get('history') as $id => $history)
+                                        @if (in_array($comic->id, $history))
+                                            @if (in_array($comic->id, $history['chapter_ids']))
+                                                @php
+                                                $chapter_ids = $history['chapter_ids'];
+                                                @endphp
+                                            @endif
+                                        @endif
+                                        @break
                                     @endforeach
+                                @endif
+                                @if($comic->chapters->count() != 0)
+                                @foreach ($comic->chapters as $chapter)
+                                <li class="row">
+                                    <div class="col-xs-6 chapter">
+                                        <a class="visited-comics" href="{{route('chapter', [$comic->slug, $chapter->number, $chapter->id])}}" data-comic-id="{{ $comic->id }}" data-chapter-id="{{ $chapter->id }}" data-chapter-link="{{route('chapter', [$comic->slug, $chapter->number, $chapter->id])}}" data-id="{{$chapter->id}}" <?= in_array($chapter->id, $chapter_ids) ? '' :  'style="color: #000"' ?>>
+                                            Chapter {{$chapter->number}}
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-6 text-center small" style="color: #000">{{$chapter->created_at->format('H:m:s d/m/Y')}}</div>
+                                </li>
+                                @endforeach
                                 @else
-                                    <li class="row">
-                                        <div class="col-xs-12 chapter text-center">
-                                                <a>Comic {{$comic->name}} doesn't have any chapter yet</a>
-                                        </div>
-                                    </li>
+                                <li class="row">
+                                    <div class="col-xs-12 chapter text-center">
+                                        <a>Comic {{$comic->name}} doesn't have any chapter yet</a>
+                                    </div>
+                                </li>
                                 @endif
                             </ul>
                         </nav>
                     </div>
                 </article>
             </div>
-           <div id="ctl00_divRight" class="right-side col-md-4 cmszone">
-				<div class='comics-followed-block Module Module-172'>
-					<div class='ModuleContent'></div>
-				</div>
-				<div class="visited-comics"></div>
-				<div class='comic-wrap Module Module-168'>
-					<div class='ModuleContent'>
-						<div class="box-tab box darkBox">
-							<ul class="tab-nav clearfix">
-								
-								<li>
-									<a rel="nofollow" 
-										href="/tim-truyen?status=-1&amp;sort=12">Top Manga</a>
-								</li>
-							
-							</ul>
-							<div class="tab-pane">
-								<div id="topMonth">
-									<ul class="list-unstyled">
-										@php
-											$i = 1;
-										@endphp
-										@foreach ($top_comics as $top_comic)
-											<li class="clearfix">
-												<span class="txt-rank fn-order pos1">{{'0'. $i ++}}</span>
-												<div class="t-item">
-													<a class="thumb" title="{{$top_comic->name}}"
-														href="{{route('comic', $top_comic->slug)}}">
-														<img class="lazy"
-															src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-															data-original="{{asset('/uploads/comics/'.$top_comic->image)}}"
-															alt="{{$top_comic->name}}">
-													</a>
-													<h3 class="title">
-														<a
-															href="{{route('comic', $top_comic->slug)}}">{{$top_comic->name}}</a>
-													</h3>
-													<p class="chapter top">
-														<a href="{{$top_comic->chapters->count() != 0 ? route('chapter', [$top_comic->slug, $top_comic->last_chapter->number]) : ''}}"
-															title="{{isset($top_comic->chapter) ? 'Chapter ' . $top_comic->chapter->number : ''}}">{{isset($top_comic->chapter) ? 'Chapter ' . $top_comic->last_chapter->number : ''}}</a>
-														<span class="view pull-right"></span>
-													</p>
-												</div>
-											</li>
-										@endforeach
-									</ul>
-								</div>
-								<div id="topWeek">
-								</div>
-								<div id="topDay">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-           </div>
+            <!-- Top managa has many views -->
+			@include('website.blocks.top_view')
+        </div>
     </div>
 </main>
+
 @endsection

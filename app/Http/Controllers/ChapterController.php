@@ -54,13 +54,37 @@ class ChapterController extends Controller
         return redirect()->route('admin.chapters.edit', $id)->with('message', 'Update chapter successfully');
     }
 
-    public function show($slug="",$number="")
+    public function show($slug="", $number="", $id="")
     {
         $comic = Comic::Where('slug', '=', $slug)->first();
         // lấy ra tên truyện 
-        $chapter = Chapter::Where('comic_id', $comic->id)->Where('number', $number)->first(); // lấy ra chapter thuộc truyện vừa lấy 
+        $chapter = Chapter::find($id); // lấy ra chapter thuộc truyện vừa lấy 
         if ($chapter){ // check xem có chapter ko
-            $id = $chapter->id; // lấy đc ra id của chupter
+            $id = $chapter->id; // lấy đc ra id của chapter
+            $comic = Comic::find($comic->id);
+            $chapter = Chapter::find($chapter->id);
+            $history = session()->has('history') ? session()->get('history') : null;
+            if(isset($history[$comic->id])){
+                if (!in_array($chapter->id, $history[$comic->id]['chapter_ids'])) {
+                    $history[$comic->id]['chapter_ids'][] = $chapter->id;
+                    $history[$comic->id]['chapter_name'] = $chapter->number;
+                    $history[$comic->id]['chapter_slug'] = route('chapter', [$comic->slug, $chapter->number, $chapter->id]);
+                }
+                $history[$comic->id]['created_at'] = date('Y-m-d H:i:s');
+            } else {
+                $history[$comic->id] = [
+                    'comic_id' => $comic->id,
+                    'comic_name' => $comic->name,
+                    'comic_title' => $comic->title,
+                    'chapter_ids' => [$chapter->id],
+                    'chapter_name' => $chapter->number,
+                    'image' => $comic->image,
+                    'comic_slug' => route('comic', $comic->slug),
+                    'chapter_slug' => route('chapter', [$comic->slug, $chapter->number, $chapter->id]),
+                    'created_at' => date('Y-m-d H:i:s'),
+                ];
+            }
+            session()->put('history', $history);
             $next = Chapter::Where('comic_id', '=', $chapter->comic->id)->Where('id', '>', $id)->orderBy('id', 'ASC')->limit(1)->get();
             // check xem chapter đó thuộc comic nào và tiến lùi theo id của chapter
             $prev = Chapter::Where('comic_id', '=', $chapter->comic->id)->Where('id', '<', $id)->orderBy('id', 'DESC')->limit(1)->get();
