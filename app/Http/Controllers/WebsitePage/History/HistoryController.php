@@ -10,24 +10,17 @@ use App\Models\Chapter;
 class HistoryController extends Controller
 {
     public function index()
-    {   
+    {
         // session()->flush();
         $histories = session()->get('history');
-        // dd($histories);
-        $arr = [];
-        foreach ($histories as $index => $history) {
-            
-        }
-        // krsort($histories['created_at']);
-        // asort($history[]);
 
-        dd($histories);
+        // dd($histories);
         $top_comics = Comic::limit(10)->get();
         return view('website.history.index', compact('top_comics'));
     }
 
     public function create_comic_history_by_session(Request $request)
-    {   
+    {
         $comic_id = $request->comic_id;
         $chapter_id = $request->chapter_id;
 
@@ -36,7 +29,7 @@ class HistoryController extends Controller
             $comic = Comic::find($comic_id);
             $chapter = Chapter::find($chapter_id);
             $history = session()->has('history') ? session()->get('history') : null;
-            if(isset($history[$comic_id])){
+            if (isset($history[$comic_id])) {
                 if (!in_array($chapter->id, $history[$comic_id]['chapter_ids'])) {
                     $history[$comic_id]['chapter_ids'][] = $chapter->id;
                     $history[$comic_id]['chapter_name'] = $chapter->number;
@@ -56,8 +49,10 @@ class HistoryController extends Controller
                     'created_at' => date('Y-m-d H:i:s'),
                 ];
             }
+            uasort($history, function ($a, $b) {
+                return strcmp($b['created_at'], $a['created_at']);
+            });
             session()->put('history', $history);
-
             return response()->json([
                 'comics' => [
                     'comic_id' => $comic->id,
@@ -79,7 +74,7 @@ class HistoryController extends Controller
     }
 
     public function remove_comic_history_by_session(Request $request)
-    {   
+    {
         $comic_id = $request->comic_id;
         $chapter_id = $request->chapter_id;
 
@@ -88,7 +83,7 @@ class HistoryController extends Controller
             $comic = Comic::find($comic_id);
             $chapter = Chapter::find($chapter_id);
             $history = session()->has('history') ? session()->get('history') : null;
-            if(isset($history[$comic_id])){
+            if (isset($history[$comic_id])) {
                 if (!in_array($chapter->id, $history[$comic_id]['chapter_ids'])) {
                     $history[$comic_id]['chapter_ids'][] = $chapter->id;
                     $history[$comic_id]['chapter_name'] = $chapter->number;

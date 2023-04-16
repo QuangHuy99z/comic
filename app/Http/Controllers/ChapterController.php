@@ -84,6 +84,9 @@ class ChapterController extends Controller
                     'created_at' => date('Y-m-d H:i:s'),
                 ];
             }
+            uasort($history, function ($a, $b) {
+                return strcmp($b['created_at'], $a['created_at']);
+            });
             session()->put('history', $history);
             $next = Chapter::Where('comic_id', '=', $chapter->comic->id)->Where('id', '>', $id)->orderBy('id', 'ASC')->limit(1)->get();
             // check xem chapter đó thuộc comic nào và tiến lùi theo id của chapter
