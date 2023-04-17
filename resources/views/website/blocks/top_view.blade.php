@@ -50,9 +50,12 @@
                                                 }
                                             ?> 
                                             data-comic-id="{{$top_comic->id}}" data-chapter-id="{{ $top_comic->chapters->count() != 0 ? $top_comic->last_chapter->id : ''}}" data-chapter-link="{{ $top_comic->chapters->count() != 0 ? route('chapter', [$top_comic->slug, $top_comic->last_chapter->number, $top_comic->id]) : ''}}" title="{{isset($top_comic->chapter) ? 'Chapter ' . $top_comic->chapter->number : ''}}">
-                                            {{isset($top_comic->chapter) ? 'Chapter ' . $top_comic->last_chapter->number : ''}}
+                                            {{isset($top_comic->chapter) ? 'Chapter ' . $top_comic->last_chapter->number : 'No chapter'}}
                                         </a>
-                                        <span class="view pull-right"></span>
+                                        <span class="view pull-right">
+                                            {{$top_comic->ranks_count}}
+                                            <i class="fa fa-eye"></i>
+                                        </span>
                                     </p>
                                 </div>
                             </li>

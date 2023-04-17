@@ -73,7 +73,7 @@ class ComicController extends Controller
     {
         $comic = Comic::where('slug', $slug)->first();
         if ($comic) {
-            $top_comics = Comic::limit(10)->get();
+            $top_comics = Comic::withCount('ranks')->orderBy('ranks_count', 'desc')->limit(10)->get();
             return view('website.comic.index', compact('comic', 'top_comics'));
         }
         return abort(404);

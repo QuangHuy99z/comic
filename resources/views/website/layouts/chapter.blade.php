@@ -58,8 +58,8 @@
                     } else toggleDarkObj[_0xcca4[18]] && toggleDarkObj[_0xcca4[18]][_0xcca4[19]](toggleDarkObj);
                 </script>
                 <ul class="nav-account list-inline hidden-xs pull-right">
-                    <li class="login-link"><a rel="nofollow" href="/Secure/Login.aspx?returnurl=%2Ftruyen-tranh%2Fssssgridman-neon-genesis-junior-high-school-students-diary%2Fchap-1%2F520346">Đăng nhập</a></li>
-                    <li class="register-link"><a rel="nofollow" href="/Secure/Register.aspx?returnurl=%2Ftruyen-tranh%2Fssssgridman-neon-genesis-junior-high-school-students-diary%2Fchap-1%2F520346">Đăng ký</a></li>
+                    <li class="login-link"><a rel="nofollow" href="{{route('login')}}">Đăng nhập</a></li>
+                    <li class="register-link"><a rel="nofollow" href="{{route('register')}}">Đăng ký</a></li>
                 </ul>
             </div>
         </div>

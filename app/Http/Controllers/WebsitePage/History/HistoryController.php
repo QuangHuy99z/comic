@@ -12,10 +12,10 @@ class HistoryController extends Controller
     public function index()
     {
         // session()->flush();
-        $histories = session()->get('history');
+        // $histories = session()->get('history');
 
         // dd($histories);
-        $top_comics = Comic::limit(10)->get();
+        $top_comics = Comic::withCount('ranks')->orderBy('ranks_count', 'desc')->limit(10)->get();
         return view('website.history.index', compact('top_comics'));
     }
 

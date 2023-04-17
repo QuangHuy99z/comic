@@ -66,6 +66,12 @@
                                             @endforeach
                                         </p>
                                     </li>
+                                    <li class="row">
+                                        <p class="name col-xs-4">
+                                            <i class="fa fa-eye"></i> Lượt xem
+                                        </p>
+                                        <p class="col-xs-8">{{$comic->ranks->count()}}</p>
+                                    </li>
                                 </ul>
                                 @csrf
                                 <div class="mrt5 mrb10" itemscope="" itemtype="http://schema.org/Book">

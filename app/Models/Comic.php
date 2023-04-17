@@ -40,4 +40,9 @@ class Comic extends Model
     {
         return $this->hasOne(Chapter::class)->latest();
     }
+
+    public function ranks()
+    {
+        return $this->hasMany(Rank::class);
+    }
 }

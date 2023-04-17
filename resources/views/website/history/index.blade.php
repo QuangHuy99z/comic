@@ -22,17 +22,6 @@ CommicBuddy
                 <div class="mrb10 Module Module-233">
                     <div class="ModuleContent">
                         <h1 class="page-title">Lịch sử đọc truyện <em class="fa fa-angle-right"></em></h1>
-                        <p>Lịch sử đọc truyện "Theo tài khoản" chỉ được lưu khi bạn đọc hết chapter</p>
-                        <div class="mrt15 visited-tab">
-                            <ul class="comment-nav text-center" style="font-size:16px;margin-bottom:15px;">
-                                <li class="active">
-                                    <a href="/lich-su">Từ thiết bị</a>
-                                </li>
-                                <li>
-                                    <a href="/lich-su?t=3">Theo tài khoản <span class="dot"><span class="ping"></span></span></a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
                 <div class="items visited-comics-page Module Module-273">

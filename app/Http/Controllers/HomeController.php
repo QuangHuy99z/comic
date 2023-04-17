@@ -11,10 +11,12 @@ class HomeController extends Controller
     {   
         $sliders = Comic::limit(10)->get();
         $comics = Comic::latest()->paginate(2);
-        $top_comics = Comic::limit(10)->get();
+        // $top_comics = Comic::limit(10)->get();
+        $top_comics = Comic::withCount('ranks')->orderBy('ranks_count', 'desc')->limit(10)->get();
         return view('website.home.index', compact('sliders', 'comics', 'top_comics'))
         ->with('i', (request()->input('page', 1) - 1) * 10);
     }
+
     public function genre(Request $request)
     {
         if ($request->getMethod() == 'GET') {

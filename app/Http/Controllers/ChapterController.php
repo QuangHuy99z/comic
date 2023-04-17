@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Chapter;
 use App\Models\Comic;
 use App\Models\Author;
+use App\Models\Rank;
 
 class ChapterController extends Controller
 {
@@ -60,6 +61,23 @@ class ChapterController extends Controller
         // lấy ra tên truyện 
         $chapter = Chapter::find($id); // lấy ra chapter thuộc truyện vừa lấy 
         if ($chapter){ // check xem có chapter ko
+            // Check comic rank up
+            if(auth()->guard('web')->check()) {
+                // Rank::where('rank', '=', $chapter);
+                $user_id = auth()->guard('web')->user()->id;
+                $ranks = Rank::where([
+                    ['comic_id', '=', $comic->id],
+                    ['user_id', '=', $user_id],
+                ])->get();
+                if (count($ranks) == 0) {
+                    Rank::create([
+                        'comic_id' => $comic->id,
+                        'user_id' => $user_id,
+                    ]);
+                    dd("okie");
+                }
+            }
+            // End
             $id = $chapter->id; // lấy đc ra id của chapter
             $comic = Comic::find($comic->id);
             $chapter = Chapter::find($chapter->id);
