@@ -17,7 +17,6 @@
     <div class="form-group">
         <input id="password" type="password" required="required" name="password" class="form-control" />
         <label class="form-label">Password</label>
-        <p class="alert">Invalid Credentials..!!</p>
         <button class="btn">Login </button>
     </div>
     </form>

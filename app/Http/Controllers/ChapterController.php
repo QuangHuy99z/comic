@@ -30,14 +30,14 @@ class ChapterController extends Controller
 
         $chapter = Chapter::create($add_chapter);
         if($request->chapter_image){
-            foreach ($request->chapter_image as $fileItem)
+            foreach ($request->chapter_image as $fileItem) {
                 $fileNameItem = $fileItem->getClientOriginalName(); 
                 $pathNameItem =  STR::random(5).'-'.date('his').'-'.STR::random(3).'.'.$fileItem->getClientOriginalExtension(); 
                 $pathImg = $fileItem->move(public_path().'/uploads/comics/', $pathNameItem);  
                 $chapter_image = $chapter->chapter_images()->create([ 
                     'image' => $pathNameItem 
                 ]);
-            ;
+            }
         }
         return redirect()->route('admin.chapters.index')->with('message', 'Add chapter for comic ' . $chapter->comic->name .' successfully');
     }
@@ -74,7 +74,6 @@ class ChapterController extends Controller
                         'comic_id' => $comic->id,
                         'user_id' => $user_id,
                     ]);
-                    dd("okie");
                 }
             }
           

@@ -90,7 +90,7 @@ class CustomerController extends Controller
             return view('website.profile.change_password');
         }
         $customer = User::findOrFail(Auth::guard('web')->user()->id);
-        // check từ web để lấy ra id của ng dùng đó
+
         if (Hash::check($request->old_password, $customer->password)){
             
             if($request->old_password == $request->new_password){
