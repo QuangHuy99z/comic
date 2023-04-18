@@ -9,5 +9,10 @@ class ChapterImage extends Model
 {
     use HasFactory;
     protected $table = 'chapter_images';
-    protected $guarded = [];
+    protected $fillable = [
+        'chapter_id',
+        'image',
+        'created_at',
+        'updated_at'
+    ];
 }

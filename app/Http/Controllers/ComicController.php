@@ -42,24 +42,23 @@ class ComicController extends Controller
         ];
         if($request->fimage){
             $file = $request->fimage;
-            $fileName = $file->getClientOriginalName();
             $pathName =  STR::random(5).'-'.date('his').'-'.STR::random(3).'.'.$file->getClientOriginalExtension();
             $file->move(public_path().'/uploads/comics/', $pathName);
-            $add_comic['image'] = $pathName; // check xem có ảnh ko rồi thêm vào biến add comic
+            $add_comic['image'] = $pathName; 
         }
         $comic = Comic::create($add_comic);
 
-        foreach ($request->authors as $author): // duyệt ra số tác giả đc thêm từ giao diện
+        foreach ($request->authors as $author): 
             $authors = Author::create([
                     'name' => $author,
                     'slug' => STR::slug($author) 
             ]);
             $comic->authors()->attach($authors->id);
-            // tạo vào bảng trung gian với id của author
+          
         endforeach;
 
         $comic->genres()->attach($request->genres);
-        // tạo vào bảng trung gian với id của genres
+      
         return redirect()->route('admin.comics.index')->with('message', 'Add comic successfully');
     }
 
@@ -106,7 +105,6 @@ class ComicController extends Controller
         );
         if($request->fimage){
             $file = $request->fimage;
-            $fileName = $file->getClientOriginalName();
             $pathName =  STR::random(5).'-'.date('his').'-'.STR::random(3).'.'.$file->getClientOriginalExtension();
             $file->move(public_path().'/uploads/comics/', $pathName);
             $comic->image= $pathName;

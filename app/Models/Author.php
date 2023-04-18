@@ -9,7 +9,12 @@ class Author extends Model
 {
     use HasFactory;
     protected $table = 'authors';
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'slug',
+        'created_at',
+        'updated_at'
+    ];
 
     public function comics()
     {

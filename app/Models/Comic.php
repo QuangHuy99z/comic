@@ -9,7 +9,15 @@ class Comic extends Model
 {
     use HasFactory;
     protected $table = 'comics';
-    protected $guarded = [];
+    protected $fillable = [
+        'title',
+        'name',
+        'content',
+        'slug',
+        'status',
+        'created_at',
+        'updated_at'
+    ];
 
     public function genres()
     {
@@ -26,14 +34,9 @@ class Comic extends Model
         return $this->hasMany(Chapter::class);
     }
 
-    public function chapter()
-    {
-        return $this->hasOne(Chapter::class)->latest();
-    }
-
     public function first_chapter()
     {
-        return $this->hasOne(Chapter::class);
+        return $this->hasOne(Chapter::class)->oldest();
     }
 
     public function last_chapter()

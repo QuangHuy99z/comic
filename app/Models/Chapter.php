@@ -9,7 +9,12 @@ class Chapter extends Model
 {
     use HasFactory;
     protected $table = 'chapters';
-    protected $guarded = [];
+    protected $fillable = [
+        'number',
+        'comic_id',
+        'created_at',
+        'updated_at'
+    ];
 
     public function comic()
     {
