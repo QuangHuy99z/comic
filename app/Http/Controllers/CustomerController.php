@@ -92,11 +92,7 @@ class CustomerController extends Controller
         $customer = User::findOrFail(Auth::guard('web')->user()->id);
 
         if (Hash::check($request->old_password, $customer->password)){
-            
-            if($request->old_password == $request->new_password){
-                return redirect()->back()->with('message', 'New password must be different from old password');
-            }
-            else if($request->new_password != $request->confirm_password){
+            if($request->new_password != $request->confirm_password){
                 return redirect()->back()->with('message', 'New password must be the same as confirm password');
             }
             else {

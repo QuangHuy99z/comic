@@ -112,10 +112,9 @@ class ComicController extends Controller
             $comic->image= $pathName;
             $comic->save();
         }
+
         $comic->authors()->sync($request->authors);
-        // cập nhật lại author 
         $comic->genres()->sync($request->genres);
-        // cập nhật lại genres
         return redirect()->route('admin.comics.edit', $id)->with('message', 'Update comic successfully');
     }
 

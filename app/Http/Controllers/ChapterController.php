@@ -31,8 +31,7 @@ class ChapterController extends Controller
         $chapter = Chapter::create($add_chapter);
         if($request->chapter_image){
             foreach ($request->chapter_image as $fileItem) {
-                $fileNameItem = $fileItem->getClientOriginalName(); 
-                $pathNameItem =  STR::random(5).'-'.date('his').'-'.STR::random(3).'.'.$fileItem->getClientOriginalExtension(); 
+                $pathNameItem =  STR::random(5).'-'.date('his').'-'.STR::random(3).'.'. $fileItem->getClientOriginalExtension(); 
                 $pathImg = $fileItem->move(public_path().'/uploads/comics/', $pathNameItem);  
                 $chapter_image = $chapter->chapter_images()->create([ 
                     'image' => $pathNameItem 
@@ -51,6 +50,7 @@ class ChapterController extends Controller
 
             return view('admin.chapters.detail', compact('comic', 'prev', 'next'));
         }
+        
         $comic = Comic::findOrFail($id);
         return redirect()->route('admin.chapters.edit', $id)->with('message', 'Update chapter successfully');
     }
