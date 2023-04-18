@@ -19,6 +19,7 @@ class CreateComicsTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->text('content');
+            $table->string('slug')->nullable();
             $table->string('status')->default('Ongoing');
             $table->timestamps();
         });
@@ -31,6 +32,6 @@ class CreateComicsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('commics');
+        Schema::dropIfExists('comics');
     }
 }

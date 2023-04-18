@@ -36,10 +36,11 @@ class CustomerController extends Controller
         if ($request->getMethod() == 'GET') {
             return view('website.register.index');
         }
+
         if(User::where('email', '=', $request->email)->first()){
-            // so sánh trong db để xem tk tồn tại hay chưa
             return redirect()->back()->with('message', 'The account already exists in the system');
         }
+        
         User::create([
             'name' => $request->name,
             'email' => $request->email,
