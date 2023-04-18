@@ -10,7 +10,7 @@ use App\Models\Rank;
 
 class ChapterController extends Controller
 {
-    public function index()
+    public function get_list_chapters()
     {
         $comics = Comic::latest()->paginate(10);
         return view('admin.chapters.index',compact('comics'))->with('i', (request()->input('page', 1) - 1) * 5);

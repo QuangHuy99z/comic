@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use App\Models\Genres;
-use App\Models\Comic;
 use Illuminate\Http\Request;
 
 class GenresController extends Controller
 {
-    public function index()
+    public function get_list_genres()
     {
         $genres = Genres::latest()->paginate(10);
   
@@ -24,7 +23,7 @@ class GenresController extends Controller
         Genres::create([
             'name' => $request->name,
             'description' => $request->description,
-            'slug' => STR::slug($request->name),
+            'slug' => $this->uniqueSlug($request->name),
         ]);
         return redirect()->route('admin.genres.index')->with('message', 'Add genres successfully');
     }
@@ -38,6 +37,7 @@ class GenresController extends Controller
         $genre  = Genres::findOrFail($id);
         $genre->name = $request->name;
         $genre->description = $request->description;
+        $genre->slug = $this->uniqueSlug($request->name);
         $genre->save();
         return redirect()->route('admin.genres.edit', $id)->with('message', 'Update genre successfully');
     }
@@ -58,5 +58,13 @@ class GenresController extends Controller
         $genre  = Genres::findOrFail($id);
         $genre->delete();
         return redirect()->route('admin.genres.index')->with('message', 'Delete genre successfully');
+    }
+
+    public function uniqueSlug($title)
+    {
+        $slug = Str::slug($title, '-');
+        $count = Genres::where('slug', 'LIKE', "{$slug}%")->count();
+        $newCount = $count > 0 ? ++$count : '';
+        return $newCount > 0 ? "$slug-$newCount" : $slug;
     }
 }

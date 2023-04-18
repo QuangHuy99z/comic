@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                <form action="{{route('admin.comics.create')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.comics.create')}}" method="post" enctype="multipart/form-data" autocomplete="off">
                     @csrf
                     <div class="ui-layout__sections">
                         <div class="ui-layout__section ui-layout__section--primary">
@@ -44,29 +44,16 @@
                                             </div>
                                             <div class="next-input-wrapper">
                                                 <label class="next-label" for="product-name">
-                                                    Comic <Title></Title>
+                                                    Comic Title
                                                 </label>
-                                                <input required="" id="title""
+                                                <input required="" id="title"
                                                     placeholder="Input Comic Title" class="next-input" size="30"
                                                     type="text" name="title">
                                             </div>
                                             <div class="next-input-wrapper">
                                                 <label class="next-label" for="content">Content</label>
-                                                <textarea name="content" id="content"
-                                                    rows="6"></textarea>
+                                                <textarea name="content" style="padding: 5px 10px"></textarea>
                                             </div>
-                                            <script>
-                                                CKEDITOR.replace('content', {
-                                                    height: "200px",
-                                                })
-                                                CKEDITOR.config.autoParagraph = false;
-                                                CKEDITOR.on('instanceReady', function (e) {
-                                                    // First time
-                                                    e.editor.document.getBody().setStyle('color', 'red');
-                                                    e.editor.document.getBody().setStyle('background-color', '#fff');
-                                                });
-                                            </script>
-
                                         </div>
                                     </div>
                                 </section>
@@ -111,7 +98,7 @@
                                         <div class="next-card__section">
                                             <div class="next-upload-dropzone__wrapper">
                                                 <!-- Upload Image -->
-                                                <img src="" onerror="this.src='https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'" alt="customer-image" class="img-avatar" id="img-avatar" style="width: 400px; height: 400px; display: block; margin-left: auto; margin-right: auto;">
+                                                <img src="" onerror="this.onerror=null; this.src='{{$no_product_image}}'" alt="customer-image" class="img-avatar" id="img-avatar" style="width: 400px; height: 400px; display: block; margin-left: auto; margin-right: auto;">
                                                 <!-- Process if image is null -->
                                             </div>
                                         </div>
@@ -194,13 +181,25 @@
                                                             <select
                                                                 class="next-input select2 select2-hidden-accessible authors_select2"
                                                                 name="authors[]" multiple required>
+                                                                <option value="">Input Authors</option>
+                                                                @foreach($authors as $author)
+                                                                    <option value="{{$author->id}}">{{ $author->name }}</option>
+                                                                @endforeach
                                                             </select>
                                                             <script>
                                                                 $(document).ready(function () {
                                                                     $('.authors_select2').select2(
                                                                         {
                                                                             placeholder: 'Input author',
-                                                                            tags: true,
+                                                                            allowClear: true,
+                                                                            language: {
+                                                                                noResults: function () {
+                                                                                    return 'Author not found';
+                                                                                },
+                                                                            },
+                                                                            escapeMarkup: function (markup) {
+                                                                                return markup;
+                                                                            },
                                                                         },
                                                                     );
                                                                 });
@@ -231,7 +230,7 @@
                                                                             allowClear: true,
                                                                             language: {
                                                                                 noResults: function () {
-                                                                                    return 'Error Genres';
+                                                                                    return 'Genre not found';
                                                                                 },
                                                                             },
                                                                             escapeMarkup: function (markup) {

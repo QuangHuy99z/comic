@@ -114,7 +114,7 @@
                                             </div>
                                             <div class="next-input-wrapper">
                                                 <label class="next-label" for="product-name">
-                                                    Comic <Title></Title>
+                                                    Comic Title
                                                 </label>
                                                 <input required="" id="title" value="{{$comic->title}}"
                                                     placeholder="Nhập tên sản phẩm" class="next-input" size="30"
@@ -122,21 +122,8 @@
                                             </div>
                                             <div class="next-input-wrapper">
                                                 <label class="next-label" for="content">Content</label>
-                                                <textarea name="content" id="content"
-                                                    rows="6">{{$comic->content}}</textarea>
+                                                <textarea name="content" style="padding: 5px 10px">{{$comic->content}}</textarea>
                                             </div>
-                                            <script>
-                                                CKEDITOR.replace('content', {
-                                                    height: "200px",
-                                                })
-                                                CKEDITOR.config.autoParagraph = false;
-                                                CKEDITOR.on('instanceReady', function (e) {
-                                                    // First time
-                                                    e.editor.document.getBody().setStyle('color', 'red');
-                                                    e.editor.document.getBody().setStyle('background-color', '#fff');
-                                                });
-                                            </script>
-
                                         </div>
                                     </div>
                                 </section>
@@ -181,7 +168,7 @@
                                         <div class="next-card__section">
                                             <div class="next-upload-dropzone__wrapper">
                                                 <!-- Upload Image -->
-                                                <img src="{{asset('/uploads/comics/'.$comic->image)}}" onerror="this.src='https://www.vascara.com/uploads/avatar/2021/April/25/1111111111111-1571600-1619350255-medium.png'" alt="customer-image" class="img-avatar" id="img-avatar" style="width:;">
+                                                <img src="{{asset('/uploads/comics/'.$comic->image)}}" onerror="this.onerror=null; this.src='{{$no_product_image}}'" alt="customer-image" class="img-avatar" id="img-avatar" style="display:block; margin: 0 auto; width: 400px; height: 400px;">
                                                 <!-- Process if image is null -->
                                             </div>
                                         </div>
@@ -268,11 +255,13 @@
                                                             <select
                                                                 class="next-input select2 select2-hidden-accessible authors_select2"
                                                                 name="authors[]" multiple required>
-                                                                <option value="">Nhập tác giả</option>
+                                                                <option value="">Input Authors</option>
                                                                 @foreach($authors as $author)
-                                                                    @foreach($comic->authors as $au_thor)
-                                                                    <option value="{{$author->id}}" <?php if ($au_thor->id==$author->id) { echo 'selected';}?>>{{ $author->name}}</option>
-                                                                    @endforeach
+                                                                    @if (in_array($author->id, $all_authors_of_current_comic))
+                                                                        <option value="{{$author->id}}" selected >{{ $author->name }}</option>
+                                                                    @else
+                                                                        <option value="{{$author->id}}" >{{ $author->name }}</option>
+                                                                    @endif
                                                                 @endforeach
                                                             </select>
                                                             <script>
@@ -280,7 +269,15 @@
                                                                     $('.authors_select2').select2(
                                                                         {
                                                                             placeholder: 'Input author',
-                                                                            tags: true,
+                                                                            allowClear: true,
+                                                                            language: {
+                                                                                noResults: function () {
+                                                                                    return 'Author not found';
+                                                                                },
+                                                                            },
+                                                                            escapeMarkup: function (markup) {
+                                                                                return markup;
+                                                                            },
                                                                         },
                                                                     );
                                                                 });
@@ -300,9 +297,11 @@
                                                                 multiple required>
                                                                 <option value="">Input Genres</option>
                                                                 @foreach($genres as $genre)
-                                                                    @foreach($comic->genres as $gen_re)
-                                                                    <option value="{{$genre->id}}" <?php if ($gen_re->id ==$genre->id) { echo 'selected';}?>>{{ $genre->name }}</option>
-                                                                    @endforeach
+                                                                    @if (in_array($author->id, $all_genres_of_current_comic))
+                                                                    <option value="{{$genre->id}}" selected >{{ $genre->name }}</option>
+                                                                    @else
+                                                                    <option value="{{$genre->id}}" >{{ $genre->name }}</option>
+                                                                    @endif
                                                                 @endforeach
                                                             </select>
                                                             <script>
@@ -313,7 +312,7 @@
                                                                             allowClear: true,
                                                                             language: {
                                                                                 noResults: function () {
-                                                                                    return 'Error Genres';
+                                                                                    return 'Genre not found';
                                                                                 },
                                                                             },
                                                                             escapeMarkup: function (markup) {

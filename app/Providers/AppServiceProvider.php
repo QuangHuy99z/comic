@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $no_product_image = asset('uploads/no_image/no-product-image.jpg');
+        view()->share('no_product_image', $no_product_image);
     }
 }

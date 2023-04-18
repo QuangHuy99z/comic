@@ -71,8 +71,10 @@
                                 <td><a href="{{route('admin.comics.edit', $comic->id)}}"
                                         style="color: #495057;; text-decoration: none;"><img
                                             style="width: 100%; height: 80px"
-                                            src="{{asset('/uploads/comics/'.$comic->image)}}" alt="{{$comic->image}}"
-                                            srcset="{{asset('/uploads/comics/'.$comic->image)}}"></a></td>
+                                            src="{{asset('/uploads/comics/'.$comic->image)}}"
+                                            onerror="this.onerror=null; this.src='{{$no_product_image}}'" alt="{{$comic->image}}">
+                                    </a>
+                                </td>
                                 <td>
                                     @php
                                     $genres = array();

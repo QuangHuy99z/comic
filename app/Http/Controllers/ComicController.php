@@ -15,7 +15,7 @@ class ComicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function get_list_comics()
     {
         $comics = Comic::latest()->paginate(10);
         return view('admin.comics.index', compact('comics'))
@@ -29,7 +29,7 @@ class ComicController extends Controller
      */
     public function create(Request $request)
     {
-        if ($request->isMethod('get')){
+        if ($request->isMethod('get')) {
             $genres = Genres::all();
             $authors = Author::all();
             return view('admin.comics.create', compact('genres', 'authors'));
@@ -40,23 +40,16 @@ class ComicController extends Controller
             "content" => strip_tags($request->content),
             "slug" => STR::slug($request->name),
         ];
-        if($request->fimage){
+        if ($request->fimage) {
             $file = $request->fimage;
-            $pathName =  STR::random(5).'-'.date('his').'-'.STR::random(3).'.'.$file->getClientOriginalExtension();
-            $file->move(public_path().'/uploads/comics/', $pathName);
-            $add_comic['image'] = $pathName; 
+            $pathName =  STR::random(5) . '-' . date('his') . '-' . STR::random(3) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/uploads/comics/', $pathName);
+            $add_comic['image'] = $pathName; // check xem có ảnh ko rồi thêm vào biến add comic
+        } else {
+            $add_comic['image'] = "";
         }
         $comic = Comic::create($add_comic);
-
-        foreach ($request->authors as $author): 
-            $authors = Author::create([
-                    'name' => $author,
-                    'slug' => STR::slug($author) 
-            ]);
-            $comic->authors()->attach($authors->id);
-          
-        endforeach;
-
+        $comic->authors()->attach($request->authors);
         $comic->genres()->attach($request->genres);
       
         return redirect()->route('admin.comics.index')->with('message', 'Add comic successfully');
@@ -68,7 +61,7 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug="")
+    public function show($slug = "")
     {
         $comic = Comic::where('slug', $slug)->first();
         if ($comic) {
@@ -86,13 +79,30 @@ class ComicController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        if ($request->isMethod('get')){
+        if ($request->isMethod('get')) {
             $comic = Comic::findOrFail($id);
             $genres = Genres::all();
             $authors = Author::all();
+            $all_authors_of_current_comic = [];
+            foreach ($authors as $author) :
+                foreach ($comic->authors as $writer) :
+                    if ($author->id == $writer->id && !in_array($writer->id, $all_authors_of_current_comic)) :
+                        $all_authors_of_current_comic[] = $writer->id;
+                    endif;
+                endforeach;
+            endforeach;
+            $all_genres_of_current_comic = [];
+            foreach ($genres as $genre) :
+                foreach ($comic->genres as $type) :
+                    if ($genre->id == $type->id && !in_array($type->id, $all_genres_of_current_comic)) :
+                        $all_genres_of_current_comic[] = $type->id;
+                    endif;
+                endforeach;
+            endforeach;
+            // dd($all_genre_of_current_comic);
             $prev = Comic::Where('id', '>', $id)->orderBy('id', 'DESC')->limit(1)->get();
             $next = Comic::Where('id', '<', $id)->orderBy('id', 'DESC')->limit(1)->get();
-            return view('admin.comics.detail', compact('comic', 'genres', 'authors', 'next', 'prev'));
+            return view('admin.comics.detail', compact('comic', 'genres', 'authors', 'next', 'prev', 'all_authors_of_current_comic', 'all_genres_of_current_comic'));
         }
         $comic = Comic::findOrFail($id);
         $comic->update(
@@ -103,11 +113,11 @@ class ComicController extends Controller
                 'status' => $request->status,
             ]
         );
-        if($request->fimage){
+        if ($request->fimage) {
             $file = $request->fimage;
-            $pathName =  STR::random(5).'-'.date('his').'-'.STR::random(3).'.'.$file->getClientOriginalExtension();
-            $file->move(public_path().'/uploads/comics/', $pathName);
-            $comic->image= $pathName;
+            $pathName =  STR::random(5) . '-' . date('his') . '-' . STR::random(3) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/uploads/comics/', $pathName);
+            $comic->image = $pathName;
             $comic->save();
         }
 

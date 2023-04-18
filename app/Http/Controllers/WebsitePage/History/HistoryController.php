@@ -9,7 +9,7 @@ use App\Models\Chapter;
 
 class HistoryController extends Controller
 {
-    public function index()
+    public function get_list_histories()
     {
         // session()->flush();
         // $histories = session()->get('history');

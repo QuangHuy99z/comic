@@ -13,7 +13,7 @@
                     <div class="page-title-heading">
                         <div class="page-title-icon"><i class="pe-7s-umbrella icon-gradient bg-sunny-morning"></i></div>
                         <div>
-                            Genres Dashboard
+                            Authors Dashboard
                         </div>
 
                         
@@ -36,11 +36,11 @@
                 <div class="card-header-tab card-header">
                     <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
                         <i class="header-icon lnr-dice mr-3 text-muted opacity-6"> </i>
-                        List of Genres
+                        List of Authors
                     </div>
                     <div class="btn-actions-pane-right actions-icon-btn">
                         <div class="btn-group dropdown">
-                            <a href="{{route('admin.genres.create')}}">
+                            <a href="{{route('admin.authors.create')}}">
                                 <div type="button" class="btn-icon btn-icon-only btn btn-link">
                                     Add <i class="pe-7s-plus btn-icon-wrapper"></i>
                                 </div>
@@ -54,16 +54,14 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Description</th>
                                 <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($genres as $genre)
+                            @foreach($authors as $author)
                                     <tr>
-                                        <td><a href="{{route('admin.genres.edit', $genre->id)}}" style="color: #495057; text-decoration: none;">{{$genre->name}}</a></td>
-                                        <td><a href="{{route('admin.genres.edit', $genre->id)}}" style="color: #495057; text-decoration: none;">{{$genre->description}}</a></td>
-                                        <td><a href="{{route('admin.genres.edit', $genre->id)}}" style="color: #495057; text-decoration: none;">{{$genre->created_at}}</a></td>
+                                        <td><a href="{{route('admin.authors.edit', $author->id)}}" style="color: #495057; text-decoration: none;">{{$author->name}}</a></td>
+                                        <td><a href="{{route('admin.authors.edit', $author->id)}}" style="color: #495057; text-decoration: none;">{{$author->created_at}}</a></td>
                                     </tr>
                                 </a>
                             @endforeach    

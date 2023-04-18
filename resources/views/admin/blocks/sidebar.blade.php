@@ -45,6 +45,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{route('admin.authors.index')}}" style="font-size: 18px;">
+                        <i class="metismenu-icon pe-7s-plugin" style="font-size: 20px"></i>Authors
+                    </a>
+                </li>
+                <li>
                     <a href="{{route('admin.genres.index')}}" style="font-size: 18px;">
                         <i class="metismenu-icon pe-7s-plugin" style="font-size: 20px"></i>Genres
                     </a>

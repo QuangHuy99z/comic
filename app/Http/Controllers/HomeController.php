@@ -7,7 +7,7 @@ use App\Models\Comic;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function get_list_comics_in_home()
     {   
         $sliders = Comic::limit(10)->get();
         $comics = Comic::latest()->paginate(2);
