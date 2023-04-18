@@ -18,6 +18,7 @@ use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminPage\Author\AuthorController;
 use App\Http\Controllers\WebsitePage\History\HistoryController;
 
 

@@ -11,6 +11,16 @@ CommicBuddy
 					<h2 class="page-title">Recommend Manga <i class="fa fa-angle-right"></i></h2>
 					<div class="items-slide">
 						<div class="owl-carousel clearfix">
+							@php
+                            $chapter_ids = [];
+                            @endphp
+                            @if(session()->has('history') && session()->get('history') != null)
+								@foreach(session()->get('history') as $id => $history)
+									@php
+									$chapter_ids[$id] = $history['chapter_ids'];
+									@endphp
+                            	@endforeach
+                            @endif
 							@foreach ($sliders as $slider)
 							<div class="item">
 								<a href="{{route('comic', $slider->slug)}}">
@@ -20,7 +30,20 @@ CommicBuddy
 									<h3>
 										<a href="{{route('comic', $slider->slug)}}" title="{{$slider->name}}">{{$slider->name}}</a>
 									</h3>
-									<a href="http://www.nettruyenpro.com/truyen-tranh/chien-hon-tuyet-the/chap-285/793301" title="{{isset($slider->chapter) ? 'Chapter' . $slider->chapter->number : ''}}">{{isset($slider->chapter) ? 'Chapter ' . $slider->chapter->number : ''}}</a>
+									<a href="{{$slider->chapters->count() != 0 ? route('chapter', [$slider->slug, $slider->last_chapter->number, $slider->last_chapter->id]) : ''}}" 
+										<?php 
+                                                if (count($chapter_ids) == 0) {
+                                                    echo 'style="color: #fff"';
+                                                } else if($slider->chapters->count() != 0 && count($chapter_ids) && isset($chapter_ids[$slider->id]) && in_array($slider->last_chapter->id, $chapter_ids[$slider->id])) {
+                                                    echo '';
+                                                } else {
+                                                    echo 'style="color: #fff"';
+                                                }
+                                        ?>
+										class="visited-comics"
+										title="{{isset($slider->last_chapter) ? 'Chapter' . $slider->last_chapter->number : ''}}">
+										{{isset($slider->last_chapter) ? 'Chapter ' . $slider->last_chapter->number : ''}}
+									</a>
 								</div>
 							</div>
 							@endforeach
