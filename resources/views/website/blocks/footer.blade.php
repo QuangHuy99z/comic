@@ -18,7 +18,7 @@
                             <ul>
                                 @foreach($categories as $category)
                                     <li>
-                                        <a target="_self" href="#">{{$category->name}}</a>
+                                        <a target="_self" href="{{route('genre_detail', $category->slug)}}">{{$category->name}}</a>
                                     </li>
                                 @endforeach
                             </ul>

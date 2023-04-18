@@ -28,18 +28,20 @@
     @include("website.blocks.footer")
     <div class="navbar-collapse">
         <div class="search-box comicsearchbox">
-            <div class="input-group">
-                <input type="text" class="searchinput form-control" placeholder="Search manga..." autocomplete="off" />
-                <div class="input-group-btn">
-                    <input type="submit" value="" class="searchbutton btn btn-default" />
+            <form action="{{route('genre')}}" method="Get">
+                <div class="input-group">
+                    <input type="text" name="keyword" class="searchinput form-control" placeholder="Search manga..." autocomplete="off" />
+                    <div class="input-group-btn">
+                        <input type="submit" value="" class="searchbutton btn btn-default" />
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
         <div class='Module Module-144'>
             <div class='ModuleContent'>
                 <ul class="nav navbar-nav main-menu">
                     <li class="active">
-                        <a target="_self" href="/">
+                        <a target="_self" href="{{route('home')}}">
                             <i class="fa fa-home hidden-xs">
                             </i>
                             <span class="visible-xs">Home</span>
@@ -82,12 +84,28 @@
             </div>
         </div>
         <ul class="nav-account list-inline">
+            @if(Auth::guard('web')->check())
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="user-menu fn-userbox dropdown-toggle" href="javascript:void(0);">
+                    <img class="fn-thumb" alt="" src="{{Auth::guard('web')->user()->avatar != null ? asset('/uploads/customers/'.Auth::guard('web')->user()->avatar) : asset('uploads/no_image/anonymous.png') }}">
+                    <span>Your Account</span> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a rel="nofollow" class="user-profile-link-desktop" href="{{route('general')}}"><i class="fa fa-user"></i>
+                            Personal Information
+                        </a>
+                    </li>
+                    <li><a rel="nofollow" id="user_logout_desktop" href="{{route('logout')}}"><i class="fa fa-sign-out"></i> Sign-Out</a></li>
+                </ul>
+            </li>
+            @else
             <li class="login-link">
                 <a href="{{route('login')}}">Login</a>
             </li>
             <li class="register-link">
                 <a href="{{route('register')}}">Register</a>
             </li>
+            @endif
         </ul>
     </div>
     <a id="back-to-top">
@@ -103,36 +121,39 @@
         var history_array = []
         let check_variables = setInterval(() => {
             <?php
-                $history = session()->get('history');
-                $history = json_encode(session()->get('history'));
-                echo "history_array = " . $history . ";\n";
+            $history = session()->get('history');
+            $history = json_encode(session()->get('history'));
+            echo "history_array = " . $history . ";\n";
             ?>
         }, 500)
 
         <?php
         if (isset($comic)) {
             echo "var comic_id = " . $comic->id . ";\n";
+        } else {
+            echo "var comic_id = " . "undefined" . ";\n";
         };
         ?>;
-        let check = setInterval(() => {
-            for (const property in history_array) {
-                // console.log(`${property}: ${history_array[property]}`);
-                if (property == comic_id) {
-                    let chapter_ids = history_array[property];
-                    if ('chapter_ids' in chapter_ids) {
-                        chapter_ids = chapter_ids['chapter_ids'];
-                        // console.log(chapter_ids);
-                        $(".chapter a.visited-comics").each(function() {
-                            if (jQuery.inArray($(this).data('chapter-id'), chapter_ids) != -1) {
-                                $(this).removeAttr('style');
-                            }
-                        })
+        if (comic_id !== "undefined") {
+            let check = setInterval(() => {
+                for (const property in history_array) {
+                    // console.log(`${property}: ${history_array[property]}`);
+                    if (property == comic_id) {
+                        let chapter_ids = history_array[property];
+                        if ('chapter_ids' in chapter_ids) {
+                            chapter_ids = chapter_ids['chapter_ids'];
+                            // console.log(chapter_ids);
+                            $(".chapter a.visited-comics").each(function() {
+                                if (jQuery.inArray($(this).data('chapter-id'), chapter_ids) != -1) {
+                                    $(this).removeAttr('style');
+                                }
+                            })
+                        }
+                        break;
                     }
-                    break;
                 }
-            }
-        }, 500);
-
+            }, 500);
+        }
 
         $('.visited-comics').click(function() {
             // alert($(this).data('chapter-link'))
@@ -152,7 +173,7 @@
                     chapter_link: chapter_link,
                 },
                 success: function(data) {
-                    
+
                 }
             })
         });
@@ -171,11 +192,57 @@
                     comic_id: comic_id,
                 },
                 success: function(data) {
-                    
+
                 }
             })
         });
 
+        <?php
+        $check_login = 0;
+        if (auth()->guard('web')->check()) {
+            $check_login = 1;
+        }
+        echo "check_login = " . $check_login . ";\n";
+        ?>
+        if (check_login == 0) {
+            document.getElementById("follow_comic").onclick = function() {
+                alert("You need to Login to follow manga");
+            };
+        } else {
+            $('#follow_comic').click(function(e) {
+                e.preventDefault();
+                let id_comic = $(this).data('id');
+                $.ajax({
+                    url: "{{route('create_follow_comic')}}",
+                    method: "POST",
+                    dataType: 'json',
+                    data: {
+                        _token: $("input[name=_token]").val(),
+                        comic_id: id_comic,
+                    },
+                    success: function(data) {
+                        window.location.href = data.url;
+                    }
+                })
+            });
+
+            $('#unfollow_comic').click(function(e) {
+                e.preventDefault();
+                let id_comic = $(this).data('id');
+                $.ajax({
+                    url: "{{route('delete_follow_comic')}}",
+                    method: "DELETE",
+                    dataType: 'json',
+                    data: {
+                        _token: $("input[name=_token]").val(),
+                        comic_id: id_comic,
+                    },
+                    success: function(data) {
+                        window.location.href = data.url;
+                    }
+                })
+            });
+        }
     </script>
 </body>
 

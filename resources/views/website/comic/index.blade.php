@@ -26,7 +26,7 @@
                     <div class="detail-info">
                         <div class="row">
                             <div class="col-xs-4 col-image">
-                                <img src="{{asset('/uploads/comics/'.$comic->image)}}" alt="{{$comic->name}}">
+                                <img src="{{ $comic->image != '' ? asset('/uploads/comics/'.$comic->image) : $no_product_image }}" alt="{{$comic->name}}">
                             </div>
                             <div class="col-xs-8 col-info">
                                 <ul class="list-info">
@@ -79,7 +79,18 @@
                                         <span itemprop="name">{{$comic->name}}</span>
                                     </a>
                                 </div>
-                                <div class="follow"><a class="btn btn-success" href="javascript:void(0)" data-id="{{$comic->id}}"><i class="fa fa-heart"></i> <span>Follow</span></a>
+                                <div class="follow">
+                                    @if (count($check_follow) == 0)
+                                    <a class="follow-link btn btn-success" id="follow_comic" href="javascript:void(0)" data-id="{{$comic->id}}">
+                                        <i class="fa fa-heart"></i>
+                                        <span>Follow</span>
+                                    </a>
+                                    @else
+                                    <a class="follow-link btn btn-danger" id="unfollow_comic" href="javascript:void(0)" data-id="{{$comic->id}}">
+                                        <i class="fa fa-times"></i>
+                                        <span>Bỏ theo dõi</span>
+                                    </a>
+                                    @endif
                                 </div>
                                 <div class="read-action mrt10">
                                     <a class="btn btn-warning mrb5 visited-comics" data-comic-id="{{$comic->id}}" data-chapter-id="{{ $comic->chapters->count() != 0 ? $comic->first_chapter->id : ''}}" data-chapter-link="{{ $comic->chapters->count() != 0 ? route('chapter', [$comic->slug, $comic->first_chapter->number, $comic->first_chapter->id]) : ''}}" href="{{ $comic->chapters->count() != 0 ? route('chapter', [$comic->slug, $comic->first_chapter->number, $comic->first_chapter->id]) : ''}}">
@@ -114,16 +125,16 @@
                                 $chapter_ids = [];
                                 @endphp
                                 @if(session()->has('history') && session()->get('history') != null)
-                                    @foreach(session()->get('history') as $id => $history)
-                                        @if (in_array($comic->id, $history))
-                                            @if (in_array($comic->id, $history['chapter_ids']))
-                                                @php
-                                                $chapter_ids = $history['chapter_ids'];
-                                                @endphp
-                                            @endif
-                                        @endif
-                                        @break
-                                    @endforeach
+                                @foreach(session()->get('history') as $id => $history)
+                                @if (in_array($comic->id, $history))
+                                @if (in_array($comic->id, $history['chapter_ids']))
+                                @php
+                                $chapter_ids = $history['chapter_ids'];
+                                @endphp
+                                @endif
+                                @endif
+                                @break
+                                @endforeach
                                 @endif
                                 @if($comic->chapters->count() != 0)
                                 @foreach ($comic->chapters as $chapter)
@@ -149,7 +160,7 @@
                 </article>
             </div>
             <!-- Top managa has many views -->
-			@include('website.blocks.top_view')
+            @include('website.blocks.top_view')
         </div>
     </div>
 </main>

@@ -49,4 +49,9 @@ class Comic extends Model
     {
         return $this->hasMany(Rank::class);
     }
+
+    public function follows()
+    {
+        return $this->hasMany(Follow::class);
+    }
 }

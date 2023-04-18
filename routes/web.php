@@ -20,6 +20,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminPage\Author\AuthorController;
 use App\Http\Controllers\WebsitePage\History\HistoryController;
+use App\Http\Controllers\WebsitePage\Follow\FollowController;
 
 
 // Admin
@@ -82,7 +83,9 @@ Route::group(['prefix' => '/'], function () {
     Route::get('search-comic', [HomeController::class, 'genre'])->name("genre");
     Route::get('search-comic/{slug}', [GenresController::class, 'show'])->name("genre_detail");
     // Theo dõi
-    Route::get('/theo-doi', [HomeController::class, 'follow'])->name("follow");
+    Route::get('/theo-doi', [FollowController::class, 'get_list_follow_comics'])->name("follow");
+    Route::post('/create_follow_comic', [FollowController::class, 'create_follow_comic'])->name("create_follow_comic");
+    Route::delete('/delete_follow_comic', [FollowController::class, 'delete_follow_comic'])->name('delete_follow_comic');
     // Lịch sử
     Route::get('/lich-su', [HistoryController::class, 'get_list_histories'])->name("history");
     Route::post('/create_comic_history_by_session', [HistoryController::class, 'create_comic_history_by_session'])->name("create_comic_history_by_session");

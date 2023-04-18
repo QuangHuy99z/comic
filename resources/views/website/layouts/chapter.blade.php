@@ -58,8 +58,21 @@
                     } else toggleDarkObj[_0xcca4[18]] && toggleDarkObj[_0xcca4[18]][_0xcca4[19]](toggleDarkObj);
                 </script>
                 <ul class="nav-account list-inline hidden-xs pull-right">
+                    @if(Auth::guard('web')->check())
+                    <li class="dropdown"><a data-toggle="dropdown" class="user-menu fn-userbox dropdown-toggle" href="javascript:void(0);"><img class="fn-thumb" alt="" src="{{Auth::guard('web')->user()->avatar != null ? asset('/uploads/customers/'.Auth::guard('web')->user()->avatar) : asset('/uploads/customers/'.Auth::guard('web')->user()->avatar)}}">
+                            <span>Your Account</span> <i class="fa fa-caret-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a rel="nofollow" class="user-profile-link-desktop" href="{{route('general')}}"><i class="fa fa-user"></i>
+                                    Personal Information
+                                </a>
+                            </li>
+                            <li><a rel="nofollow" id="user_logout_desktop" href="{{route('logout')}}"><i class="fa fa-sign-out"></i> Sign-Out</a></li>
+                        </ul>
+                    </li>
+                    @else
                     <li class="login-link"><a rel="nofollow" href="{{route('login')}}">Đăng nhập</a></li>
                     <li class="register-link"><a rel="nofollow" href="{{route('register')}}">Đăng ký</a></li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -121,12 +134,14 @@
     @include("website.blocks.footer")
     <div class="navbar-collapse">
         <div class="search-box comicsearchbox">
-            <div class="input-group">
-                <input type="text" class="searchinput form-control" placeholder="Tìm truyện..." autocomplete="off">
-                <div class="input-group-btn">
-                    <input type="submit" value="" class="searchbutton btn btn-default">
+            <form action="{{route('genre')}}" method="Get">
+                <div class="input-group">
+                    <input type="text" class="searchinput form-control" placeholder="Search manga..." autocomplete="off">
+                    <div class="input-group-btn">
+                        <input type="submit" value="" class="searchbutton btn btn-default">
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
         <div class="Module Module-144">
             <div class="ModuleContent">
@@ -175,6 +190,21 @@
             </div>
         </div>
         <ul class="nav-account list-inline">
+            @if(Auth::guard('web')->check())
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="user-menu fn-userbox dropdown-toggle" href="javascript:void(0);">
+                    <img class="fn-thumb" alt="" src="{{Auth::guard('web')->user()->avatar != null ? asset('/uploads/customers/'.Auth::guard('web')->user()->avatar) : asset('uploads/no_image/anonymous.png') }}">
+                    <span>Your Account</span> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a rel="nofollow" class="user-profile-link-desktop" href="{{route('general')}}"><i class="fa fa-user"></i>
+                            Personal Information
+                        </a>
+                    </li>
+                    <li><a rel="nofollow" id="user_logout_desktop" href="{{route('logout')}}"><i class="fa fa-sign-out"></i> Sign-Out</a></li>
+                </ul>
+            </li>
+            @else
             <li class="login-link">
                 <a rel="nofollow" href="{{route('login')}}">
                     Login
@@ -185,6 +215,7 @@
                     Register
                 </a>
             </li>
+            @endif
         </ul>
     </div>
     <a id="back-to-top" style="display: none;">

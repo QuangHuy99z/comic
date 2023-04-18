@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Comic;
 use App\Models\Genres;
 use App\Models\Author;
+use App\Models\Follow;
 
 class ComicController extends Controller
 {
@@ -65,8 +66,17 @@ class ComicController extends Controller
     {
         $comic = Comic::where('slug', $slug)->first();
         if ($comic) {
+            $check_follow = [];
+            if (auth()->guard('web')->check()) {
+                $follows = Follow::where('user_id', '=', auth()->guard('web')->user()->id)->get();
+                foreach ($follows as $follow) :
+                    if ($comic->id == $follow->comic_id && !in_array($follow->comic_id, $check_follow)) :
+                        $check_follow[] = $follow->comic_id;
+                    endif;
+                endforeach;
+            }
             $top_comics = Comic::withCount('ranks')->orderBy('ranks_count', 'desc')->limit(10)->get();
-            return view('website.comic.index', compact('comic', 'top_comics'));
+            return view('website.comic.index', compact('comic', 'top_comics', 'check_follow'));
         }
         return abort(404);
     }
