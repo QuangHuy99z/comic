@@ -30,11 +30,4 @@ class HomeController extends Controller
             return view('website.genre.index', compact('comics'));
         }
     }
-
-    public function search()
-    {   
-
-        return view('website.follow.index');
-      
-    }
 }

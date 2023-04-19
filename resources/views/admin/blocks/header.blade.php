@@ -50,7 +50,7 @@
                                     <img width="42" class="rounded-circle"
                                         src="https://www.kindpng.com/picc/m/22-223863_no-avatar-png-circle-transparent-png.png"
                                         alt="">
-                                    <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                    <i class="fa fa-angle-down ml-2 opacity-8" style="font-size: 15px;"></i>
                                 </a>
                                 <div tabindex="-1" role="menu" aria-hidden="true"
                                     class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">

@@ -34,6 +34,7 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     // User
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'get_list_users'])->name("admin.users.index");
+        Route::match(['get', 'post'],'edit/{id}', [UserController::class, 'edit'])->name("admin.users.edit");
         Route::post('delete/{id}', [UserController::class, 'destroy'])->name("admin.users.delete");
     });
     // Comic

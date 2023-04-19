@@ -40,11 +40,11 @@
                     </div>
                     <div class="btn-actions-pane-right actions-icon-btn">
                         <div class="btn-group dropdown">
-                            <a href="#">
+                            <!-- <a href="#">
                                 <div type="button" class="btn-icon btn-icon-only btn btn-link">
                                     Add <i class="pe-7s-plus btn-icon-wrapper"></i>
                                 </div>
-                            </a>  
+                            </a>   -->
                         </div>
                     </div>
                 </div>
@@ -61,12 +61,15 @@
                         <tbody>
                             @foreach($users as $user)
                                     <tr>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->email}}</td>
+                                        <td>
+                                            <a href="{{route('admin.users.edit', $user->id)}}" style="color: #495057; text-decoration: none;">{{$user->name}}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('admin.users.edit', $user->id)}}" style="color: #495057; text-decoration: none;">{{$user->email}}</a>
+                                        </td>
                                         <td>{{$user->position}}</td>
                                         <td>{{$user->created_at}}</td>
                                     </tr>
-                                </a>
                             @endforeach    
                         </tbody>
                     </table>
