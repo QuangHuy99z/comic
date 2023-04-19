@@ -31,15 +31,6 @@
         </span>
     </div>
     <div class="app-header__content">
-        <div class="app-header-left">
-            <div class="search-wrapper">
-                <div class="input-holder">
-                    <input type="text" class="search-input" placeholder="Type to search">
-                    <button class="search-icon"><span></span></button>
-                </div>
-                <button class="close"></button>
-            </div>
-        </div>
         <div class="app-header-right">
             <div class="header-btn-lg pr-0">
                 <div class="widget-content p-0">
@@ -58,7 +49,7 @@
                                         <li class="nav-item-divider nav-item">
                                         </li>
                                         <li class="nav-item-btn text-center nav-item">
-                                            <a href="{{route('admin.logout')}}" class="btn-wide btn btn-primary btn-sm"> Đăng xuất
+                                            <a href="{{route('admin.logout')}}" style="font-size: 16px;" class="btn-wide btn btn-primary btn-sm"> Đăng xuất
                                             </a>
                                         </li>
                                     </ul>

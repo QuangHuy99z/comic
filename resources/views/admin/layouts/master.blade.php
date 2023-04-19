@@ -59,31 +59,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <style>
-        ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-            color: red;
-            font-size: 14px;
-        }
-        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-            color: red !important;
-            opacity: 1;
-        }
-        ::-moz-placeholder { /* Mozilla Firefox 19+ */
-            color: red !important;
-            opacity: 1;
-        }
-        :-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color: red !important;
-        }
-        ::-ms-input-placeholder { /* Microsoft Edge */
-            color: red !important;
-        }
-
-        ::placeholder { /* Most modern browsers support this now. */
-            color: red !important;
-        }
-        input[placeholder], [placeholder], *[placeholder] {
-            color: red !important;
-        }
         .select2-selection.select2-selection--single{
             height: 38px;
             border: 1pxsolid #ced4da;
