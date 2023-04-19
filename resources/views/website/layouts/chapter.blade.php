@@ -23,7 +23,11 @@
         <div class="navbar">
             <div class="container">
                 <div class="navbar-header">
-                    <div class="navbar-brand"><a class="logo" title="Truyện tranh online" href="/"><img alt="Logo NetTruyen" src="//st.nettruyenvt.com/data/logos/logo-nettruyen.png" width="150" style="aspect-ratio:5"></a></div>
+                    <div class="navbar-brand">
+                        <a class="logo" title="Truyện tranh online" href="/">
+                            ComicBuddy
+                        </a>
+                    </div>
                     <div class="navbar-form navbar-left hidden-xs search-box comicsearchbox">
                         <form action="{{route('genre')}}" method="Get">
                             <div class="input-group">

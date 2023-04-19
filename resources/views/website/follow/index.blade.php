@@ -36,6 +36,9 @@ Follow Manga - CommicBuddy
                 <div class="comics-followed-page Module Module-178">
                     <div class="mrt15">
                     </div>
+                    <div id="_token">
+                        @csrf
+                    </div>
                     <div class="items">
                         <div class="row">
                             @foreach($comics as $comic)
@@ -58,9 +61,9 @@ Follow Manga - CommicBuddy
                                     </div>
                                     <figcaption>
                                         <div class="follow-action clearfix">
-                                            <a href="javascript:void(0)" class="unfollow follow-link" data-id="{{$comic->id}}" data-key="72869ef1-129c-f5fd-dc2b-0cdc7df19e35">
+                                            <a href="javascript:void(0)" class="unfollow follow-link" data-id="{{$comic->id}}">
                                                 <i class="fa fa-times" aria-hidden="true">
-                                                </i> Bỏ theo dõi</a>
+                                                </i> Unfollow</a>
                                         </div>
                                         <h3>
                                             <a class="jtip" data-jtip="#truyen-tranh-{{$comic->id}}" href="{{route('comic', $comic->slug)}}">{{$comic->name}}</a>

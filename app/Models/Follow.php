@@ -10,10 +10,9 @@ class Follow extends Model
     use HasFactory;
 
     protected $table = 'follows';
+    public $timestamps = false;
     protected $fillable = [
         'comic_id',
         'user_id',
-        'created_at',
-        'updated_at'
     ];
 }

@@ -156,8 +156,6 @@
         }
 
         $('.visited-comics').click(function() {
-            // alert($(this).data('chapter-link'))
-            // alert("ss");
             let comic_id = $(this).data('comic-id');
             let chapter_id = $(this).data('chapter-id');
             let chapter_link = $(this).data('chapter-link');
@@ -243,6 +241,23 @@
                 })
             });
         }
+
+        $('.unfollow').click(function(e) {
+                e.preventDefault();
+                $(this).parent().parent().parent().parent().remove();
+                let id_comic = $(this).data('id');
+                $.ajax({
+                    url: "{{route('delete_follow_comic')}}",
+                    method: "DELETE",
+                    dataType: 'json',
+                    data: {
+                        _token: $("input[name=_token]").val(),
+                        comic_id: id_comic,
+                    },
+                    success: function(data) {
+                    }
+                })
+            });
     </script>
 </body>
 
