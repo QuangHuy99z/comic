@@ -52,25 +52,22 @@
                     <table style="width: 100%;"  class="table table-hover table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th style="width: 40%!important">Name</th>
-                                <th style="width: 30%">Email</th>
+                                <th style="width: 20%!important">Name</th>
+                                <th style="width: 20%">Email</th>
                                 <th>Position</th>
-                                <th>Status</th>
-                                <th>Date</th>
+                                <th>Register Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($users as $user)
                                     <tr>
-                                        <td><a href="#" style="<?php echo $user->position == 'admin' ? 'color: red; text-decoration: none;' : 'color: #495057; text-decoration: none;' ?>">{{$user->name}}</a></td>
-                                        <td><a href="#" style="<?php echo $user->position == 'admin' ? 'color: red; text-decoration: none;' : 'color: #495057; text-decoration: none;' ?>">{{$user->email}}</a></td>
-                                        <td style="<?php echo $user->position == 'admin' ? 'color: red; text-decoration: none;' : 'color: #495057; text-decoration: none;' ?>">{{$user->position}}</td>
-                                        <td style="<?php echo $user->position == 'admin' ? 'color: red; text-decoration: none;' : 'color: #495057; text-decoration: none;' ?>">{{$user->status}}</td>
-                                        <td style="<?php echo $user->position == 'admin' ? 'color: red; text-decoration: none;' : 'color: #495057; text-decoration: none;' ?>">{{$user->created_at}}</td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->position}}</td>
+                                        <td>{{$user->created_at}}</td>
                                     </tr>
                                 </a>
                             @endforeach    
-        
                         </tbody>
                     </table>
                 </div>

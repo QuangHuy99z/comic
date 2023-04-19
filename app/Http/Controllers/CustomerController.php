@@ -21,7 +21,6 @@ class CustomerController extends Controller
         ];
        
         if (Auth::guard('web')->attempt($account)) {
-            // check từ web(ng dùng)
             if (Auth::guard('web')->user()->position == 'user'){
                 return redirect()->route('home');
             }
@@ -44,7 +43,7 @@ class CustomerController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => Hash::make($request->password)
         ]);
         
         return redirect()->route('login')->with('message', 'Register successful, please login');
@@ -70,7 +69,6 @@ class CustomerController extends Controller
         ];
         if($request->avatar){
             $file = $request->avatar;
-            $fileName = $file->getClientOriginalName();
             $pathName =  STR::random(5).'-'.date('his').'-'.STR::random(3).'.'.$file->getClientOriginalExtension();
             $file->move(public_path().'/uploads/customers/', $pathName);
             $update_profile['avatar'] = $pathName;
@@ -97,7 +95,7 @@ class CustomerController extends Controller
             }
             else {
                 $update_password = [
-                    'password' => bcrypt($request->new_password),
+                    'password' => Hash::make($request->new_password),
                 ];
                 User::where('id', Auth::guard('web')->user()->id)->update($update_password);
                 Auth::guard('web')->logout();

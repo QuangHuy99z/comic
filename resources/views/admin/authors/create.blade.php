@@ -39,7 +39,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Genres Name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Author Name">
                             </div>
                             <button type="submit" style="font-size: 16px" class="btn btn-primary">Submit</button>
                         </form>

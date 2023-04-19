@@ -11,11 +11,6 @@ use App\Models\Follow;
 
 class ComicController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function get_list_comics()
     {
         $comics = Comic::latest()->paginate(10);
@@ -23,11 +18,6 @@ class ComicController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
         if ($request->isMethod('get')) {
@@ -35,20 +25,23 @@ class ComicController extends Controller
             $authors = Author::all();
             return view('admin.comics.create', compact('genres', 'authors'));
         }
+
         $add_comic = [
             "title" => $request->title,
             "name" => $request->name,
             "content" => strip_tags($request->content),
             "slug" => STR::slug($request->name),
         ];
+
         if ($request->fimage) {
             $file = $request->fimage;
             $pathName =  STR::random(5) . '-' . date('his') . '-' . STR::random(3) . '.' . $file->getClientOriginalExtension();
             $file->move(public_path() . '/uploads/comics/', $pathName);
-            $add_comic['image'] = $pathName; // check xem có ảnh ko rồi thêm vào biến add comic
+            $add_comic['image'] = $pathName;
         } else {
             $add_comic['image'] = "";
         }
+
         $comic = Comic::create($add_comic);
         $comic->authors()->attach($request->authors);
         $comic->genres()->attach($request->genres);
@@ -56,12 +49,6 @@ class ComicController extends Controller
         return redirect()->route('admin.comics.index')->with('message', 'Add comic successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($slug = "")
     {
         $comic = Comic::where('slug', $slug)->first();
@@ -69,15 +56,17 @@ class ComicController extends Controller
             $check_follow = [];
             if (auth()->guard('web')->check()) {
                 $follows = Follow::where('user_id', '=', auth()->guard('web')->user()->id)->get();
-                foreach ($follows as $follow) :
-                    if ($comic->id == $follow->comic_id && !in_array($follow->comic_id, $check_follow)) :
+                foreach ($follows as $follow) {
+                    if ($comic->id == $follow->comic_id && !in_array($follow->comic_id, $check_follow)) {
                         $check_follow[] = $follow->comic_id;
-                    endif;
-                endforeach;
+                    }
+                }
             }
+            
             $top_comics = Comic::withCount('ranks')->orderBy('ranks_count', 'desc')->limit(10)->get();
             return view('website.comic.index', compact('comic', 'top_comics', 'check_follow'));
         }
+
         return abort(404);
     }
 

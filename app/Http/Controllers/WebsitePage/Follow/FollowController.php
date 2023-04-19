@@ -17,11 +17,11 @@ class FollowController extends Controller
         $all_follows_of_comic = [];
         if (Auth::guard('web')->check()) {
             $follows = Follow::where('user_id', '=', auth()->guard('web')->user()->id)->get();
-            foreach ($follows as $follow) :
-                if (!in_array($follow->comic_id, $all_follows_of_comic)) :
+            foreach ($follows as $follow) {
+                if (!in_array($follow->comic_id, $all_follows_of_comic)) {
                     $all_follows_of_comic[] = $follow->comic_id;
-                endif;
-            endforeach;
+                }
+            }
         }
         $top_comics = Comic::withCount('ranks')->orderBy('ranks_count', 'desc')->limit(10)->get();
         return view('website.follow.index', compact('top_comics', 'comics', 'all_follows_of_comic'));
