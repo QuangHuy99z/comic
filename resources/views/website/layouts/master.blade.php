@@ -11,7 +11,7 @@
 
 </head>
 
-<body id="ctl00_Body" class="homepage vi-vn site1">
+<body id="ctl00_Body" class="homepage vi-vn site1" style=" min-height: 100vh; display: flex; flex-direction: column;">
     <!--[if lt IE 10]>
         <p class="alert alert-danger text-center mrb0">Website không hỗ trợ trình duyệt bạn đang dùng vì quá cũ. Vui lòng <a rel="nofollow" href="http://browsehappy.com/">cập nhật trình duyệt mới</a> hoặc <a rel="nofollow" href="https://www.google.com/chrome/browser/desktop/index.html">Download Chrome</a> để trải nghiệm tốt hơn.</p>
     <![endif]-->
@@ -203,9 +203,9 @@
         echo "check_login = " . $check_login . ";\n";
         ?>
         if (check_login == 0) {
-            document.getElementById("follow_comic").onclick = function() {
+            $('#follow_comic').click(function() {
                 alert("You need to Login to follow manga");
-            };
+            });
         } else {
             $('#follow_comic').click(function(e) {
                 e.preventDefault();
@@ -243,21 +243,20 @@
         }
 
         $('.unfollow').click(function(e) {
-                e.preventDefault();
-                $(this).parent().parent().parent().parent().remove();
-                let id_comic = $(this).data('id');
-                $.ajax({
-                    url: "{{route('delete_follow_comic')}}",
-                    method: "DELETE",
-                    dataType: 'json',
-                    data: {
-                        _token: $("input[name=_token]").val(),
-                        comic_id: id_comic,
-                    },
-                    success: function(data) {
-                    }
-                })
-            });
+            e.preventDefault();
+            $(this).parent().parent().parent().parent().remove();
+            let id_comic = $(this).data('id');
+            $.ajax({
+                url: "{{route('delete_follow_comic')}}",
+                method: "DELETE",
+                dataType: 'json',
+                data: {
+                    _token: $("input[name=_token]").val(),
+                    comic_id: id_comic,
+                },
+                success: function(data) {}
+            })
+        });
     </script>
 </body>
 

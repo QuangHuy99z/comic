@@ -1,7 +1,7 @@
 @extends('website.layouts.master')
 @section('content')
 @section('title')
-	Search for manga - CommicBuddy
+	Search for manga - ComicBuddy
 @endsection
 <main class="main">
     <div class="container">

@@ -1,7 +1,7 @@
 @extends('website.layouts.master')
 @section('content')
 @section('title')
-	Login - CommicBuddy
+	Login - ComicBuddy
 @endsection
 <main class="main" style="margin-bottom: 240px !important">
     <div class="container">

@@ -1,7 +1,7 @@
 @extends('website.layouts.chapter')
 @section('content')
 @section('title')
-	{{$chapter->comic->name}} - Chap {{$chapter->number}} - CommicBuddy
+	{{$chapter->comic->name}} - Chap {{$chapter->number}} - ComicBuddy
 @endsection
 <main class="main">
     <div class="container">

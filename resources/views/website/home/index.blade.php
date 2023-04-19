@@ -24,7 +24,7 @@ CommicBuddy
 							@foreach ($sliders as $slider)
 							<div class="item">
 								<a href="{{route('comic', $slider->slug)}}">
-									<img class="lazyOwl" src="{{asset('/uploads/comics/'.$slider->image)}}" data-src="{{asset('/uploads/comics/'.$slider->image)}}" alt="Chiến Hồn Tuyệt Thế">
+									<img class="lazyOwl" src="{{ $slider->image != '' ? asset('/uploads/comics/' . $slider->image) : $no_product_image }}" onerror="this.onerror=null; this.src='{{$no_product_image}}'" alt="{{$slider->name}}">
 								</a>
 								<div class="slide-caption">
 									<h3>
@@ -68,7 +68,7 @@ CommicBuddy
 									<figure class="clearfix">
 										<div class="image">
 											<a title="{{$comic->name}}" href="{{route('comic', $comic->slug)}}">
-												<img src="{{asset('/uploads/comics/'.$comic->image)}}" class="lazy" data-original="{{asset('/uploads/comics/'.$comic->image)}}" alt="{{$comic->name}}">
+												<img src="{{ $comic->image != '' ? asset('/uploads/comics/' . $comic->image) : $no_product_image }}" class="lazy" onerror="this.onerror=null; this.src='{{$no_product_image}}'" alt="{{$comic->name}}">
 											</a>
 											<div class="view clearfix">
 												<span class="pull-left"></span>

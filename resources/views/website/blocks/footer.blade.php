@@ -2,12 +2,12 @@
     use App\Models\Genres;
     $categories = Genres::latest()->limit(8)->get();
 ?>
-<footer class="footer">
+<footer class="footer" style="margin-top: auto">
     <div class="container">
         <div class="row">
             <div class="col-sm-4 copyright" itemscope itemtype="http://schema.org/Organization">
                 <p style="padding-top: 25px">
-                    Copyright © 2021 CommicBuddy
+                    Copyright © 2021 ComicBuddy
                 </p>
             </div>
             <div class="col-sm-8">

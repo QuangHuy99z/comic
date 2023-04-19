@@ -24,7 +24,7 @@
             <div class="container">
                 <div class="navbar-header">
                     <div class="navbar-brand">
-                        <a class="logo" title="Truyện tranh online" href="/">
+                        <a class="logo" title="Truyện tranh online" href="{{route('home')}}" style="text-decoration: none;">
                             ComicBuddy
                         </a>
                     </div>

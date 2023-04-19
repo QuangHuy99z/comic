@@ -1,7 +1,7 @@
 @extends('website.layouts.master')
 @section('content')
 @section('title')
-Follow Manga - CommicBuddy
+Follow Manga - ComicBuddy
 @endsection
 <main class="main">
     <div class="container">

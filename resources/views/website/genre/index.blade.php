@@ -1,7 +1,7 @@
 @extends('website.layouts.master')
 @section('content')
 @section('title')
-  CommicBuddy
+  ComicBuddy
 @endsection
 <main class="main">
     <div class="container">
