@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -18,17 +19,17 @@ class UserController extends Controller
 
     public function edit(Request $request, $id)
     {
-        if ($request->isMethod('get')){
+        if ($request->isMethod('get')) {
             $user = User::findOrFail($id);
             return view('admin.users.detail', compact('user'));
         }
         $update_user = [
             'name' => $request->name,
         ];
-        if($request->avatar){
+        if ($request->avatar) {
             $file = $request->avatar;
-            $pathName =  STR::random(5).'-'.date('his').'-'.STR::random(3).'.'.$file->getClientOriginalExtension();
-            $file->move(public_path().'/uploads/users/', $pathName);
+            $pathName =  STR::random(5) . '-' . date('his') . '-' . STR::random(3) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/uploads/users/', $pathName);
             $update_user['avatar'] = $pathName;
         } else {
             $update_user['avatar'] = "";
@@ -49,7 +50,17 @@ class UserController extends Controller
         if ($request->getMethod() == 'GET') {
             return view('admin.users.login');
         }
-
+        $request->validate(
+            [
+                'email' => 'required|email',
+                'password' => 'required',
+            ],
+            [
+                'email.required' => "Email cannot be blank",
+                'email.email' => "Email is invalid",
+                'password.required' => "Password cannot be blank",
+            ]
+        );
         $account = [
             'email' => $request->email,
             'password' => $request->password

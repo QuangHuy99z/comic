@@ -17,11 +17,11 @@ class CustomerController extends Controller
         }
         $account = [
             'email' => $request->email,
-            'password'=> $request->password
+            'password' => $request->password
         ];
-       
+
         if (Auth::guard('web')->attempt($account)) {
-            if (Auth::guard('web')->user()->position == 'user'){
+            if (Auth::guard('web')->user()->position == 'user') {
                 return redirect()->route('home');
             }
             return redirect()->back()->with('message', 'Incorrect account or password');
@@ -36,64 +36,68 @@ class CustomerController extends Controller
             return view('website.register.index');
         }
 
-        if(User::where('email', '=', $request->email)->first()){
+        if (User::where('email', '=', $request->email)->first()) {
             return redirect()->back()->with('message', 'The account already exists in the system');
         }
-        
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
-        
+
         return redirect()->route('login')->with('message', 'Register successful, please login');
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         Auth::guard('web')->logout();
         return redirect()->route('login');
     }
 
-    public function general(Request $request) {
+    public function general(Request $request)
+    {
         if ($request->getMethod() == 'GET') {
             return view('website.profile.general');
         }
     }
 
-    public function profile(Request $request) {
+    public function profile(Request $request)
+    {
         if ($request->getMethod() == 'GET') {
             return view('website.profile.profile');
         }
         $update_profile = [
             'name' => $request->name,
         ];
-        if($request->avatar){
+        if ($request->avatar) {
             $file = $request->avatar;
-            $pathName =  STR::random(5).'-'.date('his').'-'.STR::random(3).'.'.$file->getClientOriginalExtension();
-            $file->move(public_path().'/uploads/customers/', $pathName);
+            $pathName =  STR::random(5) . '-' . date('his') . '-' . STR::random(3) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/uploads/customers/', $pathName);
             $update_profile['avatar'] = $pathName;
         }
         User::where('id', Auth::guard('web')->user()->id)->update($update_profile);
         return redirect()->back()->with('message', 'You update information successfully');
     }
 
-    public function comic_follow(Request $request) {
+    public function comic_follow(Request $request)
+    {
         if ($request->getMethod() == 'GET') {
             return view('website.profile.follow');
         }
     }
 
-    public function change_password(Request $request) {
+    public function change_password(Request $request)
+    {
         if ($request->getMethod() == 'GET') {
             return view('website.profile.change_password');
         }
         $customer = User::findOrFail(Auth::guard('web')->user()->id);
 
-        if (Hash::check($request->old_password, $customer->password)){
-            if($request->new_password != $request->confirm_password){
+        if (Hash::check($request->old_password, $customer->password)) {
+            if ($request->new_password != $request->confirm_password) {
                 return redirect()->back()->with('message', 'New password must be the same as confirm password');
-            }
-            else {
+            } else {
                 $update_password = [
                     'password' => Hash::make($request->new_password),
                 ];
@@ -101,11 +105,8 @@ class CustomerController extends Controller
                 Auth::guard('web')->logout();
                 return redirect()->route('login')->with('message', 'Your password had been changed, please re-login');
             }
-        }
-        else{
+        } else {
             return redirect()->back()->with('message', 'Old password is wrong');
         }
     }
 }
-
-
